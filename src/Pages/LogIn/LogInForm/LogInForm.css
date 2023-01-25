@@ -1,16 +1,95 @@
-.form-div{
+.form-div {
     align-items: center;
     background-color: #fff;
     border: none;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
     box-sizing: border-box;
-    margin: 40px 0 0;
+    margin: -40px 0 0;
     padding: 20px 0 28px;
     width: 396px;
-    text-align: center;
+    text-align: center
 }
 
-.input-field{
-    
+.form-div div {
+    padding: 6px 0
+}
+
+.form-div div button {
+    cursor: pointer;
+    color: #fff;
+    background-color: #1877f2;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 48px;
+    padding: 0 16px;
+    width: 355px
+}
+
+.form-div div button:hover {
+    background-color: #166fe5
+}
+
+.input-field {
+    border: 1px solid #dddfe2;
+    color: #1d2129;
+    border-radius: 6px;
+    font-size: 17px;
+    padding: 14px 16px;
+    width: 355px
+}
+
+.input-field:focus {
+    outline: 0;
+    border-color: #1b74e4;
+    box-shadow: 0 0 0 2px #e7f3ff;
+    caret-color: #1b74e4
+}
+
+.forget {
+    margin-top: 16px
+}
+
+.forget a {
+    color: #1877f2;
+    font-size: 14px;
+    /* font-weight: 500 */
+}
+
+a {
+    color: #385898;
+    cursor: pointer;
+    text-decoration: none
+}
+
+a:hover {
+    text-decoration: underline
+}
+
+.lines {
+    align-items: center;
+    border-bottom: 1px solid #dadde1;
+    display: flex;
+    margin: 5px 10px 25px 10px;
+    text-align: center
+}
+
+.create {
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    line-height: 48px;
+    padding: 0 16px;
+    background-color: #42b72a;
+    border-color: #42b72a;
+    color: #fff;
+    font-weight: 700
+}
+
+.create:hover {
+    background-color: #36a420;
+    border-color: #36a420
 }
