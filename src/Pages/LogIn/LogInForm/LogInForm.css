@@ -11,6 +11,13 @@
     text-align: center
 }
 
+.error{
+    display: block;
+    text-align: left;
+    margin-left: 25px;
+    color: rgb(243, 67, 67);
+}
+
 .form-div div {
     padding: 6px 0
 }
