@@ -1,0 +1,99 @@
+.navbar {
+    background-color: #fff;
+    height: 55px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2)
+}
+
+.nav-img {
+    cursor: pointer;
+    width: 40px;
+    height: 38px;
+    margin-right: 10px;
+    border-radius: 100%;
+}
+
+.img:hover{
+    opacity: 0.8;
+}
+
+.nav-flex {
+    display: flex;
+    align-items: center;
+    margin-right: 55px
+}
+
+.nav-flex input[type=text] {
+    border: none;
+    width: 255px;
+    height: 40px;
+    box-sizing: border-box;
+    border-radius: 37px;
+    font-size: 16px;
+    background-image: url(https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-2.png);
+    background-size: 17px;
+    background-position: 16px 11px;
+    background-repeat: no-repeat;
+    padding: 7px 20px 7px 40px;
+    transition: width .4s ease-in-out;
+    background-color: #f0f2f5
+}
+
+.nav-flex input[type=text]:focus {
+    padding: 7px 20px 7px 22px;
+    background-image: none;
+    border: 1px solid #fcfdff;
+    outline: 0
+}
+
+.icon {
+    font-size: 27px
+}
+
+.color {
+    color: #1877f2
+}
+
+.icon-div {
+    cursor: pointer;
+    padding: 9px 43px;
+    border-radius: 10px
+}
+
+.icon-div:hover {
+    background-color: #e1e6ee
+}
+
+.nav-flex-last{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+
+.icon-last{
+    font-size: 22px;
+    margin: 8px 10px;
+}
+
+.icon-end{
+    display: flex;
+    align-items: center;
+    background-color: #e6e7ea;
+    /* padding: 9px 9px; */
+    border-radius: 50%;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.icon-end:hover{
+    background-color: #d3d3d3;
+}
+
+
+.extra{
+    margin-left: 60px;
+}
+

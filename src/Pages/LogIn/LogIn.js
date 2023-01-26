@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useTitle from '../../Hooks/useTitle';
 import Footer from '../Footer/Footer';
+import Modal from '../Modal/Modal';
 import './LogIn.css'
 import LogInForm from './LogInForm/LogInForm';
 
 const LogIn = () =>
 {
     useTitle("log in or sign in")
+
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () =>
+    {
+        setModal(!modal);
+    };
+
+    if (modal) {
+        document.body.classList.add('active-modal')
+    } else {
+        document.body.classList.remove('active-modal')
+    }
+
     return (
         <div>
             <div className='banner-bg-color'>
@@ -17,11 +32,12 @@ const LogIn = () =>
                             <p>Facebook helps you connect and share <br /> with the people in your life.</p>
                         </div>
                         <div className='right'>
-                            <LogInForm/>
+                            <LogInForm toggleModal={toggleModal} />
+                            {modal && (<Modal toggleModal={toggleModal} setModal={setModal} modal={modal} />)}
                         </div>
                     </div>
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         </div>
     );

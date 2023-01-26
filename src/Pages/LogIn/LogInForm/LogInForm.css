@@ -100,3 +100,21 @@ a:hover {
     background-color: #36a420;
     border-color: #36a420
 }
+
+.create-page{
+    text-align: center;
+    margin-top: 20px;
+    color: #1c1e21;
+    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+.create-page a{
+    text-decoration: none;
+    font-weight: 600;
+    color: #1c1e21;
+}
+
+.create-page a:hover{
+    text-decoration: underline;
+}
