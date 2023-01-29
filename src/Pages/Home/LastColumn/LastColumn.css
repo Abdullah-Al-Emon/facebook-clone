@@ -1,0 +1,126 @@
+.last-column {
+    display: flex;
+    padding: 10px 20px;
+    flex-direction: column
+}
+
+.last-page-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.page-shortcuts {
+    color: #65676b;
+    font-size: 17px;
+    font-weight: 500
+}
+
+.last-page-flex p {
+    font-size: 17px
+}
+
+.page-icon {
+    width: 20px;
+}
+
+.icons-div{
+    /* margin: 0px 10px; */
+    display: flex;
+}
+
+.page-icon-div {
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 7px 7px 4px 7px;
+    /* margin-right: 9px; */
+}
+
+.page-icon-div:hover {
+    background-color: #cecece
+}
+
+.i {
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/y4/r/RWdBWJiOeG_.png?_nc_eui2=AeHed4iOqT0RZVgVWNbIuv_zU_01ojNMLr5T_TWiM0wuvnOxKfNABB1ALwcrJYGmge4eWflVY2CIO8lUU_PdCJT_);
+    background-position: 0 -37px;
+    background-size: auto;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    display: inline-block
+}
+
+.j {
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/y4/r/RWdBWJiOeG_.png?_nc_eui2=AeHed4iOqT0RZVgVWNbIuv_zU_01ojNMLr5T_TWiM0wuvnOxKfNABB1ALwcrJYGmge4eWflVY2CIO8lUU_PdCJT_);
+    background-position: 0 -205px;
+    background-size: auto;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    display: inline-block
+}
+
+.last-list {
+    height: 48px;
+    padding: 8px 8px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer
+}
+
+.last-list:hover {
+    background-color: #e0e3e7
+}
+
+.last-list p {
+    font-size: 1rem;
+    font-weight: 500
+}
+
+.last-title {
+    padding-left: 18px
+}
+
+.page-other {
+    margin-left: 8px
+}
+
+.switch{
+    height: 38px;
+    padding: 8px 8px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.switch:hover{
+    background-color: #e0e3e7
+}
+
+.switch div{
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #65676b;
+    margin-left: 10px;
+}
+
+.online{
+    position: relative;
+}
+
+.online::after{
+    content: '';
+    width: 7px;
+    height: 7px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: #41db51;
+    position: absolute;
+    top: 25px;
+    right: 9px;
+}

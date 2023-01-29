@@ -3,6 +3,11 @@
     height: 55px;
     padding: 10px 15px;
     display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
     align-items: center;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2)
 }
@@ -22,7 +27,7 @@
 .nav-flex {
     display: flex;
     align-items: center;
-    margin-right: 55px
+    margin-right: 45px
 }
 
 .nav-flex input[type=text] {
@@ -69,7 +74,7 @@
 .nav-flex-last{
     display: flex;
     align-items: center;
-    margin-right: 10px;
+    padding-right: 10px;
 }
 
 

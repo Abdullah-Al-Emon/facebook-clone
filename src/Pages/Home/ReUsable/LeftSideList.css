@@ -1,0 +1,29 @@
+.fast-list{
+    height: 55px;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.fast-list:hover{
+    background-color: #dddee0;
+}
+
+.fast-list p{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.fast-title{
+    padding-left: 40px;
+}
+
+.list-icon{
+    height: 25px;
+}
+
+.imgs{
+    border-radius: 30%;
+}

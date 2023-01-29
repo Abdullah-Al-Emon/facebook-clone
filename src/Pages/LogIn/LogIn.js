@@ -7,7 +7,7 @@ import LogInForm from './LogInForm/LogInForm';
 
 const LogIn = () =>
 {
-    useTitle("log in or sign in")
+    useTitle("- log in or sign in")
 
     const [modal, setModal] = useState(false);
 

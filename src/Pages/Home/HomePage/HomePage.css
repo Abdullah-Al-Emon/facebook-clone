@@ -1,0 +1,30 @@
+.home-flex {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f0f2f5
+}
+
+.s-column {
+    flex-basis: 25%;
+    position: sticky;
+    top: 70px;
+    align-self: flex-start;
+    height: 100vh
+}
+
+.m-column {
+    flex-basis: 50%;
+    margin-top: 60px;
+}
+
+.e-column {
+    flex-basis: 23%;
+    position: sticky;
+    top: 70px;
+    align-self: flex-start;
+    height: 100vh
+}
+
+.home-page {
+    background-color: #f0f2f5
+}
