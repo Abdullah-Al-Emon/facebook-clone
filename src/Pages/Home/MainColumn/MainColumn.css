@@ -130,7 +130,9 @@
 .post-flex{
     display: flex;
     align-items: center;
-    padding: 11px 33px;
+    justify-content: center;
+    width: 100%;
+    padding: 11px 20px;
     border-radius: 8px;
     cursor: pointer;
 }
