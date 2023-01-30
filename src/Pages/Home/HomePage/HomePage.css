@@ -14,7 +14,7 @@
 
 .m-column {
     flex-basis: 50%;
-    margin-top: 60px;
+    margin-top: 65px;
     padding: 0px 13px;
 }
 
@@ -29,6 +29,14 @@
 .home-page {
     background-color: #f0f2f5
 }
+@media screen and (max-width: 900px) {
+    .m-column{
+        flex-basis: 100%;
+    }
+    .e-column{
+        display: none;
+    }
+}
 
 @media screen and (max-width: 1100px) {
     .s-column{
@@ -39,14 +47,5 @@
     }
     .e-column{
         flex-basis: 30%;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .m-column{
-        flex-basis: 100%;
-    }
-    .e-column{
-        display: none;
     }
 }

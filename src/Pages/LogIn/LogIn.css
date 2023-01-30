@@ -19,14 +19,13 @@
 }
 
 .left {
-    padding: 200px 40px 360px 15px
+    padding: 200px 40px 360px 15px;
 }
 
 .right{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
     margin: auto;
 }
 
@@ -36,7 +35,10 @@
 }
 
 .left p {
-    font-size: 1.6em
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 32px;
 }
 
 .footer-bg-color {
@@ -119,7 +121,7 @@
         font-size: 2.9rem;
     }
     .left p{
-        font-size: 1.2rem;
+        font-size: 24px;
     }
 }
 @media screen and (max-width:1235px) {

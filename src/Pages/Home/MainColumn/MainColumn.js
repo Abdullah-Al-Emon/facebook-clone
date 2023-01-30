@@ -1,6 +1,5 @@
 import React from 'react';
 import './MainColumn.css'
-import post from '../../../assets/post-plus.png'
 import Posting from './posting/Posting';
 
 const MainColumn = () =>
@@ -9,7 +8,7 @@ const MainColumn = () =>
         <div>
             <div className="story-gallery">
                 <div className="story story1">
-                    <img src={post} alt="" />
+                    <img src='https://i.ibb.co/rwZdyP9/post-plus.png' alt="" />
                     <p>Create Story</p>
                 </div>
                 <div className="story story2">

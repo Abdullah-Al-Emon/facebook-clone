@@ -1,100 +1,96 @@
-
-.errors{
-    color: rgb(184, 0, 0);
+.input-flex {
+    display: flex
 }
 
-.input-flex{
-    display: flex;
-}
-
-.btn{
+.btn {
     cursor: pointer;
     background-color: #5893f1;
-    color: aliceblue;
+    color: #f0f8ff;
     width: 100%;
     padding: 15px 15px;
     border-radius: 10px;
     font-size: 15px;
     font-weight: 600;
-    margin: 8px 0px;
-    border: none;
+    margin: 8px 0;
+    border: none
 }
 
 .input {
     background: #f5f6f7;
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
-    font-size: 15px;
+    font-size: 17px;
     line-height: 16px;
-    padding: 12px;
+    padding: 11px;
     width: 187px;
     margin: 3px 5px;
     border: 1px solid #ccd0d5;
-    color: #1d2129;
+    border-radius: 5px;
+    color: #1d2129
 }
 
-.input-long:focus, .input:focus{
-    outline: 0;
-    border-color: #edeaea;
-    box-shadow: 0 0 0 2px #ccc9c9;
-    caret-color: #d0d0d0
-}
+/* .input-long:focus,
+.input:focus {
+    outline: 0
+} */
 
-.input-long{
+.input-long {
     background: #f5f6f7;
     width: 383px;
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
     border: 1px solid #ccd0d5;
-    font-size: 15px;
+    font-size: 17px;
     line-height: 16px;
-    padding: 12px;
-    margin: 5px 6px;
-}
-
-.errors{
-    display: block;
-    text-align: left;    
-    color: rgb(243, 67, 67);
-    margin-left: 8px;
-}
-
-.label{
-    margin-left: 8px;
-}
-
-.radio-div{
-    margin-left: 7px;
     padding: 11px;
+    border-radius: 5px;
+    margin: 5px 6px
+}
+
+.errors {
+    font-size: 14px;
+    display: block;
+    text-align: left;
+    color: #f34343;
+    margin-left: 8px
+}
+
+.label {
+    margin-left: 8px
+}
+
+.radio-div {
+    margin-left: 7px;
+    padding: 11px 16px;
     margin-top: 3px;
-    width: 190px;
-    border: 1px solid rgb(215, 215, 215) ;
-    border-radius: 3px;
+    /* width: 190px; */
+    border: 1px solid #d7d7d7;
+    border-radius: 3px
 }
 
-.radio-div label{
-    margin-right: 30px;
+.radio-div label {
+    margin-right: 30px
 }
 
-.form{
-    margin-top: 5px;
+.form {
+    margin-top: 5px
 }
 
-.modal-content p{
+.modal-content p {
     margin-top: 4px;
     margin-bottom: 5px;
     margin-left: 7px;
     color: #777;
-    font-size: 12px;
+    font-size: 12px
 }
 
-.modal-button{
+.modal-button {
     text-align: center;
-    margin: 15px 0px;
+    margin: 15px 0
 }
 
-.modal-button button{
+.modal-button button {
     min-width: 194px;
     cursor: pointer;
-    background: none;
+    background: 0 0;
     background-color: #00a400;
     border: none;
     border-radius: 6px;
@@ -104,19 +100,19 @@
     font-weight: 600;
     height: 36px;
     padding: 0 32px;
-    text-shadow: none;
+    text-shadow: none
 }
 
-.modal-button button:hover{
-    background: linear-gradient(#79bc64, #578843);
+.modal-button button:hover {
+    background: linear-gradient(#79bc64, #578843)
 }
 
-.modal-content h2{
+.modal-content h2 {
     color: #1c1e21;
     font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
     font-size: 32px;
     line-height: 38px;
-    margin-bottom: 0;
+    margin-bottom: 0
 }
 
 .modal,
@@ -133,14 +129,14 @@
 }
 
 .overlay {
-    background: rgba(49, 49, 49, .8)
+    background: rgba(251, 251, 251, 0.8)
 }
 
 .modal-content {
     position: absolute;
     z-index: 5000;
     overflow: auto;
-    top: 45%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
     line-height: 1.4;
@@ -148,10 +144,11 @@
     padding: 10px 16px;
     border-radius: 3px;
     width: 435px;
-    height: 555px
+    /* height: 575px; */
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 }
 
-.line-modal{
+.line-modal {
     border-bottom: 1px solid #dddfe2;
     font-size: 1px;
     height: 8px;
@@ -164,13 +161,12 @@
     right: 10px;
     padding: 5px 7px;
     cursor: pointer;
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 10px;
-    border: 1px solid;
 }
 
 @media screen and (max-width:480px) {
     .modal-content {
-        width: 245px
+        width: 410px
     }
 }

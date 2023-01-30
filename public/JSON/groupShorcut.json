@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1",
+        "title": "JS Bangladesh - Coding Talks",
+        "img": "https://i.ibb.co/99q2RSP/js-bd.jpg"
+    },
+    {
+        "id": "2",
+        "title": "React Native Bangladesh Community",
+        "img": "https://i.ibb.co/sH1sccL/r-native.jpg"
+    },
+    {
+        "id": "3",
+        "title": "Talk.js",
+        "img": "https://i.ibb.co/j311L1F/talk.jpg"
+    },
+    {
+        "id": "4",
+        "title": "Learn with Sumit - LWS - Community",
+        "img": "https://i.ibb.co/QY3Ky35/learn.jpg"
+    },
+    {
+        "id": "5",
+        "title": "BD Programmers",
+        "img": "https://i.ibb.co/48ZL10j/programmers.jpg"
+    }
+]

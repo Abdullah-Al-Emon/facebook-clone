@@ -1,6 +1,6 @@
 .navbar {
     background-color: #fff;
-    height: 55px;
+    /* height: 55px; */
     padding: 10px 15px;
     display: flex;
     justify-content: space-around;
@@ -123,12 +123,16 @@
     display: none;
 }
 
-@media screen and (max-width:1235px) {
-    .nav-flex {
-        margin-right: 0
+@media screen and (max-width: 450px) {
+    .menu-icon{
+        padding: 5px 15px;
     }
-    .extra{
-        margin-left: 30px;
+
+}
+
+@media screen and (max-width:900px) {
+    .middle-nav{
+        display: none;
     }
 }
 
@@ -158,15 +162,16 @@
     }
 }
 
-@media screen and (max-width:900px) {
-    .middle-nav{
-        display: none;
+@media screen and (max-width:1235px) {
+    .nav-flex {
+        margin-right: 0
+    }
+    .extra{
+        margin-left: 30px;
     }
 }
 
-@media screen and (max-width: 450px) {
-    .menu-icon{
-        padding: 5px 15px;
-    }
 
-}
+
+
+

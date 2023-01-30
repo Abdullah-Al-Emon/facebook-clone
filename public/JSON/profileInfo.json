@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1",
+        "title": "Friends",
+        "img": "https://i.ibb.co/LvZFdBZ/friends.png"
+    },
+    {
+        "id": "2",
+        "title": "Groups",
+        "img": "https://i.ibb.co/25pNpBX/group.png"
+    },
+    {
+        "id": "3",
+        "title": "Most Recent",
+        "img": "https://i.ibb.co/p31z9mT/most-recent.png"
+    },
+    {
+        "id": "4",
+        "title": "Marketplace",
+        "img": "https://i.ibb.co/3RsLbWg/marketplace.png"
+    },
+    {
+        "id": "5",
+        "title": "Memories",
+        "img": "https://i.ibb.co/3kkpJXB/timing.png"
+    }
+]

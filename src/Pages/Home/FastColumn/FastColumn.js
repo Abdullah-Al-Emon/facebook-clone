@@ -1,21 +1,27 @@
-import React from 'react';
-import LeftSideList from '../ReUsable/LeftSideList';
-import './FastColumn.css'
-import friends from '../../../assets/friends.png'
-import group from '../../../assets/group.png'
-import recent from '../../../assets/most-recent.png'
-import market from '../../../assets/marketplace.png'
-import timing from '../../../assets/timing.png'
-import talk from '../../../assets/talk.jpg'
-import js_bd from '../../../assets/js-bd.jpg'
-import r_native from '../../../assets/r-native.jpg'
-import learn from '../../../assets/learn.jpg'
-import programmers from '../../../assets/programmers.jpg'
+import React, { useEffect, useState } from 'react';
 import { GrFormDown } from 'react-icons/gr'
+import './FastColumn.css'
 
 
 const FastColumn = () =>
 {
+    const [profileInfo, setProfileInfo] = useState([]);
+
+    useEffect(() =>
+    {
+        fetch('JSON/profileInfo.json')
+            .then(res => res.json())
+            .then(data => setProfileInfo(data))
+    }, [])
+    const [groupsShort, setGroupShort] = useState([]);
+
+    useEffect(() =>
+    {
+        fetch('JSON/groupShorcut.json')
+            .then(res => res.json())
+            .then(data => setGroupShort(data))
+    }, [])
+
     return (
         <div className='fast-column'>
             <div className='fast-list'>
@@ -24,11 +30,14 @@ const FastColumn = () =>
                 </div>
                 <p>Abdullah Al Emon</p>
             </div>
-            <LeftSideList title={'Friends'} img={friends} />
-            <LeftSideList title={'Groups'} img={group} />
-            <LeftSideList title={'Most Recent'} img={recent} />
-            <LeftSideList title={'Marketplace'} img={market} />
-            <LeftSideList title={'Memories'} img={timing} />
+            {
+                profileInfo?.map(info => <div key={info.id} className='fast-list'>
+                    <div>
+                        <img className='nav-img imgs' src={info.img} alt="" />
+                    </div>
+                    <p>{info.title}</p>
+                </div>)
+            }
             <div className='fast-list'>
                 <div className='list-icon-div'>
                     <GrFormDown className='list-icon' />
@@ -39,14 +48,17 @@ const FastColumn = () =>
             <div className='shortcut-flex'>
                 <p className='shortcuts'>Your shortcuts</p>
                 <div>
-                    <a href="">Edit</a>
+                    <a href="e">Edit</a>
                 </div>
             </div>
-            <LeftSideList title={'JS Bangladesh - Coding Talks'} img={js_bd} />
-            <LeftSideList title={'React Native Bangladesh Community'} img={r_native} />
-            <LeftSideList title={'Talk.js'} img={talk} />
-            <LeftSideList title={'Learn with Sumit - LWS - Community'} img={learn} />
-            <LeftSideList title={'BD Programmers'} img={programmers} />
+            {
+                groupsShort?.map(group => <div key={group.id} className='fast-list'>
+                    <div>
+                        <img className='nav-img imgs' src={group.img} alt="" />
+                    </div>
+                    <p>{group.title}</p>
+                </div>)
+            }
             <div className='fast-list'>
                 <div className='list-icon-div'>
                     <GrFormDown className='list-icon' />
@@ -55,8 +67,8 @@ const FastColumn = () =>
             </div>
             <div>
                 <div className='fast-column-last'>
-                    <a href="">privacy</a> . <a href="">Terms</a> . <a href="">Advertising</a> . <a href="">Ad Choices</a><br />
-                    <a href="">Cookies</a> . <a href="">More</a> . <span>Meta © 2023</span>
+                    <a href="https://www.facebook.com/privacy/policy/?entry_point=comet_dropdown">privacy</a> . <a href="https://www.facebook.com/policies_center/">Terms</a> . <a href="https://www.facebook.com/business">Advertising</a> . <a href="https://www.facebook.com/help/568137493302217">Ad Choices</a><br />
+                    <a href="https://www.facebook.com/privacy/policies/cookies/?entry_point=cookie_policy_redirect&entry=0">Cookies</a> . <a href="m">More</a> . <span>Meta © 2023</span>
                 </div>
             </div>
         </div>

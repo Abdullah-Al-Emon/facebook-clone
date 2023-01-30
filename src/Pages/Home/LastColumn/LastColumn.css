@@ -1,7 +1,7 @@
 .last-column {
     display: flex;
     padding: 10px 20px;
-    flex-direction: column
+    flex-direction: column;
 }
 
 .last-page-flex {

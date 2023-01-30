@@ -1,6 +1,6 @@
 import React from 'react';
+import Navbar from '../../../Components/Navbar/Navbar';
 import useTitle from '../../../Hooks/useTitle';
-import Navbar from '../../Navbar/Navbar';
 import HomePage from '../HomePage/HomePage';
 
 const Home = () => {

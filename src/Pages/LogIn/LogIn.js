@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import Footer from '../../Components/Footer/Footer';
+import Modal from '../../Components/Modal/Modal';
 import useTitle from '../../Hooks/useTitle';
-import Footer from '../Footer/Footer';
-import Modal from '../Modal/Modal';
 import './LogIn.css'
 import LogInForm from './LogInForm/LogInForm';
 

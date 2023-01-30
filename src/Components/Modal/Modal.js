@@ -1,41 +1,6 @@
 import { useFormik } from "formik";
 import "./Modal.css";
-
-const validate = values =>
-{
-    const errors = {};
-
-    if (!values.first_name) {
-        errors.first_name = 'Type your First Name';
-    }
-    if (!values.surname) {
-        errors.surname = 'Type your Surname';
-    }
-
-    if (!values.email) {
-        errors.email = 'Type your email';
-    } else if (
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-    ) {
-        errors.email = 'Invalid email address';
-    }
-
-    const passwordRegex = /(?=.*[0-9])/;
-
-    if (!values.password) {
-        errors.password = "Type your password";
-    } else if (values.password.length < 6) {
-        errors.password = "Password must be 6 characters long.";
-    } else if (!passwordRegex.test(values.password)) {
-        errors.password = "Invalid password. Must contain one number.";
-    }
-
-    if (!values.birth_date) {
-        errors.birth_date = 'Type your Date of Birth';
-    }
-
-    return errors;
-}
+import {RxCross2} from 'react-icons/rx'
 
 
 export default function Modal({ toggleModal, setModal, modal })
@@ -57,7 +22,43 @@ export default function Modal({ toggleModal, setModal, modal })
             // console.log(values)
             // alert(JSON.stringify(values, null, 2));
         },
-        validate
+        validate: values =>
+        {
+            const errors = {};
+
+            if(!/^[a-zA-z]+([\s][a-zA-Z]+)*$/i.test(values.first_name)){
+                errors.first_name = 'Type Your First Name'
+            }
+
+            if (!/^[a-zA-z]+([\s][a-zA-Z]+)*$/i.test(values.surname)) {
+                errors.surname = 'Type your Surname';
+            }
+
+            if (!values.email) {
+                errors.email = 'Type your email';
+            } else if (
+                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+            ) {
+                errors.email = 'Invalid email address';
+            }
+
+            const passwordRegex = /(?=.*[0-9])/;
+
+            if (!values.password) {
+                errors.password = "Type your password";
+            } else if (values.password.length < 6) {
+                errors.password = "Password must be 6 characters long.";
+            } else if (!passwordRegex.test(values.password)) {
+                errors.password = "Invalid password. Must contain one number.";
+            }
+
+            if (!values.birth_date) {
+                errors.birth_date = 'Type your Date of Birth';
+            }
+            console.log(values)
+            console.log(errors)
+            return errors;
+        }
     });
 
     return (
@@ -193,9 +194,9 @@ export default function Modal({ toggleModal, setModal, modal })
                         </div>
                     </form>
                 </div>
-                <button className="close-modal" onClick={toggleModal}>
-                    X
-                </button>
+                <div className="close-modal" onClick={toggleModal}>
+                    <RxCross2 className="icon"/>
+                </div>
             </div>
         </div>
 
