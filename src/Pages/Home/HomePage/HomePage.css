@@ -35,10 +35,10 @@
         display: none;
     }
     .m-column{
-        flex-basis: 65%;
+        flex-basis: 67%;
     }
     .e-column{
-        flex-basis: 27%;
+        flex-basis: 30%;
     }
 }
 
