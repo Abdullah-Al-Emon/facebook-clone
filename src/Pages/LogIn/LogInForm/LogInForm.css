@@ -7,15 +7,15 @@
     box-sizing: border-box;
     margin: -40px 0 0;
     padding: 20px 0 28px;
-    width: 396px;
+    width: 388px;
     text-align: center
 }
 
-.error{
+.error {
     display: block;
     text-align: left;
     margin-left: 25px;
-    color: rgb(243, 67, 67);
+    color: #f34343
 }
 
 .form-div div {
@@ -61,8 +61,7 @@
 
 .forget a {
     color: #1877f2;
-    font-size: 14px;
-    /* font-weight: 500 */
+    font-size: 14px
 }
 
 a {
@@ -101,20 +100,35 @@ a:hover {
     border-color: #36a420
 }
 
-.create-page{
+.create-page {
     text-align: center;
     margin-top: 20px;
     color: #1c1e21;
     font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
     font-size: 14px;
+    margin-bottom: 20px
 }
 
-.create-page a{
+.create-page a {
     text-decoration: none;
     font-weight: 600;
-    color: #1c1e21;
+    color: #1c1e21
 }
 
-.create-page a:hover{
-    text-decoration: underline;
+.create-page a:hover {
+    text-decoration: underline
+}
+
+@media screen and (max-width:425px) {
+    .form-div{
+        width: 315px;
+    }
+
+    .input-field{
+        width: 290px;
+    }
+
+    .form-div div button {
+        width: 290px;
+    }
 }

@@ -15,6 +15,7 @@
 .m-column {
     flex-basis: 50%;
     margin-top: 60px;
+    padding: 0px 13px;
 }
 
 .e-column {
@@ -27,4 +28,25 @@
 
 .home-page {
     background-color: #f0f2f5
+}
+
+@media screen and (max-width: 1100px) {
+    .s-column{
+        display: none;
+    }
+    .m-column{
+        flex-basis: 65%;
+    }
+    .e-column{
+        flex-basis: 27%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .m-column{
+        flex-basis: 100%;
+    }
+    .e-column{
+        display: none;
+    }
 }

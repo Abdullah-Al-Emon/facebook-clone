@@ -3,7 +3,7 @@
     height: 55px;
     padding: 10px 15px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     position: fixed;
     width: 100%;
     top: 0;
@@ -17,17 +17,17 @@
     width: 40px;
     height: 38px;
     margin-right: 10px;
-    border-radius: 100%;
+    border-radius: 100%
 }
 
-.img:hover{
-    opacity: 0.8;
+.img:hover {
+    opacity: .8
 }
 
 .nav-flex {
     display: flex;
     align-items: center;
-    margin-right: 45px
+    margin-right: 0px
 }
 
 .nav-flex input[type=text] {
@@ -71,34 +71,102 @@
     background-color: #e1e6ee
 }
 
-.nav-flex-last{
+.nav-flex-last {
     display: flex;
     align-items: center;
-    padding-right: 10px;
+    padding-right: 10px
 }
 
-
-.icon-last{
+.icon-last {
     font-size: 22px;
-    margin: 8px 10px;
+    margin: 8px 10px
 }
 
-.icon-end{
+.icon-end {
     display: flex;
     align-items: center;
     background-color: #e6e7ea;
-    /* padding: 9px 9px; */
     border-radius: 50%;
-    margin-right: 8px;
     cursor: pointer;
+    margin-right: 8px
 }
 
-.icon-end:hover{
-    background-color: #d3d3d3;
+.icon-end:hover {
+    background-color: #d3d3d3
 }
 
-
-.extra{
-    margin-left: 60px;
+.search-div {
+    display: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #e6e7ea
 }
 
+.search-div:hover {
+    background-color: #e6e7ea
+}
+
+.search-icon {
+    font-size: 22px;
+    margin: 8px 10px
+}
+
+.extra {
+    margin-left: 60px
+}
+
+.menu-icon{
+    display: none;
+}
+
+.extras{
+    display: none;
+}
+
+@media screen and (max-width:1235px) {
+    .nav-flex {
+        margin-right: 0
+    }
+    .extra{
+        margin-left: 30px;
+    }
+}
+
+@media screen and (max-width:1100px) {
+    .nav-flex input[type=text] {
+        display: none
+    }
+
+    .search-div {
+        display: flex;
+        align-items: center
+    }
+
+    .game-icon{
+        display: none;
+    }
+
+    .menu-icon{
+        display: flex;
+    }
+    .extra{
+        display: none;
+    }
+
+    .extras{
+        display: flex;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .middle-nav{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .menu-icon{
+        padding: 5px 15px;
+    }
+
+}

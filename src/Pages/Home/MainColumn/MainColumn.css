@@ -190,3 +190,40 @@
     background-repeat: no-repeat;
     display: inline-block;
 }
+
+/* @media screen and (max-width:900px) {
+    .video{
+        wid: ;
+    }
+} */
+
+@media screen and (max-width: 610px) {
+    .story{
+        flex-basis: 16%;
+        padding-top: 26%;
+    }
+    .post-section{
+        padding: 9px 9px;
+    }
+    .post-section input{
+        padding: 7px 10px 7px 15px;
+    }
+    .post-flex{
+        padding: 8px 4px;
+    }
+    .post-flex p{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .story img{
+        width: 35px;
+        height: 32px;
+    }
+
+    .post-flex p{
+        font-size: 13px;
+        margin-left: 4px;
+    }
+}
