@@ -110,6 +110,17 @@
     margin-left: -20px;
 }
 
+
+@media screen and (max-width:1235px) {
+    .left {
+        padding: 48px 40px 75px 15px;
+    }
+
+    .body{
+        width: 95%;
+    }
+}
+
 @media screen and (max-width: 425px) {
     .left {
         padding: 20px 23px 58px 9px;
@@ -122,15 +133,6 @@
     }
     .left p{
         font-size: 24px;
-    }
-}
-@media screen and (max-width:1235px) {
-    .left {
-        padding: 48px 40px 75px 15px;
-    }
-
-    .body{
-        width: 95%;
     }
 }
 

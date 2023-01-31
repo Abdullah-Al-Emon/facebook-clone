@@ -142,7 +142,7 @@
     line-height: 1.4;
     background: #fff;
     padding: 10px 16px;
-    border-radius: 3px;
+    border-radius: 5px;
     width: 435px;
     /* height: 575px; */
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
@@ -167,6 +167,8 @@
 
 @media screen and (max-width:480px) {
     .modal-content {
-        width: 410px
+        width: 410px;
+        padding: 10px 7px;
+        border-radius: 5px;
     }
 }

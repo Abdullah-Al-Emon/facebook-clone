@@ -4,7 +4,7 @@ import { GiEarthAsiaOceania } from 'react-icons/gi'
 import { RxCross2 } from 'react-icons/rx'
 import { BsThreeDots } from 'react-icons/bs'
 
-const Posting = ({profilepic, name, time, des, postimg, like, comment, share}) =>
+const Posting = ({profile_pic, name, time, desc, post_img, like, comment, share}) =>
 {
     return (
         <div className='full-posting'>
@@ -12,7 +12,7 @@ const Posting = ({profilepic, name, time, des, postimg, like, comment, share}) =
                 <div className='posting-flex between '>
                     <div className='posting-flex'>
                         <div>
-                            <img className='nav-img' src={profilepic} alt="" />
+                            <img className='nav-img' src={profile_pic} alt="" />
                         </div>
                         <div>
                             <h3><a href="">{name}</a></h3>
@@ -28,10 +28,10 @@ const Posting = ({profilepic, name, time, des, postimg, like, comment, share}) =
                         </div>
                     </div>
                 </div>
-                <div>{des}</div>
+                <div className='desc'>{desc}</div>
             </div>
             <div>
-                <img className='posting-img' src={postimg} alt="" />
+                <img className='posting-img' src={post_img} alt="" />
             </div>
             <div className='react-div'>
                 <div className='react-flex between'>

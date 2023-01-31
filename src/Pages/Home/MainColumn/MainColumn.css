@@ -74,7 +74,7 @@
     justify-content: space-around;
 }
 
-.post-section input{
+.post-section .post-section-input{
     width: 100%;
     border: none;
     height: 42px;
@@ -87,11 +87,11 @@
     cursor: pointer;
 }
 
-.post-section input:hover{
+.post-section .post-section-input:hover{
     background-color: #e3e4e6;
 }
 
-.post-section input:focus{
+.post-section .post-section-input:focus{
     outline: 0;
     border: 1px solid #fcfdff;
     background-color: #e3e4e6;

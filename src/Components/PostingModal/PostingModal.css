@@ -1,0 +1,116 @@
+
+
+.errors {
+    font-size: 14px;
+    display: block;
+    text-align: left;
+    color: #f34343;
+    margin-left: 8px
+}
+
+.posting-input{
+    width: 100%;
+    border: none;
+    height: 80px;
+    overflow-y: hidden;
+    box-sizing: border-box;
+    font-size: 20px;
+    padding: 7px 20px 7px 7px;
+    font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+}
+
+.posting-input:focus{
+    outline: 0;
+}
+
+.posting-button{
+    cursor: pointer;
+    color: #fff;
+    background-color: #1877f2;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 40px;
+    padding: 0 12px;
+    width: 100%;
+}
+
+
+.form {
+    margin-top: 5px
+}
+
+.c-post-public{
+    font-weight: 800;
+    width: 150px;
+    margin-top: 4px;
+    margin-bottom: 5px;
+    color: #777;
+    font-size: 12px;
+}
+
+
+
+.posting-modal-content h2 {
+    color: #1c1e21;
+    font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 40px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.posting-modal,
+.posting-overlay {
+    overflow: auto;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 5000
+}
+
+.posting-overlay {
+    background: rgba(251, 251, 251, 0.8)
+}
+
+.posting-modal-content {
+    position: absolute;
+    z-index: 5000;
+    overflow: auto;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #fff;
+    padding: 10px 16px;
+    border-radius: 3px;
+    width: 435px;
+    height: 285px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
+
+.icons{
+    font-size: 24px;
+}
+
+.posting-close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+@media screen and (max-width:480px) {
+    .posting-modal-content {
+        width: 350px
+    }
+}
