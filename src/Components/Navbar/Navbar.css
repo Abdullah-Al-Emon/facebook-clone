@@ -123,6 +123,26 @@
     display: none;
 }
 
+.dropdown {
+    position: relative;
+  }
+  
+  .menu {
+    position: absolute;
+    left: -20px;
+    top: 40px;
+    color: #fefcfc;
+    right: 0px;
+    background-color: #5fa4ff;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 8px 10px;
+    width: 90px;
+  }
+
 @media screen and (max-width: 450px) {
     .menu-icon{
         padding: 5px 15px;

@@ -1,9 +1,27 @@
-import React from 'react';
 import { useFormik } from 'formik';
 import './LogInForm.css'
+import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const LogInForm = ({ toggleModal }) =>
 {
+    useEffect(() =>
+    {
+        sessionStorage.clear()
+    }, [])
+
+    const navigate = useNavigate();
+    const { data: signUp = [] } = useQuery({
+        queryKey: ['signUp'],
+        queryFn: async () =>
+        {
+            const res = await fetch('https://63d8d9695a330a6ae16efd5e.mockapi.io/Signup');
+            const data = await res.json();
+            return data;
+        }
+    })
+
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -11,7 +29,17 @@ const LogInForm = ({ toggleModal }) =>
         },
         onSubmit: values =>
         {
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
+            if (signUp && signUp.length) {
+                const userlogin = signUp?.filter((el, k) =>
+                {
+                    if (el.email === values.email && el.password === values.password) {
+                        navigate('/home')
+                        sessionStorage.setItem('user', JSON.stringify(el))
+                    }
+                    return el.email === values.email && el.password === values.password;
+                });
+            }
         },
         validate: (values) =>
         {
@@ -23,6 +51,15 @@ const LogInForm = ({ toggleModal }) =>
             ) {
                 errors.email = 'Invalid email address';
             }
+
+            // signUp?.filter((el, k) =>
+            // {
+            //     if (values.email === el.email) {
+            //         errors.email = 'Your is not match.'
+            //     }
+            //     console.log(el)
+            //     console.log(values.email)
+            // });
 
             const passwordRegex = /(?=.*[0-9])/;
 

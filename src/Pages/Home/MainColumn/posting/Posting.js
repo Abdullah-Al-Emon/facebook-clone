@@ -4,7 +4,7 @@ import { GiEarthAsiaOceania } from 'react-icons/gi'
 import { RxCross2 } from 'react-icons/rx'
 import { BsThreeDots } from 'react-icons/bs'
 
-const Posting = ({profile_pic, name, time, desc, post_img, like, comment, share}) =>
+const Posting = ({profile_pic, first_name, surname, time, desc, post_img, like, comment, share}) =>
 {
     return (
         <div className='full-posting'>
@@ -15,7 +15,7 @@ const Posting = ({profile_pic, name, time, desc, post_img, like, comment, share}
                             <img className='nav-img' src={profile_pic} alt="" />
                         </div>
                         <div>
-                            <h3><a href="">{name}</a></h3>
+                            <h3><a href="">{first_name} {surname}</a></h3>
                             <p><a href="">{time}</a> . <GiEarthAsiaOceania /> </p>
                         </div>
                     </div>

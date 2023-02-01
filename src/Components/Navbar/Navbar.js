@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Navbar.css'
 import { AiFillHome, AiOutlineMenu, AiOutlinePlus } from 'react-icons/ai'
 import { FaUserFriends } from 'react-icons/fa'
@@ -8,11 +8,33 @@ import { GrGamepad } from 'react-icons/gr'
 import { BsGrid3X3GapFill } from 'react-icons/bs'
 import { BsMessenger } from 'react-icons/bs'
 import { IoMdNotifications } from 'react-icons/io'
+import { RxCross2 } from 'react-icons/rx';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
-const Navbar = () =>
+const Navbar = ({ leftShow, setLeftShow, rightShow, setRightShow }) =>
 {
+    const navigate = useNavigate()
+
+    let user = sessionStorage.getItem('user')
+    let users = JSON.parse(user)
+    useEffect(() =>
+    {
+        if (users === {} || users === null) {
+            navigate('/')
+        }
+    }, [])
+
+    console.log(users)
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleOpen = () =>
+    {
+        setOpen(!open);
+    };
+
     return (
         <div>
             <div className='navbar'>
@@ -29,14 +51,18 @@ const Navbar = () =>
                         <div className='icon-div'><FaUsers className='icon' /></div>
                         <div className='icon-div game-icon'><GrGamepad className='icon' /></div>
                     </div>
-                    <div className="icon-div menu-icon"><AiOutlineMenu className='icon ' /></div>
+                    {leftShow && <div onClick={() => setLeftShow(!leftShow)} className="icon-div menu-icon"><AiOutlineMenu className='icon ' /></div>}
+                    {!leftShow && <div onClick={() => setLeftShow(!leftShow)} className="icon-div menu-icon"><RxCross2 className='icon ' /></div>}
                 </div>
                 <div className='nav-flex-last'>
                     <div className='icon-end extra'><BsGrid3X3GapFill className='icon-last' /></div>
                     <div className='icon-end extras'><AiOutlinePlus className='icon-last' /></div>
-                    <div className='icon-end'><BsMessenger className='icon-last' /></div>
+                    <div className='icon-end'><BsMessenger className='icon-last middle-nav' /></div>
+                    {rightShow && <div onClick={() => setRightShow(!rightShow)} className='icon-end menu-icon'><BsMessenger className='icon-last' /></div>}
+                    {!rightShow && <div onClick={() => setRightShow(!rightShow)} className='icon-end menu-icon'><RxCross2 className='icon-last' /></div>}
                     <div className='icon-end'><IoMdNotifications className='icon-last' /></div>
-                    <div><img className='nav-img img' src="https://scontent.fdac11-2.fna.fbcdn.net/v/t39.30808-6/310828632_1154997512059494_2357996840331361849_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeH-h3eoG1yxUmTAXPQH46t085S80hyoFejzlLzSHKgV6KmyOB0BW04ZQHDaqExGtRRdv_IZJMR0tlcFsRGUsZDo&_nc_ohc=U8Pk5-TX6xAAX-RTObz&tn=jmH2Mb2XhKo3nmqh&_nc_ht=scontent.fdac11-2.fna&oh=00_AfDzYLKwtUPGKnM-DEobs1Y6GxiEiMEvdHrX6LVR_oa1FA&oe=63D729FD" alt="" /></div>
+                    <div></div>
+                    <div className='dropdown'><img onClick={handleOpen} className='nav-img img' src={users.img} alt="" />{open && <Link className='menu' to='/'>Log Out</Link>}</div>
                 </div>
             </div>
         </div>

@@ -7,6 +7,9 @@ const FastColumn = () =>
 {
     const [profileInfo, setProfileInfo] = useState([]);
 
+    let user = sessionStorage.getItem('user')
+    let users = JSON.parse(user)
+
     useEffect(() =>
     {
         fetch('JSON/profileInfo.json')
@@ -26,9 +29,9 @@ const FastColumn = () =>
         <div className='fast-column'>
             <div className='fast-list'>
                 <div>
-                    <img className='nav-img img' src='https://scontent.fdac11-2.fna.fbcdn.net/v/t39.30808-6/310828632_1154997512059494_2357996840331361849_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeH-h3eoG1yxUmTAXPQH46t085S80hyoFejzlLzSHKgV6KmyOB0BW04ZQHDaqExGtRRdv_IZJMR0tlcFsRGUsZDo&_nc_ohc=U8Pk5-TX6xAAX-RTObz&tn=jmH2Mb2XhKo3nmqh&_nc_ht=scontent.fdac11-2.fna&oh=00_AfDzYLKwtUPGKnM-DEobs1Y6GxiEiMEvdHrX6LVR_oa1FA&oe=63D729FD' alt="" />
+                    <img className='nav-img img' src={users.img} alt="" />
                 </div>
-                <p>Abdullah Al Emon</p>
+                <p>{users.first_name} {users.surname}</p>
             </div>
             {
                 profileInfo?.map(info => <div key={info.id} className='fast-list'>

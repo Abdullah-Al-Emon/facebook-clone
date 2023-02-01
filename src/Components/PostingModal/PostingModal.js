@@ -4,30 +4,23 @@ import { RxCross2 } from 'react-icons/rx'
 import { GiEarthAsiaOceania } from "react-icons/gi";
 import { AiFillCaretDown } from "react-icons/ai";
 import { useRef } from "react";
+import PreviewImage from "../PreviewImage/PreviewImage";
+import { format } from "date-fns";
 
 
 export default function PostingModal({ togglePostingModal, setPostingModal, postingModal })
 {
-
-    // const formik = useFormik({
-    //     initialValues: {
-    //         post: '',
-    //         image: ''
-    //     },
-    //     onSubmit: values =>
-    //     {
-    //         // setPostingModal(!postingModal)
-    //         // formik.resetForm()
-    //         // console.log(values)
-    //         alert(JSON.stringify(values, null, 2));
-    //     },
-    //     validate: values =>
-    //     {
-
-    //     }
-    // });
-
+    let user = sessionStorage.getItem('user');
+    let users = JSON.parse(user);
     const fileRef = useRef(null)
+    const profile_pic = users.img;
+    const first_name = users.first_name;
+    const surname = users.surname;
+
+    const todayDate = new Date()
+    const date = format(todayDate, 'PPpp')
+    const like = Math.floor(Math.random() * 20);
+
 
     return (
 
@@ -41,70 +34,97 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                 <div className='posting-flex between '>
                     <div className='posting-flex'>
                         <div>
-                            <img className='nav-img' src='https://scontent.fdac11-2.fna.fbcdn.net/v/t39.30808-6/310828632_1154997512059494_2357996840331361849_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeH-h3eoG1yxUmTAXPQH46t085S80hyoFejzlLzSHKgV6KmyOB0BW04ZQHDaqExGtRRdv_IZJMR0tlcFsRGUsZDo&_nc_ohc=U8Pk5-TX6xAAX-RTObz&tn=jmH2Mb2XhKo3nmqh&_nc_ht=scontent.fdac11-2.fna&oh=00_AfDzYLKwtUPGKnM-DEobs1Y6GxiEiMEvdHrX6LVR_oa1FA&oe=63D729FD' alt="" />
+                            <img className='nav-img' src={users.img} alt="" />
                         </div>
                         <div className="">
-                            <h3><a href="">Abdullah Al Emon</a></h3>
+                            <h3><a href="">{users.first_name} {users.surname}</a></h3>
                             <div className="c-post-public"><GiEarthAsiaOceania /> Public <AiFillCaretDown /></div>
                         </div>
                     </div>
                 </div>
                 <div>
                     <Formik
-                        initialValues={{ post: '', file: '' }}
+                        initialValues={{ post: '', file: null }}
                         onSubmit={(values) =>
                         {
-                            console.log(values)
-                            // alert(
-                            //     JSON.stringify(
-                            //         {
-                            //             post: values.post,
-                            //             fileName: values.file.name,
-                            //             type: values.file.type,
-                            //             size: `${values.file.size} bytes`
-                            //         },
-                            //         null,
-                            //         2
-                            //     )
-                            // );
-                        }}>
-                        {({ values, handleSubmit, setFieldValue, handleChange }) =>
+                            const image = values.file;
+                            const fromData = new FormData();
+                            fromData.append('file', image)
+                            fromData.append('upload_preset', 'imagexlm')
+                            fromData.append('folder', 'First')
+
+                            fetch(`https://api.cloudinary.com/v1_1/drh68zyt1/image/upload`, {
+                                method: 'POST',
+                                body: fromData
+                            })
+                                .then(res => res.json())
+                                .then(imgData =>
+                                {
+                                    console.log(imgData.secure_url)
+                                    const post = {
+                                        profile_pic: profile_pic,
+                                        name: {first_name : first_name, surname : surname},
+                                        time: date,
+                                        desc: values.post,
+                                        post_img: imgData.secure_url,
+                                        like: like,
+                                        comment: "1",
+                                        share: "1",
+                                    }
+                                    fetch('https://63b5737158084a7af394adfc.mockapi.io/post', {
+                                        method: 'POST',
+                                        headers: {
+                                            'content-type': 'application/json',
+                                        },
+                                        body: JSON.stringify(post)
+                                    })
+                                        .then(res => res.json())
+                                        .then(result =>
+                                        {
+                                            setPostingModal(!postingModal)
+                                            console.log(result)
+                                        })
+
+                                })
+                        }}
+                        validate={(values) =>
+                        {
+                            const errors = {};
+
+                            if (!/^[a-zA-z.,]+([\s][a-zA-Z.,]+)*$/i.test(values.post)) {
+                                errors.post = 'Type Your mind?'
+                            }
+                            console.log(errors)
+                            return errors;
+                        }}
+                    >
+                        {({ values, handleSubmit, setFieldValue, handleChange, errors, touched, handleBlur }) =>
                         {
                             return (
                                 <form onSubmit={handleSubmit}>
                                     <textarea
                                         name="post"
                                         onChange={handleChange}
-                                        placeholder="What's on your mind, Abdullah?"
+                                        onBlur={handleBlur}
+                                        placeholder={`What's on your mind, ${users.first_name} ${users.surname}?`}
                                         className="posting-input" ></textarea>
-                                    <div className="form-group">
-                                        <input id="file" name="file" type="file" onChange={(event) =>
+                                    {errors.post && touched.post && errors.post && <span className='errors'>{errors.post}</span>}
+                                    <div >
+                                        {values.file && <PreviewImage file={values.file} />}
+                                        <input id="file" ref={fileRef} name="file" type="file" onChange={(event) =>
                                         {
                                             setFieldValue("file", event.currentTarget.files[0]);
                                         }} className="form-control" />
-                                        {/* <Thumb file={values.file} /> */}
+                                        <button type="button" className="form-group" onClick={() =>
+                                        {
+                                            fileRef.current.click()
+                                        }}>Upload photo</button>
                                     </div>
                                     <button type="submit" className="posting-button">Post</button>
                                 </form>
                             );
                         }}
                     </Formik>
-                    {/* <form onSubmit={formik.handleSubmit}>
-                        <textarea
-                            name="post"
-                            onChange={formik.handleChange}
-                            placeholder="What's on your mind, Abdullah?"
-                            className="posting-input" ></textarea>
-                        <div>
-                            <input type="file"
-                                onChange={(event) =>
-                                {
-                                    setFieldValue("file", event.currentTarget.files[0])
-                                }}
-                                className="image-input" name="image" id="" />
-                        </div>
-                        <button className="posting-button" type="submit">Post</button>
-                    </form> */}
                 </div>
                 <div className="posting-close-modal" onClick={togglePostingModal}>
                     <RxCross2 className="icons" />

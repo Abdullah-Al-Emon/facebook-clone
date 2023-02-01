@@ -1,11 +1,13 @@
 import { useFormik } from "formik";
 import "./Modal.css";
-import {RxCross2} from 'react-icons/rx'
+import { RxCross2 } from 'react-icons/rx'
+import { useRef } from "react";
 
 
 export default function Modal({ toggleModal, setModal, modal })
 {
-
+    // const imageHostKey = 'c5c0c56beeaa33be9ffcab481f56e94c';
+    const fileRef = useRef(null)
     const formik = useFormik({
         initialValues: {
             first_name: '',
@@ -13,20 +15,53 @@ export default function Modal({ toggleModal, setModal, modal })
             email: '',
             password: '',
             birth_date: '',
-            gender: ''
+            file: null
         },
         onSubmit: values =>
         {
-            setModal(!modal)
             formik.resetForm()
-            // console.log(values)
-            // alert(JSON.stringify(values, null, 2));
+            const image = values.file;
+            const fromData = new FormData();
+            fromData.append('file', image)
+            fromData.append('upload_preset', 'imagexlm')
+            fromData.append('folder', 'First')
+            const url = `https://api.cloudinary.com/v1_1/drh68zyt1/image/upload`
+            fetch(url, {
+                method: 'POST',
+                body: fromData
+            })
+                .then(res => res.json())
+                .then(imgData =>
+                {
+                    const signUp = {
+                        first_name: values.first_name,
+                        surname: values.surname,
+                        email: values.email,
+                        password: values.password,
+                        birth_date: values.birth_date,
+                        img: imgData.secure_url
+                    }
+                    fetch('https://63d8d9695a330a6ae16efd5e.mockapi.io/Signup', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                        },
+                        body: JSON.stringify(signUp)
+                    })
+                        .then(res => res.json())
+                        .then(result =>
+                        {
+                            setModal(!modal)
+                            console.log(result)
+                            window.location.reload(true)
+                        })
+                })
         },
         validate: values =>
         {
             const errors = {};
 
-            if(!/^[a-zA-z]+([\s][a-zA-Z]+)*$/i.test(values.first_name)){
+            if (!/^[a-zA-z]+([\s][a-zA-Z]+)*$/i.test(values.first_name)) {
                 errors.first_name = 'Type Your First Name'
             }
 
@@ -53,10 +88,11 @@ export default function Modal({ toggleModal, setModal, modal })
             }
 
             if (!values.birth_date) {
-                errors.birth_date = 'Type your Date of Birth';
+                errors.birth_date = 'Type your Date of Birth'
             }
-            console.log(values)
-            console.log(errors)
+            if (!values.file) {
+                errors.file = 'Upload your photo';
+            }
             return errors;
         }
     });
@@ -141,44 +177,17 @@ export default function Modal({ toggleModal, setModal, modal })
                             />
                             {formik.errors.birth_date && formik.touched.birth_date && formik.errors.birth_date && <span className='errors'>{formik.errors.birth_date}</span>}
                         </div>
-                        <div>
-                            <label htmlFor="gender" className="label">Gender</label>
-                            <div className="input-flex">
-                                <div className="radio-div">
-                                    <label htmlFor="female">Female</label>
-                                    <input
-                                        id="female"
-                                        name="gender"
-                                        type="radio"
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        value={formik.values.gender}
-                                    />
-                                </div>
-                                <div className="radio-div">
-                                    <label htmlFor="male">Male</label>
-                                    <input
-                                        id="male"
-                                        name="gender"
-                                        type="radio"
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        value={formik.values.gender}
-                                    />
-                                </div>
-                                <div className="radio-div">
-                                    <label htmlFor="custom">Custom</label>
-                                    <input
-                                        id="custom"
-                                        name="gender"
-                                        type="radio"
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        value={formik.values.gender}
-                                    />
-                                </div>
-                            </div>
-                            {formik.errors.gender && formik.touched.gender && formik.errors.gender && <span className='errors'>{formik.errors.gender}</span>}
+                        <div >
+                            <label htmlFor="file" className="label">Photo</label>
+                            <input id="file" ref={fileRef} name="file" type="file" onChange={(event) =>
+                            {
+                                formik.setFieldValue("file", event.currentTarget.files[0]);
+                            }} className="form-control" />
+                            <button onBlur={formik.handleBlur} name='file' type="button" className="input-long cursor" onClick={() =>
+                            {
+                                fileRef.current.click()
+                            }}>Upload photo</button>
+                            {formik.errors.file && formik.touched.file && formik.errors.file && <span className='errors'>{formik.errors.file}</span>}
                         </div>
                         <div>
                             <p>People who use our service may have uploaded your contact information to Facebook. <a href="https://www.facebook.com/help/637205020878504">Learn more.</a></p>
@@ -195,7 +204,7 @@ export default function Modal({ toggleModal, setModal, modal })
                     </form>
                 </div>
                 <div className="close-modal" onClick={toggleModal}>
-                    <RxCross2 className="icon"/>
+                    <RxCross2 className="icon" />
                 </div>
             </div>
         </div>

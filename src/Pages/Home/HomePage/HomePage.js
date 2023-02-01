@@ -4,14 +4,16 @@ import LastColumn from '../LastColumn/LastColumn';
 import MainColumn from '../MainColumn/MainColumn';
 import './HomePage.css'
 
-const HomePage = () =>
+const HomePage = ({leftShow, rightShow}) =>
 {
+    // className={leftShow ? 's-column' : 's-column-absolute'}
+    
     return (
         <div className='home-page'>
             <div className='home-flex'>
-                <div className='s-column'><FastColumn /></div>
+                <div className={`sm-column ${leftShow ? 's-column' : 's-column-absolute'}`}><FastColumn leftShow={leftShow} /> </div>
                 <div className='m-column'><MainColumn/></div>
-                <div className='e-column'><LastColumn/></div>
+                <div className={`em-column ${rightShow ? 'e-column' : 'e-column-absolute'}`}><LastColumn/></div>
             </div>
         </div>
     );
