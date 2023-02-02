@@ -51,15 +51,15 @@ const Navbar = ({ leftShow, setLeftShow, rightShow, setRightShow }) =>
                         <div className='icon-div'><FaUsers className='icon' /></div>
                         <div className='icon-div game-icon'><GrGamepad className='icon' /></div>
                     </div>
-                    {leftShow && <div onClick={() => setLeftShow(!leftShow)} className="icon-div menu-icon"><AiOutlineMenu className='icon ' /></div>}
-                    {!leftShow && <div onClick={() => setLeftShow(!leftShow)} className="icon-div menu-icon"><RxCross2 className='icon ' /></div>}
+                    {leftShow && <div onClick={() => setLeftShow(!leftShow)} className="icon-div menu-icon"><AiOutlineMenu className='msg-i' /></div>}
+                    {!leftShow && <div onClick={() => setLeftShow(!leftShow)} className="icon-div menu-icon"><RxCross2 className='msg-i' /></div>}
                 </div>
                 <div className='nav-flex-last'>
                     <div className='icon-end extra'><BsGrid3X3GapFill className='icon-last' /></div>
                     <div className='icon-end extras'><AiOutlinePlus className='icon-last' /></div>
-                    <div className='icon-end'><BsMessenger className='icon-last middle-nav' /></div>
-                    {rightShow && <div onClick={() => setRightShow(!rightShow)} className='icon-end menu-icon'><BsMessenger className='icon-last' /></div>}
-                    {!rightShow && <div onClick={() => setRightShow(!rightShow)} className='icon-end menu-icon'><RxCross2 className='icon-last' /></div>}
+                    <div className='icon-end none'><BsMessenger className='icon-last' /></div>
+                    {rightShow && <div onClick={() => setRightShow(!rightShow)} className='icon-end msg'><BsMessenger className='icon-last' /></div>}
+                    {!rightShow && <div onClick={() => setRightShow(!rightShow)} className='icon-end'><RxCross2 className='icon-last' /></div>}
                     <div className='icon-end'><IoMdNotifications className='icon-last' /></div>
                     <div></div>
                     <div className='dropdown'><img onClick={handleOpen} className='nav-img img' src={users.img} alt="" />{open && <Link className='menu' to='/'>Log Out</Link>}</div>
