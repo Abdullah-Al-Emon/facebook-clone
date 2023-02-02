@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-// import Loader from '../../../Components/Loader/Loader';
 import PostingModal from '../../../Components/PostingModal/PostingModal';
 import './MainColumn.css'
 import Posting from './posting/Posting';
