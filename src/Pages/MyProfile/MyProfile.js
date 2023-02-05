@@ -140,6 +140,7 @@ const MyProfile = () =>
                                     like={p.like.length}
                                     comment={p.comment.length}
                                     share={p.share}
+                                    options={p.options}
                                     _id={p._id}
                                 />
                             ))

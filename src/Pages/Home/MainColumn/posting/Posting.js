@@ -3,8 +3,9 @@ import './Posting.css'
 import { GiEarthAsiaOceania } from 'react-icons/gi'
 import { RxCross2 } from 'react-icons/rx'
 import { BsThreeDots } from 'react-icons/bs'
+import { FaLock } from 'react-icons/fa';
 
-const Posting = ({profile_pic, first_name, surname, time, desc, post_img, like, comment, share, _id}) =>
+const Posting = ({profile_pic, first_name, surname, time, desc, post_img, like, comment, share, _id, options}) =>
 {
     return (
         <div className='full-posting'>
@@ -16,7 +17,7 @@ const Posting = ({profile_pic, first_name, surname, time, desc, post_img, like, 
                         </div>
                         <div>
                             <h3><a href="">{first_name} {surname}</a></h3>
-                            <p><a href="">{time}</a> . <GiEarthAsiaOceania /> </p>
+                            <p><a href="">{time}</a> . {options === 'Public' ? <GiEarthAsiaOceania /> : <FaLock/>} </p>
                         </div>
                     </div>
                     <div className='posting-flex'>
