@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GrFormDown } from 'react-icons/gr'
+import { Link } from 'react-router-dom';
 import './FastColumn.css'
 
 
@@ -27,12 +28,14 @@ const FastColumn = () =>
 
     return (
         <div className='fast-column'>
-            <div className='fast-list'>
-                <div>
-                    <img className='nav-img img' src={users.img} alt="" />
+            <Link className='class' to='/myProfile'>
+                <div className='fast-list'>
+                    <div>
+                        <img className='nav-img img' src={users.img} alt="" />
+                    </div>
+                    <p>{users.first_name} {users.surname}</p>
                 </div>
-                <p>{users.first_name} {users.surname}</p>
-            </div>
+            </Link>
             {
                 profileInfo?.map(info => <div key={info.id} className='fast-list'>
                     <div>

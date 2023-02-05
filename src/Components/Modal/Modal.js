@@ -1,12 +1,14 @@
 import { useFormik } from "formik";
 import "./Modal.css";
 import { RxCross2 } from 'react-icons/rx'
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { signUpAPI } from "../../Helpers/ConfigAPI";
 
 
 export default function Modal({ toggleModal, setModal, modal })
 {
-    // const imageHostKey = 'c5c0c56beeaa33be9ffcab481f56e94c';
+    const [isLoading, setIsLoading] = useState(false)
+
     const fileRef = useRef(null)
     const formik = useFormik({
         initialValues: {
@@ -19,6 +21,7 @@ export default function Modal({ toggleModal, setModal, modal })
         },
         onSubmit: values =>
         {
+            setIsLoading(true)
             formik.resetForm()
             const image = values.file;
             const fromData = new FormData();
@@ -33,6 +36,7 @@ export default function Modal({ toggleModal, setModal, modal })
                 .then(res => res.json())
                 .then(imgData =>
                 {
+                    setIsLoading(false)
                     const signUp = {
                         first_name: values.first_name,
                         surname: values.surname,
@@ -41,7 +45,7 @@ export default function Modal({ toggleModal, setModal, modal })
                         birth_date: values.birth_date,
                         img: imgData.secure_url
                     }
-                    fetch('https://63d8d9695a330a6ae16efd5e.mockapi.io/Signup', {
+                    fetch(signUpAPI, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -51,8 +55,8 @@ export default function Modal({ toggleModal, setModal, modal })
                         .then(res => res.json())
                         .then(result =>
                         {
-                            setModal(!modal)
                             console.log(result)
+                            setModal(!modal)
                             window.location.reload(true)
                         })
                 })
@@ -199,7 +203,7 @@ export default function Modal({ toggleModal, setModal, modal })
                             </p>
                         </div>
                         <div className="modal-button">
-                            <button type="submit">Sign Up</button>
+                            <button type="submit">{isLoading && <div className="load"></div> }Sign Up</button>
                         </div>
                     </form>
                 </div>

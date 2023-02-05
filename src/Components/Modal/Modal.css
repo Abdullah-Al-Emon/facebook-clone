@@ -79,6 +79,9 @@
 }
 
 .modal-button button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-width: 194px;
     cursor: pointer;
     background: 0 0;
@@ -92,6 +95,15 @@
     height: 36px;
     padding: 0 32px;
     text-shadow: none
+}
+
+.modal-button div{
+    margin-right: 6px;
+}
+
+.modal-button{
+    display: flex;
+    justify-content: center;
 }
 
 .modal-button button:hover {
@@ -156,10 +168,46 @@
     border-radius: 10px;
 }
 
+.load {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #3498db;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
 @media screen and (max-width:480px) {
     .modal-content {
-        width: 410px;
+        width: 347px;
         padding: 10px 7px;
         border-radius: 5px;
+    }
+
+    .input{
+        width: 158px;
+        font-size: 16px;
+    }
+
+    .input-long{
+        width: 325px;
+        font-size: 16px;
+    }
+    .errors{
+        font-size: 13px;
     }
 }

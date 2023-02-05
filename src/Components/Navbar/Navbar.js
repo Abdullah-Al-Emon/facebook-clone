@@ -26,7 +26,7 @@ const Navbar = ({ leftShow, setLeftShow, rightShow, setRightShow }) =>
         }
     }, [])
 
-    console.log(users)
+    // console.log(users)
 
     const [open, setOpen] = React.useState(false);
 

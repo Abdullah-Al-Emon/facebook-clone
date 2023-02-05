@@ -11,7 +11,7 @@ const Home = () => {
     
     return (
         <div className='home'>
-            <Navbar 
+            <Navbar
             leftShow={leftShow} 
             setLeftShow={setLeftShow}
             rightShow={rightShow}

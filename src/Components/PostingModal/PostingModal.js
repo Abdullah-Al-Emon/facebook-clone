@@ -3,13 +3,14 @@ import "./PostingModal.css";
 import { RxCross2 } from 'react-icons/rx'
 import { GiEarthAsiaOceania } from "react-icons/gi";
 import { AiFillCaretDown } from "react-icons/ai";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import PreviewImage from "../PreviewImage/PreviewImage";
 import { format } from "date-fns";
 
 
 export default function PostingModal({ togglePostingModal, setPostingModal, postingModal })
 {
+    const [isLoading, setIsLoading] = useState(false)
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
     const fileRef = useRef(null)
@@ -31,22 +32,14 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                     <h2>Create Post</h2>
                 </div>
                 <div className="line"></div>
-                <div className='posting-flex between '>
-                    <div className='posting-flex'>
-                        <div>
-                            <img className='nav-img' src={users.img} alt="" />
-                        </div>
-                        <div className="">
-                            <h3><a href="">{users.first_name} {users.surname}</a></h3>
-                            <div className="c-post-public"><GiEarthAsiaOceania /> Public <AiFillCaretDown /></div>
-                        </div>
-                    </div>
-                </div>
+
                 <div>
                     <Formik
-                        initialValues={{ post: '', file: null }}
+                        initialValues={{ post: '', file: null, option: '' }}
                         onSubmit={(values) =>
                         {
+                            // console.log(values)
+                            setIsLoading(true)
                             const image = values.file;
                             const fromData = new FormData();
                             fromData.append('file', image)
@@ -62,16 +55,18 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                 {
                                     console.log(imgData.secure_url)
                                     const post = {
+                                        options: values.option,
                                         profile_pic: profile_pic,
                                         name: {first_name : first_name, surname : surname},
                                         time: date,
                                         desc: values.post,
                                         post_img: imgData.secure_url,
-                                        like: like,
-                                        comment: "1",
-                                        share: "1",
+                                        user_id: users._id,
+                                        like: [],
+                                        comment: [],
+                                        share: "0",
                                     }
-                                    fetch('https://63b5737158084a7af394adfc.mockapi.io/post', {
+                                    fetch('http://localhost:5000/post', {
                                         method: 'POST',
                                         headers: {
                                             'content-type': 'application/json',
@@ -81,8 +76,10 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                         .then(res => res.json())
                                         .then(result =>
                                         {
+                                            setIsLoading(false)
                                             setPostingModal(!postingModal)
                                             console.log(result)
+                                            window.location.reload(true)
                                         })
 
                                 })
@@ -94,7 +91,10 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                             if (!/^[a-zA-z.,]+([\s][a-zA-Z.,]+)*$/i.test(values.post)) {
                                 errors.post = 'Type Your mind?'
                             }
-                            console.log(errors)
+                            if (!values.option) {
+                                errors.option = 'Select Your Post Type'
+                            }
+                            // console.log(errors)
                             return errors;
                         }}
                     >
@@ -102,6 +102,28 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                         {
                             return (
                                 <form onSubmit={handleSubmit}>
+                                    <div className='posting-flex between '>
+                                        <div className='posting-flex'>
+                                            <div>
+                                                <img className='nav-img' src={users.img} alt="" />
+                                            </div>
+                                            <div className="">
+                                                <h3><a href="">{users.first_name} {users.surname}</a></h3>
+                                                <div className="posting-flex">
+                                                    <select
+                                                        className="select"
+                                                        onChange={handleChange}
+                                                        onBlur={handleBlur}
+                                                        name="option">
+                                                        <option value=''>Choose</option>
+                                                        <option value='Public'>Public</option>
+                                                        <option value='Privacy'>Privacy</option>
+                                                    </select> <GiEarthAsiaOceania />
+                                                    {errors.option && touched.option && errors.option && <span className='errors'>{errors.option}</span>}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <textarea
                                         name="post"
                                         onChange={handleChange}
@@ -115,12 +137,40 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                         {
                                             setFieldValue("file", event.currentTarget.files[0]);
                                         }} className="form-control" />
-                                        <button type="button" className="form-group" onClick={() =>
+                                        {/* <button type="button" className="form-group" onClick={() =>
                                         {
                                             fileRef.current.click()
-                                        }}>Upload photo</button>
+                                        }}>Upload photo</button> */}
                                     </div>
-                                    <button type="submit" className="posting-button">Post</button>
+                                    <div className="button-post-div">
+                                        <div className="add-post">
+                                            <div className="a">Add to your post</div>
+                                            <div className="icons-flex">
+                                                <div className="-div" onClick={() =>
+                                                {
+                                                    fileRef.current.click()
+                                                }}>
+                                                    <span className="pht"></span>
+                                                </div>
+                                                <div className="-div">
+                                                    <span className="frnd"></span>
+                                                </div>
+                                                <div className="-div">
+                                                    <span className="emoji"></span>
+                                                </div>
+                                                <div className="-div">
+                                                    <span className="location"></span>
+                                                </div>
+                                                <div className="-div">
+                                                    <span className="flag"></span>
+                                                </div>
+                                                <div className="-div">
+                                                    <span className="menus"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" className="posting-button">{isLoading && <div className="loaders"></div>} Post</button>
+                                    </div>
                                 </form>
                             );
                         }}

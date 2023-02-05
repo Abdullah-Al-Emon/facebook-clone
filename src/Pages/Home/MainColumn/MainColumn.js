@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import { useQuery } from 'react-query';
+import React, { useEffect, useState } from 'react';
 import PostingModal from '../../../Components/PostingModal/PostingModal';
+import { MainPostAPI, postAPI } from '../../../Helpers/ConfigAPI';
 import './MainColumn.css'
 import Posting from './posting/Posting';
 
 const MainColumn = () =>
 {
     const [postingModal, setPostingModal] = useState(false);
+    const [post, setPost] = useState([])
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
 
@@ -21,16 +22,12 @@ const MainColumn = () =>
         document.body.classList.remove('active-modal')
     }
 
-    const { data: post = [], refetch } = useQuery({
-        queryKey: ['post'],
-        queryFn: async () =>
-        {
-            const res = await fetch('https://63b5737158084a7af394adfc.mockapi.io/post');
-            const data = await res.json();
-            return data;
-        }
-    })
-    refetch()
+    useEffect(() => {
+        fetch(MainPostAPI)
+        .then(res => res.json())
+        .then(data => setPost(data))
+    },[])
+
 
     return (
         <div>
@@ -95,9 +92,10 @@ const MainColumn = () =>
                         time={p.time}
                         desc={p.desc}
                         post_img={p.post_img}
-                        like={p.like}
-                        comment={p.comment}
+                        like={p.like.length}
+                        comment={p.comment.length}
                         share={p.share}
+                        _id={p._id}
                     />
                 ))
             }

@@ -2,7 +2,13 @@
     display: flex;
     padding: 10px 20px;
     flex-direction: column;
+    height: 95vh;
     overflow-y: auto;
+}
+
+.class{
+    color: black;
+    text-decoration: none;
 }
 
 .fast-list{

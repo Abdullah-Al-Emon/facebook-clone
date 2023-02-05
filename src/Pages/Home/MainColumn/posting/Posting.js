@@ -4,7 +4,7 @@ import { GiEarthAsiaOceania } from 'react-icons/gi'
 import { RxCross2 } from 'react-icons/rx'
 import { BsThreeDots } from 'react-icons/bs'
 
-const Posting = ({profile_pic, first_name, surname, time, desc, post_img, like, comment, share}) =>
+const Posting = ({profile_pic, first_name, surname, time, desc, post_img, like, comment, share, _id}) =>
 {
     return (
         <div className='full-posting'>
@@ -37,7 +37,7 @@ const Posting = ({profile_pic, first_name, surname, time, desc, post_img, like, 
                 <div className='react-flex between'>
                     <div className='react'>
                         <img className='like' src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Facebook_Like_button.svg/2048px-Facebook_Like_button.svg.png" alt="" />
-                        <img className='like' src="https://www.freeiconspng.com/thumbs/facebook-love-png/blank-heart-love-hd-png-28.png" alt="" />
+                        {/* <img className='like' src="https://www.freeiconspng.com/thumbs/facebook-love-png/blank-heart-love-hd-png-28.png" alt="" /> */}
                         <a href=""><span>{like}</span></a>
                     </div>
                     <div>

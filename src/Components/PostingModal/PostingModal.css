@@ -29,10 +29,11 @@
 .posting-input{
     width: 100%;
     border: none;
-    height: 80px;
+    height: 110px;
+    margin: 10px 0px;
     overflow-y: hidden;
     box-sizing: border-box;
-    font-size: 19px;
+    font-size: 20px;
     padding: 7px 20px 7px 7px;
     font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
 }
@@ -52,20 +53,148 @@
     line-height: 40px;
     padding: 0 12px;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.button-post-div{
+    margin-top: 30px;
+}
+
+
+.select{
+    border-radius: 7px;
+    padding: 1px 4px;
+    background: #e1e1e1;
+    border: none;
+    width: 100px;
+    font-weight: 600;
+    margin-right: 2px;
+    color: rgb(0, 0, 0);
+    font-size: 13px;
+}
+
+.select:focus{
+    outline: 0;
+}
+
+.loaders {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #3498db;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 
 .form {
     margin-top: 5px
 }
 
-.c-post-public{
-    font-weight: 800;
-    width: 150px;
-    margin-top: 4px;
-    margin-bottom: 5px;
-    color: #777;
-    font-size: 12px;
+.icons-flex{
+    display: flex;
+    align-items: center;
+}
+
+.pht{
+    height: 24px;
+    width: 24px;
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
+    background-position: 0px -183px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.frnd{
+    height: 24px;
+    width: 24px;
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
+    background-position: 0px -158px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.emoji{
+    height: 24px;
+    width: 24px;
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
+    background-position: 0px -133px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.location{
+    height: 24px;
+    width: 24px;
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yG/r/tv0kfZ3HPPE.png?_nc_eui2=AeHfz04vt7jtMMrR-YEvyafKFBvWZ2jsvTwUG9ZnaOy9PP1r2YkobJOHoC8xmUiQInZaM91hZNMN5DU2L7oPLlSx);
+    background-position: 0px -50px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.flag{
+    height: 24px;
+    width: 24px;
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yV/r/WoWrUm2DZFo.png?_nc_eui2=AeFo0_OetzFcRT5rTgBbC-dpgChOgfBJRd6AKE6B8ElF3lpnnWytimZSCte-S4kzHNu63MR7tigIC2l385rMvRUU);
+    background-position: 0px 0px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.menus{
+    height: 24px;
+    width: 24px;
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
+    background-position: 0px -108px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.add-post{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0px;
+    padding: 10px 15px;
+    border-radius: 9px;
+    border: 1px solid #888;
+
+}
+
+.-div{
+    padding: 5px 6px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.-div:hover{
+    background-color: #dddfe2;
+}
+
+.add-post .a{
+    cursor: pointer;
+    font-weight: 600;
 }
 
 .form-group{
@@ -128,8 +257,8 @@
     background: #fff;
     padding: 10px 16px;
     border-radius: 5px;
-    width: 450px;
-    height: 328px;
+    height: 428px;
+    width: 500px;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 }
 

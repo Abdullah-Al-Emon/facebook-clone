@@ -1,0 +1,332 @@
+.profile-main{
+    background-color: #F0F2F5 !important;
+}
+.cover-img{
+    width: 100%;
+    height: 50vh;
+    border-radius: 0 0 15px 15px;
+    margin: auto auto;
+}
+
+.profile-top{
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+    background-color: #fff;
+}
+
+
+.profile-div{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+}
+
+.profile-pic{
+    height: 200px;
+    width: 200px;
+    border: 2px solid white;
+    border-radius: 50%;
+    margin-top: -70px;
+    cursor: pointer;
+}
+
+.profile-full-div{
+    display: flex;
+    align-items: center;
+}
+
+.extras-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0px;
+}
+
+.profile-div-last{
+    display: flex;
+    align-items: center;
+}
+
+.profile-div-last .icons{
+    margin-top: 4px;
+    margin-left: 2px;
+    font-size: 15px;
+}
+
+.s div{
+    padding: 12px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #65676B;
+    font-weight: 500;
+}
+
+.s .profile-fast{
+    color: hsl(214, 89%, 52%);
+}
+.s div:hover{
+    background-color: #d5d6d6;
+}
+
+.profile-end{
+    display: flex;
+    align-items: flex-end;
+}
+
+.profile-menus{
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.profile-menus:hover{
+    background-color: #d5d6d6;
+}
+
+.profile-end button{
+    cursor: pointer;
+    display: flex;
+    padding: 10px 15px;
+    margin: 0px 7px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+}
+
+.button-blue:hover{
+    background: #1864c2;
+}
+
+.button-blue{
+    color: white;
+    background: #1B74E4;
+}
+
+.button-ash:hover{
+    background-color: #d5d6d6;
+}
+
+.icon-img{
+    color: white;
+    margin-right: 4px;
+}
+
+.icon-pen{
+    color: black;
+    margin-right: 8px;
+}
+
+.profile-lower{
+    padding: 0px 20px;
+}
+
+.profile-title h2{
+    margin-top: -50px;
+    font-size: 43px;
+}
+
+.profile-title p{
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1.0625rem;
+    color: #65676B;
+}
+
+.profile-title p:hover{
+    text-decoration: underline;
+}
+
+.profile-title{
+    margin-left: 10px;
+}
+
+.profile-main-div{
+    background-color: #F0F2F5 !important;
+    display: flex;
+    padding: 15px 35px;
+}
+
+.profile-fast-div{
+    flex-basis: 43%;
+    padding: 0px 7px;
+}
+
+.profile-last-div{
+    flex-basis: 55%;
+    padding: 0px 7px;
+}
+
+.post-top-flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.grid{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.profile-post{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.profile-post p{
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.profile-post div button{
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #F0F2F5;
+    font-weight: 600;
+    margin: 0px 5px;
+    border-radius: 8px;
+    border: none;
+}
+
+.profile-post div button:hover{
+    background-color: #d5d7d9;
+}
+
+.grids-flex{
+    display: flex;
+    justify-content: space-around;
+}
+
+.grids-flex div{
+    border-radius: 7px;
+    padding: 10px 90px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.grids-flex div:hover{
+    background: #d5d6d6;
+}
+
+.normal{
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
+    background-position: 0px -512px;
+    background-size: auto;
+    color: #1B74E4;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+    display: inline-block;
+
+}
+
+.grids-icon{
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
+    background-position: 0px -444px;
+    background-size: auto;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.filter{
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
+    background-position: 0px -427px;
+    background-size: auto;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.four{
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
+    background-position: 0px -580px;
+    background-size: auto;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.grids-flex-fast{
+    color: hsl(214, 89%, 52%);
+}
+
+.profiles-div-fast{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.intro{
+    padding-bottom: 15px;
+    font-size: 20px;
+    font-weight: 700;
+
+}
+
+.bio-desc{
+    text-align: center;
+}
+
+.bio-div{
+    margin: 13px 0px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    padding: 8px 0px;
+    border-radius: 10px;
+    background-color: #e6e8eb;
+    text-align: center;
+}
+
+.bio-div:hover{
+    background-color: #e6e6e6;
+}
+
+.bios{
+    display: flex;
+    align-items: center;
+    margin: 12px 8px;
+}
+
+.bios .new{
+    font-size: 17px;
+    font-weight: 400;
+    color: #0d0d0d;
+}
+.new span{
+    font-weight: 600;
+    color: #050505;
+    cursor: pointer;
+}
+
+.new span:hover{
+    text-decoration: underline;
+}
+
+.bio-icon-img{
+    height: 16px;
+    padding-right: 10px;
+}
+
+@media screen and (max-width: 1235px) {
+    .cover-div{
+        width: 90%;
+        margin: auto;
+    }
+}
