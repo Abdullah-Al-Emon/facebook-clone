@@ -7,6 +7,7 @@ import { FaLock } from 'react-icons/fa';
 
 const Posting = ({profile_pic, first_name, surname, time, desc, post_img, like, comment, share, _id, options}) =>
 {
+    // console.log(options)
     return (
         <div className='full-posting'>
             <div className='top'>

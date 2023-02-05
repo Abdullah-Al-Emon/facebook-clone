@@ -6,6 +6,7 @@ import { AiFillCaretDown } from "react-icons/ai";
 import { useRef, useState } from "react";
 import PreviewImage from "../PreviewImage/PreviewImage";
 import { format } from "date-fns";
+import { MainPostAPI } from "../../Helpers/ConfigAPI";
 
 
 export default function PostingModal({ togglePostingModal, setPostingModal, postingModal })
@@ -66,7 +67,7 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                         comment: [],
                                         share: "0",
                                     }
-                                    fetch('http://localhost:5000/post', {
+                                    fetch(MainPostAPI, {
                                         method: 'POST',
                                         headers: {
                                             'content-type': 'application/json',

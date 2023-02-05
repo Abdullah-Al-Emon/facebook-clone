@@ -121,8 +121,8 @@
 }
 
 .profile-title h2{
-    margin-top: -50px;
-    font-size: 43px;
+    margin-top: -68px;
+    font-size: 37px;
 }
 
 .profile-title p{
@@ -204,7 +204,7 @@
 
 .grids-flex div{
     border-radius: 7px;
-    padding: 10px 90px;
+    padding: 10px 50px;
     width: 100%;
     display: flex;
     align-items: center;
