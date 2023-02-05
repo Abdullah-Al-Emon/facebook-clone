@@ -13,7 +13,7 @@ const MyProfile = () =>
 
     useEffect(() =>
     {
-        fetch(`http://localhost:5000/posts?user_id=${users._id}`)
+        fetch(`https://facebook-clone-server-side-abdullah-al-emon.vercel.app/posts?user_id=${users._id}`)
             .then(res => res.json())
             .then(data => setProfilePost(data))
     }, [])
