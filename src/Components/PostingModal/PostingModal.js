@@ -5,7 +5,6 @@ import { GiEarthAsiaOceania } from "react-icons/gi";
 import { useRef, useState } from "react";
 import PreviewImage from "../PreviewImage/PreviewImage";
 import { format } from "date-fns";
-import { MainPostAPI } from "../../Helpers/ConfigAPI";
 
 
 export default function PostingModal({ togglePostingModal, setPostingModal, postingModal })
@@ -56,7 +55,7 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                     const post = {
                                         options: values.option,
                                         profile_pic: profile_pic,
-                                        name: {first_name : first_name, surname : surname},
+                                        name: { first_name: first_name, surname: surname },
                                         time: date,
                                         desc: values.post,
                                         post_img: imgData.secure_url,
@@ -166,7 +165,7 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" className="posting-button">{isLoading && <div className="loaders"></div>} Post</button>
+                                        <button type="submit" disabled={isLoading} className="posting-button">{isLoading && <div className="loaders"></div>} Post</button>
                                     </div>
                                 </form>
                             );
