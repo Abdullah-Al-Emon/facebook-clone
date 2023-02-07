@@ -32,7 +32,8 @@
     font-size: 20px;
     line-height: 48px;
     padding: 0 16px;
-    width: 355px
+    width: 355px;
+    margin: auto;
 }
 
 .form-div div button:hover {

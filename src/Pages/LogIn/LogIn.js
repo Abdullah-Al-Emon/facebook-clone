@@ -13,6 +13,7 @@ const LogIn = () =>
     useTitle("- log in or sign in")
 
     const [modal, setModal] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
 
     const toggleModal = () =>
     {
@@ -39,6 +40,7 @@ const LogIn = () =>
         },
         onSubmit: values =>
         {
+            setIsLoading(true)
             const logIn = {
                 email: values.email,
                 password: values.password
@@ -58,6 +60,7 @@ const LogIn = () =>
                         navigate('/home')
                         sessionStorage.setItem('user', JSON.stringify(data))
                     }
+                    setIsLoading(false)
                 })
         },
         validate: (values) =>
@@ -126,7 +129,7 @@ const LogIn = () =>
                                         {formik.errors.password && formik.touched.password && formik.errors.password && <span className='error'>{formik.errors.password}</span>}
                                     </div>
                                     <div>
-                                        <button type="submit">Log in</button>
+                                        <button className='login-btn' type="submit"> {isLoading && <div className="loaders-login"></div>} Log in</button>
                                     </div>
                                     <div className='forget'>
                                         <a href="">Forgotten Password?</a>
