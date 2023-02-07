@@ -5,6 +5,7 @@ import { RxCross2 } from 'react-icons/rx'
 import { BsThreeDots } from 'react-icons/bs'
 import { FaLock } from 'react-icons/fa';
 import { useFormik } from 'formik';
+import { commentAPI, likeAPI } from '../../../../Helpers/ConfigAPI';
 
 const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like, comment, share, _id, options }) =>
 {
@@ -17,7 +18,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
         const likes = {
             postId: _id,
         }
-        fetch(`http://localhost:4000/post/like`, {
+        fetch(likeAPI, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -45,7 +46,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
             //     name: { first_name: first_name, surname: surname },
             //     text: values.text,
             // }
-            fetch(`http://localhost:4000/post/comment`, {
+            fetch(commentAPI, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json',

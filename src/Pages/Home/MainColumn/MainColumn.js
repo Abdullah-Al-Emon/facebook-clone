@@ -23,7 +23,7 @@ const MainColumn = () =>
     }
 
     useEffect(() => {
-        fetch('http://localhost:4000/post/post')
+        fetch(postAPI)
         .then(res => res.json())
         .then(data => setPost(data))
     },[])
