@@ -10,6 +10,13 @@
     margin-right: 10px;
     border-radius: 100%;
 }
+.comment-imgs{
+    cursor: pointer;
+    width: 48px;
+    height: 37px;
+    margin-right: 10px;
+    border-radius: 100%;
+}
 
 .comment-flex{
     display: flex;

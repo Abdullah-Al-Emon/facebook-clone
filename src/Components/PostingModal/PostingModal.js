@@ -5,9 +5,10 @@ import { GiEarthAsiaOceania } from "react-icons/gi";
 import { useRef, useState } from "react";
 import PreviewImage from "../PreviewImage/PreviewImage";
 import { format } from "date-fns";
+import { postAPI } from "../../Helpers/ConfigAPI";
 
 
-export default function PostingModal({ togglePostingModal, setPostingModal, postingModal })
+export default function PostingModal({ togglePostingModal, setPostingModal, postingModal, setState })
 {
     const [isLoading, setIsLoading] = useState(false)
     let user = sessionStorage.getItem('user');
@@ -19,6 +20,7 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
 
     const todayDate = new Date()
     const date = format(todayDate, 'PPpp')
+
 
 
     return (
@@ -62,7 +64,7 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                         user_id: users?._id,
                                         share: "0",
                                     }
-                                    fetch('http://localhost:4000/post/post', {
+                                    fetch(postAPI, {
                                         method: 'POST',
                                         headers: {
                                             'content-type': 'application/json',
@@ -72,10 +74,11 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                         .then(res => res.json())
                                         .then(result =>
                                         {
+                                            setState(prev => !prev)
                                             setIsLoading(false)
                                             setPostingModal(!postingModal)
                                             console.log(result)
-                                            window.location.reload(true)
+                                            // window.location.reload(true)
                                         })
 
                                 })

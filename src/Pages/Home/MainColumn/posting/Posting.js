@@ -7,7 +7,7 @@ import { FaLock } from 'react-icons/fa';
 import { useFormik } from 'formik';
 import { commentAPI, likeAPI } from '../../../../Helpers/ConfigAPI';
 
-const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like, comment, share, _id, options }) =>
+const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like, comment, share, _id, options, setState }) =>
 {
 
     let user = sessionStorage.getItem('user');
@@ -28,12 +28,11 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
             .then(res => res.json())
             .then(data =>
             {
-                window.location.reload(true)
-                // console.log(data)
+                setState(prev => !prev)
+                console.log(data)
             })
 
     }
-    // console.log(comment)
 
     const formik = useFormik({
         initialValues: {
@@ -41,11 +40,6 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
         },
         onSubmit: values =>
         {
-            // const comment = {
-            //     profile_img: users.img,
-            //     name: { first_name: first_name, surname: surname },
-            //     text: values.text,
-            // }
             fetch(commentAPI, {
                 method: 'PUT',
                 headers: {
@@ -61,7 +55,8 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                 .then(res => res.json())
                 .then(data =>
                 {
-                    window.location.reload(true)
+                    setState(prev => !prev)
+                    formik.resetForm()
                     // console.log(data)
                 })
 
@@ -136,7 +131,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                     ))
                 }
                 <form onSubmit={formik.handleSubmit} className='post-top-flex'>
-                    <img className='nav-img' src={users.img} alt="" />
+                    <img className='comment-imgs' src={users.img} alt="" />
                     <input
                         id='text'
                         className='post-section-input'

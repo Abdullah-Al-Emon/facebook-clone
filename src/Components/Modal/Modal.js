@@ -3,6 +3,7 @@ import "./Modal.css";
 import { RxCross2 } from 'react-icons/rx'
 import { useRef, useState } from "react";
 import { signUpAPI } from "../../Helpers/ConfigAPI";
+import { toast } from "react-hot-toast";
 
 
 export default function Modal({ toggleModal, setModal, modal })
@@ -55,9 +56,15 @@ export default function Modal({ toggleModal, setModal, modal })
                         .then(res => res.json())
                         .then(result =>
                         {
-                            console.log(result)
+                            // console.log(result)
+                            if(result.message){
+                                toast.success(result.message)
+                            }
+                            if(result.error){
+                                toast.error(result.error)
+                            }
                             setModal(!modal)
-                            window.location.reload(true)
+                            // window.location.reload(true)
                         })
                 })
         },

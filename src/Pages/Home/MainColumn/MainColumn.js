@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PostingModal from '../../../Components/PostingModal/PostingModal';
-import { MainPostAPI, postAPI } from '../../../Helpers/ConfigAPI';
+import { postAPI } from '../../../Helpers/ConfigAPI';
 import './MainColumn.css'
 import Posting from './posting/Posting';
 
 const MainColumn = () =>
 {
     const [postingModal, setPostingModal] = useState(false);
+    const [state, setState] = useState(false)
     const [post, setPost] = useState([])
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
@@ -24,14 +25,16 @@ const MainColumn = () =>
     }
 
 
-    useEffect(() => {
-        const fetchData = async () => {
+    useEffect(() =>
+    {
+        const fetchData = async () =>
+        {
             const result = await fetch(postAPI)
             const jsonResult = await result.json()
             setPost(jsonResult)
         }
         fetchData()
-    },[])
+    }, [state])
 
     return (
         <div>
@@ -62,7 +65,7 @@ const MainColumn = () =>
                 <div className='post-top-flex'>
                     <img className='nav-img img' src={users?.img} alt="" />
                     <input className='post-section-input' onClick={togglePostingModal} placeholder={`What's on your mind, ${users?.first_name} ${users?.surname}?`} type="text" />
-                    {postingModal && (<PostingModal togglePostingModal={togglePostingModal} setPostingModal={setPostingModal} postingModal={postingModal} />)}
+                    {postingModal && (<PostingModal setState={setState} togglePostingModal={togglePostingModal} setPostingModal={setPostingModal} postingModal={postingModal} />)}
                 </div>
                 <div className="line"></div>
                 <div className='post-top-flex'>
@@ -89,6 +92,7 @@ const MainColumn = () =>
             {
                 post.posts?.map(p => (
                     <Posting
+                        setState={setState}
                         key={p.id}
                         profile_pic={p?.profile_pic}
                         first_name={p?.name.first_name}

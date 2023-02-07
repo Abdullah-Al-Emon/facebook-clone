@@ -15,7 +15,7 @@ const MyProfile = () =>
 
     useEffect(() =>
     {
-        fetch(`http://localhost:4000/post/myPost?user_id=${users?._id}`)
+        fetch(`http://localhost:5000/myPost?user_id=${users?._id}`)
             .then(res => res.json())
             .then(data => setProfilePost(data))
     }, [])
