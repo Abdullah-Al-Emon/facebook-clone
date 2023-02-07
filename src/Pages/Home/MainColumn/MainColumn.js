@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PostingModal from '../../../Components/PostingModal/PostingModal';
 import { MainPostAPI, postAPI } from '../../../Helpers/ConfigAPI';
 import './MainColumn.css'
@@ -22,17 +23,21 @@ const MainColumn = () =>
         document.body.classList.remove('active-modal')
     }
 
+
     useEffect(() => {
-        fetch(postAPI)
-        .then(res => res.json())
-        .then(data => setPost(data))
+        const fetchData = async () => {
+            const result = await fetch(postAPI)
+            const jsonResult = await result.json()
+            setPost(jsonResult)
+        }
+        fetchData()
     },[])
 
     return (
         <div>
             {/* <Loader/> */}
             <div className="story-gallery">
-                <div className="story story1" style={{ backgroundImage: `linear-gradient(transparent, rgba(0,0,0,0.5)), url(${users.img})` }}>
+                <div className="story story1" style={{ backgroundImage: `linear-gradient(transparent, rgba(0,0,0,0.5)), url(${users?.img})` }}>
                     <img src='https://i.ibb.co/rwZdyP9/post-plus.png' alt="" />
                     <p>Create Story</p>
                 </div>
@@ -55,8 +60,8 @@ const MainColumn = () =>
             </div>
             <div className="post-section">
                 <div className='post-top-flex'>
-                    <img className='nav-img img' src={users.img} alt="" />
-                    <input className='post-section-input' onClick={togglePostingModal} placeholder={`What's on your mind, ${users.first_name} ${users.surname}?`} type="text" />
+                    <img className='nav-img img' src={users?.img} alt="" />
+                    <input className='post-section-input' onClick={togglePostingModal} placeholder={`What's on your mind, ${users?.first_name} ${users?.surname}?`} type="text" />
                     {postingModal && (<PostingModal togglePostingModal={togglePostingModal} setPostingModal={setPostingModal} postingModal={postingModal} />)}
                 </div>
                 <div className="line"></div>

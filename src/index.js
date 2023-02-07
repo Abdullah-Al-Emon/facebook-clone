@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Toaster } from 'react-hot-toast';
 
 const queryClient = new QueryClient()
 
@@ -12,6 +13,7 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
         <App />
+        <Toaster/>
     </QueryClientProvider>
   </React.StrictMode>
 );

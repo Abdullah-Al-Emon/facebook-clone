@@ -21,7 +21,7 @@ const Navbar = ({ leftShow, setLeftShow, rightShow, setRightShow }) =>
     let users = JSON.parse(user)
     useEffect(() =>
     {
-        if (users === {} || users === null) {
+        if (user === '' || user === null) {
             navigate('/')
         }
     }, [])
@@ -62,7 +62,7 @@ const Navbar = ({ leftShow, setLeftShow, rightShow, setRightShow }) =>
                     {!rightShow && <div onClick={() => setRightShow(!rightShow)} className='icon-end'><RxCross2 className='icon-last' /></div>}
                     <div className='icon-end'><IoMdNotifications className='icon-last' /></div>
                     <div></div>
-                    <div className='dropdown'><img onClick={handleOpen} className='nav-img img' src={users.img} alt="" />{open && <Link className='menu' to='/'>Log Out</Link>}</div>
+                    <div className='dropdown'><img onClick={handleOpen} className='nav-img img' src={users?.img} alt="" />{open && <Link className='menu' to='/'>Log Out</Link>}</div>
                 </div>
             </div>
         </div>

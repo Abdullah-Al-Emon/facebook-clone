@@ -31,9 +31,9 @@ const FastColumn = () =>
             <Link className='class' to='/myProfile'>
                 <div className='fast-list'>
                     <div>
-                        <img className='nav-img img' src={users.img} alt="" />
+                        <img className='nav-img img' src={users?.img} alt="" />
                     </div>
-                    <p>{users.first_name} {users.surname}</p>
+                    <p>{users?.first_name} {users?.surname}</p>
                 </div>
             </Link>
             {

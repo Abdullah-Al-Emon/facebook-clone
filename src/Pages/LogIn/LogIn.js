@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
 import Modal from '../../Components/Modal/Modal';
@@ -11,6 +12,7 @@ import './LogInForm.css'
 const LogIn = () =>
 {
     useTitle("- log in or sign in")
+    
 
     const [modal, setModal] = useState(false);
     const [isLoading, setIsLoading] = useState(false)
@@ -25,6 +27,10 @@ const LogIn = () =>
     } else {
         document.body.classList.remove('active-modal')
     }
+
+    let user = sessionStorage.getItem('user')
+    let users = JSON.parse(user)
+
 
     useEffect(() =>
     {
@@ -56,9 +62,13 @@ const LogIn = () =>
                 .then(res => res.json())
                 .then(data =>
                 {
-                    if (data) {
+                    if (data.user) {
                         navigate('/home')
-                        sessionStorage.setItem('user', JSON.stringify(data))
+                        sessionStorage.setItem('user', JSON.stringify(data.user))
+                        toast.success(data.message)
+                    }
+                    if(data.error){
+                        toast.error(data.error)
                     }
                     setIsLoading(false)
                 })
@@ -129,7 +139,7 @@ const LogIn = () =>
                                         {formik.errors.password && formik.touched.password && formik.errors.password && <span className='error'>{formik.errors.password}</span>}
                                     </div>
                                     <div>
-                                        <button className='login-btn' type="submit"> {isLoading && <div className="loaders-login"></div>} Log in</button>
+                                        <button className='login-btn' disabled={isLoading} type="submit"> {isLoading && <div className="loaders-login"></div>} Log in</button>
                                     </div>
                                     <div className='forget'>
                                         <a href="">Forgotten Password?</a>

@@ -203,7 +203,7 @@ export default function Modal({ toggleModal, setModal, modal })
                             </p>
                         </div>
                         <div className="modal-button">
-                            <button type="submit">{isLoading && <div className="load"></div> }Sign Up</button>
+                            <button disabled={isLoading} type="submit">{isLoading && <div className="load"></div> }Sign Up</button>
                         </div>
                     </form>
                 </div>

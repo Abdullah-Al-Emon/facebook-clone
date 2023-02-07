@@ -60,7 +60,7 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                         time: date,
                                         desc: values.post,
                                         post_img: imgData.secure_url,
-                                        user_id: users._id,
+                                        user_id: users?._id,
                                         share: "0",
                                     }
                                     fetch('http://localhost:4000/post/post', {
@@ -102,10 +102,10 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                     <div className='posting-flex between '>
                                         <div className='posting-flex'>
                                             <div>
-                                                <img className='nav-img' src={users.img} alt="" />
+                                                <img className='nav-img' src={users?.img} alt="" />
                                             </div>
                                             <div className="">
-                                                <h3><a href="">{users.first_name} {users.surname}</a></h3>
+                                                <h3><a href="">{users?.first_name} {users?.surname}</a></h3>
                                                 <div className="posting-flex">
                                                     <select
                                                         className="select"
@@ -125,7 +125,7 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                         name="post"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
-                                        placeholder={`What's on your mind, ${users.first_name} ${users.surname}?`}
+                                        placeholder={`What's on your mind, ${users?.first_name} ${users?.surname}?`}
                                         className="posting-input" ></textarea>
                                     {errors.post && touched.post && errors.post && <span className='errors'>{errors.post}</span>}
                                     <div >

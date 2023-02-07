@@ -4,21 +4,29 @@ import { AiFillPlusCircle } from 'react-icons/ai'
 import { FaPen } from 'react-icons/fa'
 import { BsCaretDownFill } from 'react-icons/bs';
 import Posting from '../Home/MainColumn/posting/Posting';
+import { useNavigate } from 'react-router-dom';
 
 const MyProfile = () =>
 {
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
     const [profilePost, setProfilePost] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() =>
     {
-        fetch(`http://localhost:4000/post/myPost?user_id=${users._id}`)
+        fetch(`http://localhost:4000/post/myPost?user_id=${users?._id}`)
             .then(res => res.json())
             .then(data => setProfilePost(data))
     }, [])
 
-    console.log(profilePost)
+    useEffect(() =>
+    {
+        if (user === '' || user === null) {
+            navigate('/')
+        }
+    }, [])
+
 
     return (
         <div>
@@ -29,10 +37,10 @@ const MyProfile = () =>
                 <div className='profile-div'>
                     <div className='profile-full-div center'>
                         <div>
-                            <img className='profile-pic' src={users.img} alt="" />
+                            <img className='profile-pic' src={users?.img} alt="" />
                         </div>
                         <div className='profile-title'>
-                            <h2>{users.first_name} {users.surname}</h2>
+                            <h2>{users?.first_name} {users?.surname}</h2>
                             <p>122 Firends</p>
                         </div>
                     </div>
@@ -94,8 +102,8 @@ const MyProfile = () =>
                 <div className='profile-last-div'>
                     <div className="post-section">
                         <div className='post-top-flex'>
-                            <img className='nav-img img' src={users.img} alt="" />
-                            <input className='post-section-input' placeholder={`What's on your mind, ${users.first_name} ${users.surname}?`} type="text" />
+                            <img className='nav-img img' src={users?.img} alt="" />
+                            <input className='post-section-input' placeholder={`What's on your mind, ${users?.first_name} ${users?.surname}?`} type="text" />
                             {/* {postingModal && (<PostingModal togglePostingModal={togglePostingModal} setPostingModal={setPostingModal} postingModal={postingModal} />)} */}
                         </div>
                         <div className="line"></div>

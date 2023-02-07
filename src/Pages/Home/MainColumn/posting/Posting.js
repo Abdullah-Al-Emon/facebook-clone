@@ -12,7 +12,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
 
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
-    console.log(users)
+    // console.log(users)
     const handleLike = (_id) =>
     {
         const likes = {
@@ -29,11 +29,11 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
             .then(data =>
             {
                 window.location.reload(true)
-                console.log(data)
+                // console.log(data)
             })
 
     }
-    console.log(comment)
+    // console.log(comment)
 
     const formik = useFormik({
         initialValues: {
@@ -62,7 +62,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                 .then(data =>
                 {
                     window.location.reload(true)
-                    console.log(data)
+                    // console.log(data)
                 })
 
         }
