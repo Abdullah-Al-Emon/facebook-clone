@@ -81,7 +81,7 @@ const LogIn = () =>
                 errors.password = "Invalid password. Must contain one number.";
             }
 
-            console.log(errors)
+            // console.log(errors)
 
             return errors;
         }

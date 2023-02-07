@@ -1,13 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Posting.css'
 import { GiEarthAsiaOceania } from 'react-icons/gi'
 import { RxCross2 } from 'react-icons/rx'
 import { BsThreeDots } from 'react-icons/bs'
 import { FaLock } from 'react-icons/fa';
+import { useFormik } from 'formik';
 
-const Posting = ({profile_pic, first_name, surname, time, desc, post_img, like, comment, share, _id, options}) =>
+const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like, comment, share, _id, options }) =>
 {
-    // console.log(options)
+
+    let user = sessionStorage.getItem('user');
+    let users = JSON.parse(user);
+    // console.log(users)
+    const handleLike = (_id) =>
+    {
+        const likes = {
+            postId: _id,
+        }
+        fetch(`http://localhost:4000/post/like`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(likes)
+        })
+            .then(res => res.json())
+            .then(data =>
+            {
+                window.location.reload(true)
+                console.log(data)
+            })
+
+    }
+    // console.log(comment)
+
+    const formik = useFormik({
+        initialValues: {
+            text: ""
+        },
+        onSubmit: values =>
+        {
+            // const comment = {
+            //     profile_img: users.img,
+            //     name: { first_name: first_name, surname: surname },
+            //     text: values.text,
+            // }
+            fetch(`http://localhost:4000/post/comment`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    profile_img: users.img,
+                    name: { first_name: first_name, surname: surname },
+                    text: values.text,
+                    postId: _id
+                })
+            })
+                .then(res => res.json())
+                .then(data =>
+                {
+                    window.location.reload(true)
+                    console.log(data)
+                })
+
+        }
+    })
+
+
+
     return (
         <div className='full-posting'>
             <div className='top'>
@@ -18,7 +79,7 @@ const Posting = ({profile_pic, first_name, surname, time, desc, post_img, like, 
                         </div>
                         <div>
                             <h3><a href="">{first_name} {surname}</a></h3>
-                            <p><a href="">{time}</a> . {options === 'Public' ? <GiEarthAsiaOceania /> : <FaLock/>} </p>
+                            <p><a href="">{time}</a> . {options === 'Public' ? <GiEarthAsiaOceania /> : <FaLock />} </p>
                         </div>
                     </div>
                     <div className='posting-flex'>
@@ -40,18 +101,18 @@ const Posting = ({profile_pic, first_name, surname, time, desc, post_img, like, 
                     <div className='react'>
                         <img className='like' src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Facebook_Like_button.svg/2048px-Facebook_Like_button.svg.png" alt="" />
                         {/* <img className='like' src="https://www.freeiconspng.com/thumbs/facebook-love-png/blank-heart-love-hd-png-28.png" alt="" /> */}
-                        <a href=""><span>{like}</span></a>
+                        <a href=""><span>{like.length}</span></a>
                     </div>
                     <div>
-                        <a href=""><span>{comment} Comments</span></a> <a href=""><span>{share} Shares</span></a>
+                        <a href=""><span>{comment.length} Comments</span></a> <a href=""><span>{share} Shares</span></a>
                     </div>
                 </div>
                 <div className="line"></div>
                 <div className='post-top-flex'>
-                    <div className='post-flex'>
+                    <button className='post-flex post-button' onClick={() => handleLike(_id)} type='button'>
                         <span className='likes'></span>
-                        <p>Like</p>
-                    </div>
+                        Like
+                    </button>
                     <div className='post-flex'>
                         <span className='comment'></span>
                         <p>Comment</p>
@@ -61,6 +122,29 @@ const Posting = ({profile_pic, first_name, surname, time, desc, post_img, like, 
                         <p>Share</p>
                     </div>
                 </div>
+                <div className="line"></div>
+                {
+                    comment.map(cm => (
+                        <div className='comment-flex'>
+                            <div><img src={cm.profile_img} className="comment-img" alt="" /></div>
+                            <div className='comment-desc'>
+                                <h3>{cm.name.first_name} {cm.name.surname}</h3>
+                                <p>{cm.text}</p>
+                            </div>
+                        </div>
+                    ))
+                }
+                <form onSubmit={formik.handleSubmit} className='post-top-flex'>
+                    <img className='nav-img' src={users.img} alt="" />
+                    <input
+                        id='text'
+                        className='post-section-input'
+                        onChange={formik.handleChange}
+                        value={formik.values.text}
+                        placeholder={`Comments, ${users.first_name} ${users.surname}?`}
+                        type="text" />
+                    <button type='submit' className='btns'>Send</button>
+                </form>
             </div>
         </div>
     );

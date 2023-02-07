@@ -64,6 +64,7 @@
 
 
 .select{
+    cursor: pointer;
     border-radius: 7px;
     padding: 1px 4px;
     background: #e1e1e1;

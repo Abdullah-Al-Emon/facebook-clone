@@ -34,7 +34,7 @@ const LastColumn = () =>
             </div>
             <div className='last-list'>
                 <div>
-                    <img className='nav-img' src='https://scontent.fdac11-2.fna.fbcdn.net/v/t39.30808-1/305652439_408667701404594_8759169416314342737_n.jpg?stp=cp0_dst-jpg_p50x50&_nc_cat=111&ccb=1-7&_nc_sid=05dcb7&_nc_eui2=AeFdta6NwTVEfskfwZul95pui--x6LMiAOaL77HosyIA5srE-X-zgzozGk_HJbQwi_O9X1ueXBfXlfIGyP9lr6o4&_nc_ohc=12YOyW6wc58AX_dAi9R&_nc_ht=scontent.fdac11-2.fna&oh=00_AfD1P1X3HAyj5WcJ1waQr5pNwQichDgP5uO6g_AF4alKtA&oe=63DA6AA3' alt="" />
+                    <img className='nav-img' src='https://res.cloudinary.com/drh68zyt1/image/upload/v1675736151/ebp4hh4lxtq6fch1umkw.jpg' alt="" />
                 </div>
                 <p>সুন্নাহ আমার আদর্শ</p>
             </div>

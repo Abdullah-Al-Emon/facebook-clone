@@ -23,11 +23,10 @@ const MainColumn = () =>
     }
 
     useEffect(() => {
-        fetch(MainPostAPI)
+        fetch('http://localhost:4000/post/post')
         .then(res => res.json())
         .then(data => setPost(data))
     },[])
-
 
     return (
         <div>
@@ -83,7 +82,7 @@ const MainColumn = () =>
                 </div>
             </div>
             {
-                post?.map(p => (
+                post.posts?.map(p => (
                     <Posting
                         key={p.id}
                         profile_pic={p?.profile_pic}
@@ -92,8 +91,8 @@ const MainColumn = () =>
                         time={p.time}
                         desc={p.desc}
                         post_img={p.post_img}
-                        like={p.like.length}
-                        comment={p.comment.length}
+                        like={p.like}
+                        comment={p.comment}
                         share={p.share}
                         options={p.options}
                         _id={p._id}

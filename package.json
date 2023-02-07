@@ -2,6 +2,7 @@
   "name": "facebook-clone-design",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "@cloudinary/react": "^1.9.0",
     "@cloudinary/url-gen": "^1.9.0",

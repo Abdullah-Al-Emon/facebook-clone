@@ -13,7 +13,7 @@ const MyProfile = () =>
 
     useEffect(() =>
     {
-        fetch(`https://facebook-clone-server-side-abdullah-al-emon.vercel.app/posts?user_id=${users._id}`)
+        fetch(`http://localhost:4000/post/myPost?user_id=${users._id}`)
             .then(res => res.json())
             .then(data => setProfilePost(data))
     }, [])
@@ -27,7 +27,7 @@ const MyProfile = () =>
                     <img className='cover-img' src='https://thumbs.dreamstime.com/b/dream-forest-5241204.jpg' alt="" />
                 </div>
                 <div className='profile-div'>
-                    <div className='profile-full-div'>
+                    <div className='profile-full-div center'>
                         <div>
                             <img className='profile-pic' src={users.img} alt="" />
                         </div>
@@ -48,9 +48,11 @@ const MyProfile = () =>
                             <div className='profile-fast'>Post</div>
                             <div>About</div>
                             <div>Friends</div>
-                            <div>Photos</div>
-                            <div>Videos</div>
-                            <div>Check-ins</div>
+                            <span className='others'>
+                                <div>Photos</div>
+                                <div>Videos</div>
+                                <div className='check'>Check-ins</div>
+                            </span>
                             <div className='profile-div-last'>More <BsCaretDownFill className='icons' /></div>
                         </div>
                         <div>
@@ -128,7 +130,7 @@ const MyProfile = () =>
                     </div>
                     <div>
                         {
-                            profilePost?.map(p => (
+                            profilePost.posts?.map(p => (
                                 <Posting
                                     key={p.id}
                                     profile_pic={p?.profile_pic}
@@ -137,8 +139,8 @@ const MyProfile = () =>
                                     time={p.time}
                                     desc={p.desc}
                                     post_img={p.post_img}
-                                    like={p.like.length}
-                                    comment={p.comment.length}
+                                    like={p.like}
+                                    comment={p.comment}
                                     share={p.share}
                                     options={p.options}
                                     _id={p._id}

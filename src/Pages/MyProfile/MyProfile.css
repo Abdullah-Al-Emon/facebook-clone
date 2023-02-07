@@ -1,208 +1,209 @@
-.profile-main{
-    background-color: #F0F2F5 !important;
+.profile-main {
+    background-color: #f0f2f5 !important
 }
-.cover-img{
+
+.cover-img {
     width: 100%;
     height: 50vh;
     border-radius: 0 0 15px 15px;
-    margin: auto auto;
+    margin: auto auto
 }
 
-.profile-top{
+.profile-top {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
-    background-color: #fff;
+    background-color: #fff
 }
 
-
-.profile-div{
+.profile-div {
     display: flex;
     justify-content: space-between;
-    padding: 10px 40px;
+    padding: 10px 40px
 }
 
-.profile-pic{
+.profile-pic {
     height: 200px;
     width: 200px;
-    border: 2px solid white;
+    border: 2px solid #fff;
     border-radius: 50%;
     margin-top: -70px;
-    cursor: pointer;
+    cursor: pointer
 }
 
-.profile-full-div{
+.profile-full-div {
     display: flex;
-    align-items: center;
+    align-items: center
 }
 
-.extras-div{
+.extras-div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 0px;
+    padding: 8px 0
 }
 
-.profile-div-last{
+.profile-div-last {
     display: flex;
-    align-items: center;
+    align-items: center
 }
 
-.profile-div-last .icons{
+.profile-div-last .icons {
     margin-top: 4px;
     margin-left: 2px;
-    font-size: 15px;
+    font-size: 15px
 }
 
-.s div{
+.s div {
     padding: 12px 15px;
     border-radius: 10px;
     cursor: pointer;
-    color: #65676B;
-    font-weight: 500;
+    color: #65676b;
+    font-weight: 500
 }
 
-.s .profile-fast{
-    color: hsl(214, 89%, 52%);
-}
-.s div:hover{
-    background-color: #d5d6d6;
+.s .profile-fast {
+    color: #1776f1
 }
 
-.profile-end{
+.s div:hover {
+    background-color: #d5d6d6
+}
+
+.profile-end {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-end
 }
 
-.profile-menus{
+.profile-menus {
     padding: 8px 10px;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 10px
 }
 
-.profile-menus:hover{
-    background-color: #d5d6d6;
+.profile-menus:hover {
+    background-color: #d5d6d6
 }
 
-.profile-end button{
+.profile-end button {
     cursor: pointer;
     display: flex;
     padding: 10px 15px;
-    margin: 0px 7px;
+    margin: 0 7px;
     border-radius: 8px;
     font-weight: 600;
     font-size: 16px;
-    border: none;
+    border: none
 }
 
-.button-blue:hover{
-    background: #1864c2;
+.button-blue:hover {
+    background: #1864c2
 }
 
-.button-blue{
-    color: white;
-    background: #1B74E4;
+.button-blue {
+    color: #fff;
+    background: #1b74e4
 }
 
-.button-ash:hover{
-    background-color: #d5d6d6;
+.button-ash:hover {
+    background-color: #d5d6d6
 }
 
-.icon-img{
-    color: white;
-    margin-right: 4px;
+.icon-img {
+    color: #fff;
+    margin-right: 4px
 }
 
-.icon-pen{
-    color: black;
-    margin-right: 8px;
+.icon-pen {
+    color: #000;
+    margin-right: 8px
 }
 
-.profile-lower{
-    padding: 0px 20px;
+.profile-lower {
+    padding: 0 20px
 }
 
-.profile-title h2{
+.profile-title h2 {
     margin-top: -68px;
-    font-size: 37px;
+    font-size: 37px
 }
 
-.profile-title p{
+.profile-title p {
     cursor: pointer;
     font-weight: 500;
     font-size: 1.0625rem;
-    color: #65676B;
+    color: #65676b
 }
 
-.profile-title p:hover{
-    text-decoration: underline;
+.profile-title p:hover {
+    text-decoration: underline
 }
 
-.profile-title{
-    margin-left: 10px;
+.profile-title {
+    margin-left: 10px
 }
 
-.profile-main-div{
-    background-color: #F0F2F5 !important;
+.profile-main-div {
+    background-color: #f0f2f5 !important;
     display: flex;
-    padding: 15px 35px;
+    padding: 15px 35px
 }
 
-.profile-fast-div{
+.profile-fast-div {
     flex-basis: 43%;
-    padding: 0px 7px;
+    padding: 0 7px
 }
 
-.profile-last-div{
+.profile-last-div {
     flex-basis: 55%;
-    padding: 0px 7px;
+    padding: 0 7px
 }
 
-.post-top-flex{
+.post-top-flex {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-around
 }
 
-.grid{
+.grid {
     display: flex;
     flex-direction: column;
     background-color: #fff;
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 10px
 }
 
-.profile-post{
+.profile-post {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
+    padding: 10px 15px
 }
 
-.profile-post p{
+.profile-post p {
     font-size: 21px;
-    font-weight: 700;
+    font-weight: 700
 }
 
-.profile-post div button{
+.profile-post div button {
     padding: 8px 15px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #F0F2F5;
+    background-color: #f0f2f5;
     font-weight: 600;
-    margin: 0px 5px;
+    margin: 0 5px;
     border-radius: 8px;
-    border: none;
+    border: none
 }
 
-.profile-post div button:hover{
-    background-color: #d5d7d9;
+.profile-post div button:hover {
+    background-color: #d5d7d9
 }
 
-.grids-flex{
+.grids-flex {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-around
 }
 
-.grids-flex div{
+.grids-flex div {
     border-radius: 7px;
     padding: 10px 50px;
     width: 100%;
@@ -211,122 +212,206 @@
     justify-content: center;
     font-size: 17px;
     font-weight: 500;
-    cursor: pointer;
+    cursor: pointer
 }
 
-.grids-flex div:hover{
-    background: #d5d6d6;
+.grids-flex div:hover {
+    background: #d5d6d6
 }
 
-.normal{
+.normal {
     background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
-    background-position: 0px -512px;
+    background-position: 0 -512px;
     background-size: auto;
-    color: #1B74E4;
+    color: #1b74e4;
     width: 16px;
     height: 16px;
     margin-right: 10px;
     background-repeat: no-repeat;
-    display: inline-block;
-
+    display: inline-block
 }
 
-.grids-icon{
+.grids-icon {
     background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
-    background-position: 0px -444px;
+    background-position: 0 -444px;
     background-size: auto;
     width: 16px;
     height: 16px;
     margin-right: 10px;
     background-repeat: no-repeat;
-    display: inline-block;
+    display: inline-block
 }
 
-.filter{
+.filter {
     background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
-    background-position: 0px -427px;
+    background-position: 0 -427px;
     background-size: auto;
     width: 16px;
     height: 16px;
     background-repeat: no-repeat;
-    display: inline-block;
+    display: inline-block
 }
 
-.four{
+.four {
     background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
-    background-position: 0px -580px;
+    background-position: 0 -580px;
     background-size: auto;
     width: 16px;
     height: 16px;
     background-repeat: no-repeat;
-    display: inline-block;
+    display: inline-block
 }
 
-.grids-flex-fast{
-    color: hsl(214, 89%, 52%);
+.grids-flex-fast {
+    color: #1776f1
 }
 
-.profiles-div-fast{
+.profiles-div-fast {
     background-color: #fff;
     border-radius: 10px;
-    padding: 10px 15px;
+    padding: 10px 15px
 }
 
-.intro{
+.intro {
     padding-bottom: 15px;
     font-size: 20px;
-    font-weight: 700;
-
+    font-weight: 700
 }
 
-.bio-desc{
-    text-align: center;
+.bio-desc {
+    text-align: center
 }
 
-.bio-div{
-    margin: 13px 0px;
+.bio-div {
+    margin: 13px 0;
     font-weight: 500;
     cursor: pointer;
     width: 100%;
-    padding: 8px 0px;
+    padding: 8px 0;
     border-radius: 10px;
     background-color: #e6e8eb;
-    text-align: center;
+    text-align: center
 }
 
-.bio-div:hover{
-    background-color: #e6e6e6;
+.bio-div:hover {
+    background-color: #e6e6e6
 }
 
-.bios{
+.bios {
     display: flex;
     align-items: center;
-    margin: 12px 8px;
+    margin: 12px 8px
 }
 
-.bios .new{
+.bios .new {
     font-size: 17px;
     font-weight: 400;
-    color: #0d0d0d;
+    color: #0d0d0d
 }
-.new span{
+
+.new span {
     font-weight: 600;
     color: #050505;
-    cursor: pointer;
+    cursor: pointer
 }
 
-.new span:hover{
-    text-decoration: underline;
+.new span:hover {
+    text-decoration: underline
 }
 
-.bio-icon-img{
+.bio-icon-img {
     height: 16px;
-    padding-right: 10px;
+    padding-right: 10px
 }
 
-@media screen and (max-width: 1235px) {
-    .cover-div{
+.others{
+    display: flex;
+}
+
+@media screen and (max-width:1235px) {
+    .cover-div {
         width: 90%;
-        margin: auto;
+        margin: auto
+    }
+}
+
+@media screen and (max-width:915px) {
+    .profile-div {
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center
+    }
+
+    .center {
+        flex-direction: column
+    }
+
+    .profile-title {
+        margin-top: 65px;
+        margin-bottom: 10px;
+        margin-left: 10px
+    }
+
+    .profile-title p {
+        text-align: center
+    }
+
+    .profile-main-div {
+        padding: 15px 10px
+    }
+}
+
+@media screen and (max-width:765px) {
+    .profile-main-div {
+        flex-direction: column
+    }
+
+    .profile-pic {
+        height: 185px;
+        width: 185px
+    }
+    .profile-fast-div {
+        margin-bottom: 15px;
+    }
+    .check{
+        display: none;
+    }
+}
+
+@media screen and (max-width:605px) {
+    .profile-lower{
+        padding: 0px 3px;
+    }
+    .menus {
+        height: 18px;
+        width: 20px;
+    }
+    .profile-title h2 {
+        font-size: 33px;
+    }
+}
+
+@media screen and (max-width:510px) {
+    .others{
+        display: none;
+    }
+    .profile-end button {
+        padding: 10px 10px;
+        font-size: 14px;
+    }
+    .grids-flex div {
+        padding: 10px 30px;
+    }
+    .profile-pic {
+        height: 170px;
+        width: 170px;
+    }
+    .cover-img {
+        height: 35vh;
+    }
+    .profile-post div button {
+        padding: 8px 12px;
+        font-size: 15px;
     }
 }

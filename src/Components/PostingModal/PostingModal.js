@@ -2,7 +2,6 @@ import { Formik } from "formik";
 import "./PostingModal.css";
 import { RxCross2 } from 'react-icons/rx'
 import { GiEarthAsiaOceania } from "react-icons/gi";
-import { AiFillCaretDown } from "react-icons/ai";
 import { useRef, useState } from "react";
 import PreviewImage from "../PreviewImage/PreviewImage";
 import { format } from "date-fns";
@@ -21,7 +20,6 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
 
     const todayDate = new Date()
     const date = format(todayDate, 'PPpp')
-    const like = Math.floor(Math.random() * 20);
 
 
     return (
@@ -63,11 +61,9 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                         desc: values.post,
                                         post_img: imgData.secure_url,
                                         user_id: users._id,
-                                        like: [],
-                                        comment: [],
                                         share: "0",
                                     }
-                                    fetch(MainPostAPI, {
+                                    fetch('http://localhost:4000/post/post', {
                                         method: 'POST',
                                         headers: {
                                             'content-type': 'application/json',
