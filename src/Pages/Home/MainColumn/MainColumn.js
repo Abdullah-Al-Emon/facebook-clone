@@ -90,10 +90,10 @@ const MainColumn = () =>
                 </div>
             </div>
             {
-                post.posts?.map(p => (
+                post.posts?.map((p, i) => (
                     <Posting
+                        key={i}
                         setState={setState}
-                        key={p.id}
                         profile_pic={p?.profile_pic}
                         first_name={p?.name.first_name}
                         surname={p?.name?.surname}

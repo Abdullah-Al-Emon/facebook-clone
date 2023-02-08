@@ -132,8 +132,8 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                 </div>
                 <div className="line"></div>
                 {
-                    comment.map(cm => (
-                        <div className='comment-flex'>
+                    comment.map((cm, i) => (
+                        <div key={i} className='comment-flex'>
                             <div><img src={cm.profile_img} className="comment-img" alt="" /></div>
                             <div className='comment-desc'>
                                 <h3>{cm.name.first_name} {cm.name.surname}</h3>

@@ -12,10 +12,11 @@ import './LogInForm.css'
 const LogIn = () =>
 {
     useTitle("- log in or sign in")
-    
+
 
     const [modal, setModal] = useState(false);
     const [isLoading, setIsLoading] = useState(false)
+    // const navigation = useNavigate()
 
     const toggleModal = () =>
     {
@@ -28,16 +29,24 @@ const LogIn = () =>
         document.body.classList.remove('active-modal')
     }
 
-    let user = sessionStorage.getItem('user')
-    let users = JSON.parse(user)
+    const navigate = useNavigate();
 
+    let user = sessionStorage.getItem('user')
 
     useEffect(() =>
     {
-        sessionStorage.clear()
+        if (user) {
+            navigate('/home')
+        }
     }, [])
 
-    const navigate = useNavigate();
+    // useEffect(() =>
+    // {
+    //     if (user === null) {
+    //         sessionStorage.clear()
+    //     }
+    // }, [])
+
 
     const formik = useFormik({
         initialValues: {
@@ -67,7 +76,7 @@ const LogIn = () =>
                         sessionStorage.setItem('user', JSON.stringify(data.user))
                         toast.success(data.message)
                     }
-                    if(data.error){
+                    if (data.error) {
                         toast.error(data.error)
                     }
                     setIsLoading(false)

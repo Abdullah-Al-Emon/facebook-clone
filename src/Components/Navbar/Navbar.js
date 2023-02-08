@@ -10,6 +10,7 @@ import { BsMessenger } from 'react-icons/bs'
 import { IoMdNotifications } from 'react-icons/io'
 import { RxCross2 } from 'react-icons/rx';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 
 
@@ -25,6 +26,22 @@ const Navbar = ({ leftShow, setLeftShow, rightShow, setRightShow }) =>
             navigate('/')
         }
     }, [])
+
+    const handleLogOut = () => {
+        sessionStorage.clear()
+        toast.success('Log Out', {
+            style: {
+              border: '1px solid #713200',
+              padding: '16px',
+              color: '#713200',
+            },
+            iconTheme: {
+              primary: '#713200',
+              secondary: '#FFFAEE',
+            },
+          });
+        window.location.reload(true)
+    }
 
     // console.log(users)
 
@@ -62,7 +79,7 @@ const Navbar = ({ leftShow, setLeftShow, rightShow, setRightShow }) =>
                     {!rightShow && <div onClick={() => setRightShow(!rightShow)} className='icon-end'><RxCross2 className='icon-last' /></div>}
                     <div className='icon-end'><IoMdNotifications className='icon-last' /></div>
                     <div></div>
-                    <div className='dropdown'><img onClick={handleOpen} className='nav-img img' src={users?.img} alt="" />{open && <Link className='menu' to='/'>Log Out</Link>}</div>
+                    <div className='dropdown'><img onClick={handleOpen} className='nav-img img' src={users?.img} alt="" />{open && <button onClick={handleLogOut} className='menu'>Log Out</button> }</div>
                 </div>
             </div>
         </div>
