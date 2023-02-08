@@ -3,13 +3,14 @@ import './Posting.css'
 import { GiEarthAsiaOceania } from 'react-icons/gi'
 import { RxCross2 } from 'react-icons/rx'
 import { BsThreeDots } from 'react-icons/bs'
-import { FaLock } from 'react-icons/fa';
+import { FaLock, FaRegThumbsDown } from 'react-icons/fa';
 import { useFormik } from 'formik';
-import { commentAPI, likeAPI } from '../../../../Helpers/ConfigAPI';
+import { commentAPI, likeAPI, UnlikeAPI } from '../../../../Helpers/ConfigAPI';
 
 const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like, comment, share, _id, options, setState }) =>
 {
     const [isLoading, setIsLoading] = useState(false)
+    const [lik, setLik] = useState(true)
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
     // console.log(users)
@@ -17,6 +18,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
     {
         const likes = {
             postId: _id,
+            userId: users?._id
         }
         fetch(likeAPI, {
             method: 'PUT',
@@ -30,6 +32,29 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
             {
                 setState(prev => !prev)
                 console.log(data)
+                setLik(false)
+            })
+
+    }
+    const handleUnLike = (_id) =>
+    {
+        const likes = {
+            postId: _id,
+            userId: users?._id
+        }
+        fetch(UnlikeAPI, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(likes)
+        })
+            .then(res => res.json())
+            .then(data =>
+            {
+                setState(prev => !prev)
+                console.log(data)
+                setLik(true)
             })
 
     }
@@ -117,10 +142,18 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                 </div>
                 <div className="line"></div>
                 <div className='post-top-flex'>
-                    <button className='post-flex post-button' onClick={() => handleLike(_id)} type='button'>
-                        <span className='likes'></span>
-                        Like
-                    </button>
+                    {
+                        lik ?
+                            <button className='post-flex post-button' onClick={() => handleLike(_id)} type='button'>
+                                <span className='likes'></span>
+                                Like
+                            </button>
+                            :
+                            <button className='post-flex post-button' onClick={() => handleUnLike(_id)} type='button'>
+                                <FaRegThumbsDown className='thumb-down'/>
+                                UnLike
+                            </button>
+                    }
                     <div className='post-flex'>
                         <span className='comment'></span>
                         <p>Comment</p>
