@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import PreviewImage from "../PreviewImage/PreviewImage";
 import { format } from "date-fns";
 import { postAPI } from "../../Helpers/ConfigAPI";
+import { toast } from "react-hot-toast";
 
 
 export default function PostingModal({ togglePostingModal, setPostingModal, postingModal, setState })
@@ -74,6 +75,9 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                         .then(res => res.json())
                                         .then(result =>
                                         {
+                                            if(result.message){
+                                                toast.success(result.message)
+                                            }
                                             setState(prev => !prev)
                                             setIsLoading(false)
                                             setPostingModal(!postingModal)

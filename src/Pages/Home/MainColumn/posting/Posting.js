@@ -9,7 +9,7 @@ import { commentAPI, likeAPI } from '../../../../Helpers/ConfigAPI';
 
 const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like, comment, share, _id, options, setState }) =>
 {
-
+    const [isLoading, setIsLoading] = useState(false)
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
     // console.log(users)
@@ -40,6 +40,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
         },
         onSubmit: values =>
         {
+            setIsLoading(true)
             fetch(commentAPI, {
                 method: 'PUT',
                 headers: {
@@ -57,6 +58,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                 {
                     setState(prev => !prev)
                     formik.resetForm()
+                    setIsLoading(false)
                     console.log(data)
                 })
 
@@ -65,8 +67,8 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
         {
             const errors = {};
 
-            if (!/^[a-zA-z]+([\s][a-zA-Z]+)*$/i.test(values.text)) {
-                errors.text = 'Type your comments'
+            if (!/^[a-zA-z.,]+([\s][a-zA-Z.,]+)*$/i.test(values.text)) {
+                errors.text = 'Type your comments.'
             }
             console.log(errors)
             return errors;
@@ -144,16 +146,16 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                     <img className='comment-imgs' src={users.img} alt="" />
                     <input
                         id='text'
-                        type="text" 
+                        type="text"
                         className='post-section-input'
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.text}
                         placeholder={`Comments, ${users.first_name} ${users.surname}?`}
-                        />
-                    <button type='submit' className='btns'>Send</button>
-                    {formik.errors.text && formik.touched.text && formik.errors.text && <span className='errors'>{formik.errors.text}</span>}
+                    />
+                    <button type='submit' disabled={isLoading} className='btns'>{isLoading && <div className="loaders"></div>} Send</button>
                 </form>
+                {/* {formik.errors.text && formik.touched.text && formik.errors.text && <span className='errors c-e'>{formik.errors.text}</span>} */}
             </div>
         </div>
     );
