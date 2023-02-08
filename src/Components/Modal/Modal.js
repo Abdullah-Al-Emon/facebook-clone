@@ -66,6 +66,9 @@ export default function Modal({ toggleModal, setModal, modal })
                             setModal(!modal)
                             // window.location.reload(true)
                         })
+                        .catch(error => {
+                            console.log(error)
+                        })
                 })
         },
         validate: values =>

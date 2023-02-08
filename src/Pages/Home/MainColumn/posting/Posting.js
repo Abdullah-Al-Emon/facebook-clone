@@ -57,9 +57,19 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                 {
                     setState(prev => !prev)
                     formik.resetForm()
-                    // console.log(data)
+                    console.log(data)
                 })
 
+        },
+        validate: values =>
+        {
+            const errors = {};
+
+            if (!/^[a-zA-z]+([\s][a-zA-Z]+)*$/i.test(values.text)) {
+                errors.text = 'Type your comments'
+            }
+            console.log(errors)
+            return errors;
         }
     })
 
@@ -134,12 +144,15 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                     <img className='comment-imgs' src={users.img} alt="" />
                     <input
                         id='text'
+                        type="text" 
                         className='post-section-input'
                         onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         value={formik.values.text}
                         placeholder={`Comments, ${users.first_name} ${users.surname}?`}
-                        type="text" />
+                        />
                     <button type='submit' className='btns'>Send</button>
+                    {formik.errors.text && formik.touched.text && formik.errors.text && <span className='errors'>{formik.errors.text}</span>}
                 </form>
             </div>
         </div>

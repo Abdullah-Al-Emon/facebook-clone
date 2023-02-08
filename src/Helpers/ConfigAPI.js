@@ -1,6 +1,6 @@
-export const signUpAPI = 'http://localhost:5000/register';
-export const logInAPI = 'http://localhost:5000/login';
-export const likeAPI = 'http://localhost:5000/like';
-export const UnlikeAPI = 'http://localhost:5000/unlike';
-export const commentAPI = 'http://localhost:5000/comment';
-export const postAPI = 'http://localhost:5000/post';
+export const signUpAPI = 'https://facebook-clone-m-server-side.vercel.app/register';
+export const logInAPI = 'https://facebook-clone-m-server-side.vercel.app/login';
+export const likeAPI = 'https://facebook-clone-m-server-side.vercel.app/like';
+export const UnlikeAPI = 'https://facebook-clone-m-server-side.vercel.app/unlike';
+export const commentAPI = 'https://facebook-clone-m-server-side.vercel.app/comment';
+export const postAPI = 'https://facebook-clone-m-server-side.vercel.app/post';
