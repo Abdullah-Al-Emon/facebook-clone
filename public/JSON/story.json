@@ -1,0 +1,22 @@
+[
+    {
+        "name" : "jon Rackson",
+        "profile_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxoC4Bu0O95pRBeEy6MW4tjgNBVy4ab5YHPaDV9B0QybG9SRfCNqsleqPZN8RgCTwZYdY&usqp=CAU",
+        "story_img" : "https://www.nation.com.pk/digital_images/medium/2017-08-05/extreme-weather-seen-killing-152-000-europeans-a-year-by-2100-1501917378-5494.jpg"
+    },
+    {
+        "name" : "Golf hebit",
+        "profile_img": "https://img.freepik.com/free-photo/close-up-young-successful-man-smiling-camera-standing-casual-outfit-against-blue-background_1258-66609.jpg?w=2000",
+        "story_img" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlRKT2gfj43u4knQvd3pVqPkDIUxPaKFoGEEaR4vQrYGaGVkbf8czzhMLlo6gq0fB50Kw&usqp=CAU"
+    },
+    {
+        "name" : "jon Rackson",
+        "profile_img": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+        "story_img" : "https://www.motherjones.com/wp-content/uploads/stormnado.jpg?w=990"
+    },
+    {
+        "name" : "jon Rackson",
+        "profile_img": "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
+        "story_img" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2bbsPxv3gFmA8xS6bX34HCNt0wK3r8thR493Dx3s_lRpiDjB1OXWtCgEUQhkmOOpLtxg&usqp=CAU"
+    }
+]

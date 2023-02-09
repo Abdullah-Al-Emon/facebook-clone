@@ -5,6 +5,7 @@ import { FaPen } from 'react-icons/fa'
 import { BsCaretDownFill } from 'react-icons/bs';
 import Posting from '../Home/MainColumn/posting/Posting';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const MyProfile = () =>
 {
@@ -13,12 +14,9 @@ const MyProfile = () =>
     const [profilePost, setProfilePost] = useState([])
     const navigate = useNavigate()
 
-    useEffect(() =>
-    {
-        fetch(`http://localhost:5000/myPost?user_id=${users?._id}`)
-            .then(res => res.json())
-            .then(data => setProfilePost(data))
-    }, [])
+    axios.get(`https://facebook-clone-m-server-side.vercel.app/myPost?user_id=${users?._id}`)
+    .then(res => setProfilePost(res.data))
+    .catch(err => console.log(err))
 
     useEffect(() =>
     {
@@ -138,9 +136,9 @@ const MyProfile = () =>
                     </div>
                     <div>
                         {
-                            profilePost.posts?.map(p => (
+                            profilePost.posts?.map((p, i) => (
                                 <Posting
-                                    key={p.id}
+                                    key={i}
                                     profile_pic={p?.profile_pic}
                                     first_name={p?.name.first_name}
                                     surname={p?.name?.surname}

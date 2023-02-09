@@ -1,12 +1,13 @@
-.navbar {
+div.navbar {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
     background-color: #fff;
-    /* height: 55px; */
     padding: 10px 15px;
     display: flex;
     justify-content: space-around;
-    position: fixed;
+    padding: 5px;
     width: 100%;
-    top: 0;
     z-index: 1000;
     align-items: center;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2)
@@ -27,7 +28,7 @@
 .nav-flex {
     display: flex;
     align-items: center;
-    margin-right: 0px
+    margin-right: 0
 }
 
 .nav-flex input[type=text] {
@@ -115,56 +116,80 @@
     margin-left: 60px
 }
 
-.menu-icon{
-    display: none;
+.menu-icon {
+    display: none
 }
 
-.extras{
-    display: none;
+.extras {
+    display: none
 }
 
-.msg-i{
+.msg-i {
     font-size: 22px;
-    margin: 8px 10px;
+    margin: 8px 10px
 }
 
 .dropdown {
-    position: relative;
-  }
-  
-  .menu {
+    position: relative
+}
+
+.btn-log {
+    background: #1877f2;
+    color: #fff;
     border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px 10px;
+    font-weight: 700
+}
+
+.btn-log:hover {
+    background: #4b95f7
+}
+
+.btn-my {
+    padding: 15px 5px;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 3px;
+    text-decoration: none
+}
+
+.btn-my:hover {
+    background-color: #f1f1f1
+}
+
+.menu {
     position: absolute;
-    left: -20px;
-    top: 40px;
-    color: #fefcfc;
-    right: 0px;
-    background-color: #5fa4ff;
+    top: 50px;
+    right: 10px;
+    box-shadow: 6px 7px 13px grey;
+    background-color: #fff;
     border-radius: 8px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    font-size: 16px;
-    cursor: pointer;
-    font-weight: 700;
     padding: 8px 10px;
-    width: 90px;
-  }
+    width: 180px
+}
 
-  .msg{
-    display: none;
-  }
-
+.msg {
+    display: none
+}
 
 @media screen and (max-width:1235px) {
     .nav-flex {
         margin-right: 0
     }
-    .extra{
-        margin-left: 30px;
+
+    .extra {
+        margin-left: 30px
     }
 
-    .msg{
-        display: none;
+    .msg {
+        display: none
     }
 }
 
@@ -178,56 +203,55 @@
         align-items: center
     }
 
-    .game-icon{
-        display: none;
+    .game-icon {
+        display: none
     }
 
-    .menu-icon{
-        display: flex;
-    }
-    .extra{
-        display: none;
+    .menu-icon {
+        display: flex
     }
 
-    .extras{
-        display: flex;
+    .extra {
+        display: none
     }
 
-    .msg{
-        display: none;
+    .extras {
+        display: flex
+    }
+
+    .msg {
+        display: none
     }
 }
 
 @media screen and (max-width:900px) {
-    .nones{
-        display: flex;
-    }
-    .middle-nav{
-        display: none;
+    .nones {
+        display: flex
     }
 
-    .msg{
-        display: flex;
+    .middle-nav {
+        display: none
     }
-    .none{
-        display: none;
-    }
-}
 
-@media screen and (max-width: 450px) {
-    .menu-icon{
-        padding: 5px 15px;
+    .msg {
+        display: flex
     }
-    .msg{
-        display: flex;
-    }
-    .none{
-        display: none;
+
+    .none {
+        display: none
     }
 }
 
+@media screen and (max-width:450px) {
+    .menu-icon {
+        padding: 5px 15px
+    }
 
+    .msg {
+        display: flex
+    }
 
-
-
-
+    .none {
+        display: none
+    }
+}

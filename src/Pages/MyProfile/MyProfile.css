@@ -144,16 +144,17 @@
 .profile-main-div {
     background-color: #f0f2f5 !important;
     display: flex;
-    padding: 15px 35px
+    justify-content: center;
+    padding: 15px 0px;
 }
 
 .profile-fast-div {
-    flex-basis: 43%;
+    flex-basis: 40%;
     padding: 0 7px
 }
 
 .profile-last-div {
-    flex-basis: 55%;
+    flex-basis: 58%;
     padding: 0 7px
 }
 

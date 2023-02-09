@@ -1,12 +1,16 @@
+.home{
+    background-color: #f0f2f5 !important;
+}
+
 .home-flex {
     display: flex;
     justify-content: space-between
 }
 
 .sm-column {
-    flex-basis: 25%;
+    flex-basis: 24%;
     position: sticky;
-    top: 70px;
+    top: 60px;
     align-self: flex-start;
     height: 100vh;
     overflow-y: auto
@@ -14,14 +18,12 @@
 
 .m-column {
     flex-basis: 50%;
-    margin-top: 65px;
-    padding: 0 13px
 }
 
 .em-column {
-    flex-basis: 23%;
+    flex-basis: 23.5%;
     position: sticky;
-    top: 70px;
+    top: 60px;
     align-self: flex-start;
     height: 100vh;
     overflow-y: auto

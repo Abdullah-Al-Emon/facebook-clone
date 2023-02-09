@@ -7,6 +7,7 @@ import PreviewImage from "../PreviewImage/PreviewImage";
 import { format } from "date-fns";
 import { postAPI } from "../../Helpers/ConfigAPI";
 import { toast } from "react-hot-toast";
+import axios from "axios";
 
 
 export default function PostingModal({ togglePostingModal, setPostingModal, postingModal, setState })
@@ -14,10 +15,11 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
     const [isLoading, setIsLoading] = useState(false)
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
+
     const fileRef = useRef(null)
-    const profile_pic = users.img;
-    const first_name = users.first_name;
-    const surname = users.surname;
+    const profile_pic = users?.img;
+    const first_name = users?.first_name;
+    const surname = users?.surname;
 
     const todayDate = new Date()
     const date = format(todayDate, 'PPpp')
@@ -46,46 +48,37 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                             fromData.append('file', image)
                             fromData.append('upload_preset', 'imagexlm')
                             fromData.append('folder', 'First')
-
-                            fetch(`https://api.cloudinary.com/v1_1/drh68zyt1/image/upload`, {
-                                method: 'POST',
-                                body: fromData
-                            })
-                                .then(res => res.json())
+                            const url = `https://api.cloudinary.com/v1_1/drh68zyt1/image/upload`
+                            axios.post(url,
+                                fromData
+                            )
                                 .then(imgData =>
                                 {
-                                    console.log(imgData.secure_url)
                                     const post = {
                                         options: values.option,
                                         profile_pic: profile_pic,
                                         name: { first_name: first_name, surname: surname },
                                         time: date,
                                         desc: values.post,
-                                        post_img: imgData.secure_url,
+                                        post_img: imgData.data.secure_url,
                                         user_id: users?._id,
                                         share: "0",
                                     }
-                                    fetch(postAPI, {
-                                        method: 'POST',
-                                        headers: {
-                                            'content-type': 'application/json',
-                                        },
-                                        body: JSON.stringify(post)
-                                    })
-                                        .then(res => res.json())
-                                        .then(result =>
+                                    axios.post(postAPI,
+                                        post
+                                    )
+                                        .then(res =>
                                         {
-                                            if(result.message){
-                                                toast.success(result.message)
+                                            if (res.data.message) {
+                                                toast.success(res.data.message)
                                             }
                                             setState(prev => !prev)
                                             setIsLoading(false)
                                             setPostingModal(!postingModal)
-                                            console.log(result)
-                                            // window.location.reload(true)
                                         })
-
+                                        .catch(err => console.log(err))
                                 })
+                                .catch(err => console.log(err))
                         }}
                         validate={(values) =>
                         {

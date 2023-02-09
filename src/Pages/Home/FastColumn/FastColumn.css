@@ -1,9 +1,12 @@
 .fast-column{
+    /* position: sticky; */
+    /* top: 90px;  */
     display: flex;
     padding: 10px 20px;
     flex-direction: column;
     height: 95vh;
     overflow-y: auto;
+    /* padding-top: 75px; */
 }
 
 .class{

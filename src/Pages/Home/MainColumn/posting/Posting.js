@@ -6,6 +6,7 @@ import { BsThreeDots } from 'react-icons/bs'
 import { FaLock, FaRegThumbsDown } from 'react-icons/fa';
 import { useFormik } from 'formik';
 import { commentAPI, likeAPI, UnlikeAPI } from '../../../../Helpers/ConfigAPI';
+import axios from 'axios';
 
 const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like, comment, share, _id, options, setState }) =>
 {
@@ -13,28 +14,23 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
     const [lik, setLik] = useState(true)
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
-    // console.log(users)
+
     const handleLike = (_id) =>
     {
         const likes = {
             postId: _id,
             userId: users?._id
         }
-        fetch(likeAPI, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(likes)
-        })
-            .then(res => res.json())
-            .then(data =>
+        axios.put(likeAPI,
+            likes
+        )
+            .then(res => 
             {
                 setState(prev => !prev)
-                console.log(data)
+                console.log(res.data)
                 setLik(false)
             })
-
+            .catch(err => console.log(err))
     }
     const handleUnLike = (_id) =>
     {
@@ -42,21 +38,17 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
             postId: _id,
             userId: users?._id
         }
-        fetch(UnlikeAPI, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(likes)
-        })
-            .then(res => res.json())
-            .then(data =>
+
+        axios.put(UnlikeAPI,
+            likes
+        )
+            .then(res => 
             {
                 setState(prev => !prev)
-                console.log(data)
+                console.log(res.data)
                 setLik(true)
             })
-
+            .catch(err => console.log(err))
     }
 
     const formik = useFormik({
@@ -66,26 +58,24 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
         onSubmit: values =>
         {
             setIsLoading(true)
-            fetch(commentAPI, {
-                method: 'PUT',
-                headers: {
-                    'content-type': 'application/json',
-                },
-                body: JSON.stringify({
-                    profile_img: users.img,
-                    name: { first_name: users.first_name, surname: users.surname },
-                    text: values.text,
-                    postId: _id
-                })
-            })
-                .then(res => res.json())
-                .then(data =>
+            const comments = {
+                profile_img: users?.img,
+                name: { first_name: users?.first_name, surname: users?.surname },
+                text: values.text,
+                postId: _id
+            }
+
+            axios.put(commentAPI,
+                comments
+            )
+                .then(res =>
                 {
                     setState(prev => !prev)
                     formik.resetForm()
                     setIsLoading(false)
-                    console.log(data)
+                    console.log(res.data)
                 })
+                .catch(err => console.log(err))
 
         },
         validate: values =>
@@ -110,7 +100,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                         <div>
                             <img className='nav-img' src={profile_pic} alt="" />
                         </div>
-                        <div>
+                        <div className='post-link-div'>
                             <h3><a href="">{first_name} {surname}</a></h3>
                             <p><a href="">{time}</a> . {options === 'Public' ? <GiEarthAsiaOceania /> : <FaLock />} </p>
                         </div>
@@ -130,7 +120,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                 <img className='posting-img' src={post_img} alt="" />
             </div>
             <div className='react-div'>
-                <div className='react-flex between'>
+                <div className='react-flex post-link-div between'>
                     <div className='react'>
                         <img className='like' src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Facebook_Like_button.svg/2048px-Facebook_Like_button.svg.png" alt="" />
                         {/* <img className='like' src="https://www.freeiconspng.com/thumbs/facebook-love-png/blank-heart-love-hd-png-28.png" alt="" /> */}
@@ -150,7 +140,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                             </button>
                             :
                             <button className='post-flex post-button' onClick={() => handleUnLike(_id)} type='button'>
-                                <FaRegThumbsDown className='thumb-down'/>
+                                <FaRegThumbsDown className='thumb-down' />
                                 UnLike
                             </button>
                     }
@@ -168,15 +158,15 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                     comment.map((cm, i) => (
                         <div key={i} className='comment-flex'>
                             <div><img src={cm.profile_img} className="comment-img" alt="" /></div>
-                            <div className='comment-desc'>
-                                <h3>{cm.name.first_name} {cm.name.surname}</h3>
+                            <div className='comment-desc post-link-div'>
+                                <h3><a href="">{cm.name.first_name} {cm.name.surname}</a></h3>
                                 <p>{cm.text}</p>
                             </div>
                         </div>
                     ))
                 }
                 <form onSubmit={formik.handleSubmit} className='post-top-flex'>
-                    <img className='comment-imgs' src={users.img} alt="" />
+                    <img className='comment-imgs' src={users?.img} alt="" />
                     <input
                         id='text'
                         type="text"
@@ -184,7 +174,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.text}
-                        placeholder={`Comments, ${users.first_name} ${users.surname}?`}
+                        placeholder={`Comments, ${users?.first_name} ${users?.surname}?`}
                     />
                     <button type='submit' disabled={isLoading} className='btns'>{isLoading && <div className="loaders"></div>} Send</button>
                 </form>

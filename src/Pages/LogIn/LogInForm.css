@@ -69,13 +69,13 @@
     font-size: 14px
 }
 
-a {
+.forget a {
     color: #385898;
     cursor: pointer;
     text-decoration: none
 }
 
-a:hover {
+.forget a:hover {
     text-decoration: underline
 }
 

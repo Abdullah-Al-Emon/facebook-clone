@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
@@ -40,12 +41,6 @@ const LogIn = () =>
         }
     }, [])
 
-    // useEffect(() =>
-    // {
-    //     if (user === null) {
-    //         sessionStorage.clear()
-    //     }
-    // }, [])
 
 
     const formik = useFormik({
@@ -61,26 +56,23 @@ const LogIn = () =>
                 password: values.password
             }
 
-            fetch(logInAPI, {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                },
-                body: JSON.stringify(logIn)
-            })
-                .then(res => res.json())
-                .then(data =>
+            axios.post(logInAPI,
+                logIn
+            )
+                .then(result =>
                 {
-                    if (data.user) {
+                    console.log(result)
+                    if (result.data.user) {
                         navigate('/home')
-                        sessionStorage.setItem('user', JSON.stringify(data.user))
-                        toast.success(data.message)
+                        sessionStorage.setItem('user', JSON.stringify(result.data.user))
+                        toast.success(result.data.message)
                     }
-                    if (data.error) {
-                        toast.error(data.error)
+                    if (result.data.error) {
+                        toast.error(result.data.error)
                     }
                     setIsLoading(false)
                 })
+                .catch(err => console.log(err))
         },
         validate: (values) =>
         {

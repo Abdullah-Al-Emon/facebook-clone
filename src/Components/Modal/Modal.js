@@ -4,6 +4,7 @@ import { RxCross2 } from 'react-icons/rx'
 import { useRef, useState } from "react";
 import { signUpAPI } from "../../Helpers/ConfigAPI";
 import { toast } from "react-hot-toast";
+import axios from "axios";
 
 
 export default function Modal({ toggleModal, setModal, modal })
@@ -23,53 +24,47 @@ export default function Modal({ toggleModal, setModal, modal })
         onSubmit: values =>
         {
             setIsLoading(true)
-            formik.resetForm()
+
             const image = values.file;
             const fromData = new FormData();
             fromData.append('file', image)
             fromData.append('upload_preset', 'imagexlm')
             fromData.append('folder', 'First')
             const url = `https://api.cloudinary.com/v1_1/drh68zyt1/image/upload`
-            fetch(url, {
-                method: 'POST',
-                body: fromData
-            })
-                .then(res => res.json())
+            axios.post(url,
+                fromData
+            )
                 .then(imgData =>
-                {
-                    setIsLoading(false)
+                {  
                     const signUp = {
                         first_name: values.first_name,
                         surname: values.surname,
                         email: values.email,
                         password: values.password,
                         birth_date: values.birth_date,
-                        img: imgData.secure_url
+                        img: imgData.data.secure_url
                     }
-                    fetch(signUpAPI, {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json',
-                        },
-                        body: JSON.stringify(signUp)
-                    })
-                        .then(res => res.json())
+                    axios.post(signUpAPI,
+                        signUp
+                    )
+                    .catch(err => console.log(err))
                         .then(result =>
                         {
+                            setIsLoading(false)
+                            formik.resetForm()
                             // console.log(result)
-                            if(result.message){
-                                toast.success(result.message)
+                            if (result.data.message) {
+                                toast.success(result.data.message)
                             }
-                            if(result.error){
-                                toast.error(result.error)
+                            if (result.data.error) {
+                                toast.error(result.data.error)
                             }
                             setModal(!modal)
-                            // window.location.reload(true)
                         })
-                        .catch(error => {
-                            console.log(error)
-                        })
+                        .catch(err => console.log(err))
+
                 })
+                .catch(err => console.log(err))
         },
         validate: values =>
         {
