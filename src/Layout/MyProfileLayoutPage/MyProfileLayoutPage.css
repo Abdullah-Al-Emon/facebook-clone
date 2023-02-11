@@ -137,6 +137,10 @@
     text-decoration: underline
 }
 
+.s a{
+    text-decoration: none;
+}
+
 .profile-title {
     margin-left: 10px
 }

@@ -8,6 +8,7 @@ import Posting from './posting/Posting';
 const MainColumn = () =>
 {
     const [state, setState] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const [storyData, setStoryData] = useState([])
     const [post, setPost] = useState([])
     const [visible, setVisible] = useState(5)
@@ -20,12 +21,14 @@ const MainColumn = () =>
         setVisible(visible + 5)
     }
 
-    // console.log(storyData)
-
     useEffect(() =>
     {
         axios.get(postAPI)
-            .then(res => setPost(res.data))
+            .then(res =>
+            {
+                setIsLoading(false)
+                setPost(res.data)
+            })
             .catch(err => console.log(err))
 
         axios.get('JSON/story.json')
@@ -58,25 +61,34 @@ const MainColumn = () =>
                 }
             </div>
             <PostingSection setState={setState} />
-            {
-                post?.posts?.slice(0, visible)?.map((p, i) => (
-                    <Posting
-                        key={i}
-                        setState={setState}
-                        profile_pic={p?.profile_pic}
-                        first_name={p?.name.first_name}
-                        surname={p?.name?.surname}
-                        time={p.time}
-                        desc={p.desc}
-                        post_img={p.post_img}
-                        like={p.like}
-                        comment={p.comment}
-                        share={p.share}
-                        options={p.options}
-                        _id={p._id}
-                    />
-                ))
-            }
+            <div>
+                {
+                    isLoading ?
+                        <div className="profile-loaders"></div>
+                        :
+                        <div>
+                            {
+                                post.posts?.map((p, i) => (
+                                    <Posting
+                                        key={i}
+                                        profile_pic={p?.profile_pic}
+                                        first_name={p?.name.first_name}
+                                        surname={p?.name?.surname}
+                                        time={p.time}
+                                        desc={p.desc}
+                                        post_img={p.post_img}
+                                        like={p.like}
+                                        comment={p.comment}
+                                        share={p.share}
+                                        options={p.options}
+                                        _id={p._id}
+                                    />
+                                ))
+                            }
+
+                        </div>
+                }
+            </div>
             {
                 visible < post?.posts?.length && (
                     <div className='see-more'>

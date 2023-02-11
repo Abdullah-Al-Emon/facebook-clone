@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import './MyProfile.css'
+import React, { useEffect } from 'react';
 import { AiFillPlusCircle } from 'react-icons/ai'
 import { FaPen } from 'react-icons/fa'
 import { BsCaretDownFill } from 'react-icons/bs';
-import Posting from '../Home/MainColumn/posting/Posting';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import './MyProfileLayoutPage.css'
 
-const MyProfile = () =>
+const MyProfileLayoutPage = () =>
 {
+    const navigate = useNavigate()
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
-    const [profilePost, setProfilePost] = useState([])
-    const navigate = useNavigate()
-
-    axios.get(`https://facebook-clone-m-server-side.vercel.app/myPost?user_id=${users?._id}`)
-    .then(res => setProfilePost(res.data))
-    .catch(err => console.log(err))
 
     useEffect(() =>
     {
@@ -51,9 +44,9 @@ const MyProfile = () =>
                     <div className="line"></div>
                     <div className='extras-div'>
                         <div className='profile-full-div s'>
-                            <div className='profile-fast'>Post</div>
-                            <div>About</div>
-                            <div>Friends</div>
+                            <Link to='/myProfile'><div className='profile-fast'>Post</div></Link>
+                            <Link to='/myProfile/about'><div>About</div></Link>
+                            <Link to='/myProfile/friends' ><div>Friends</div></Link>
                             <span className='others'>
                                 <div>Photos</div>
                                 <div>Videos</div>
@@ -102,7 +95,6 @@ const MyProfile = () =>
                         <div className='post-top-flex'>
                             <img className='nav-img img' src={users?.img} alt="" />
                             <input className='post-section-input' placeholder={`What's on your mind, ${users?.first_name} ${users?.surname}?`} type="text" />
-                            {/* {postingModal && (<PostingModal togglePostingModal={togglePostingModal} setPostingModal={setPostingModal} postingModal={postingModal} />)} */}
                         </div>
                         <div className="line"></div>
                         <div className='post-top-flex'>
@@ -134,30 +126,11 @@ const MyProfile = () =>
                             <div><span className="grids-icon"></span> Grid view</div>
                         </div>
                     </div>
-                    <div>
-                        {
-                            profilePost.posts?.map((p, i) => (
-                                <Posting
-                                    key={i}
-                                    profile_pic={p?.profile_pic}
-                                    first_name={p?.name.first_name}
-                                    surname={p?.name?.surname}
-                                    time={p.time}
-                                    desc={p.desc}
-                                    post_img={p.post_img}
-                                    like={p.like}
-                                    comment={p.comment}
-                                    share={p.share}
-                                    options={p.options}
-                                    _id={p._id}
-                                />
-                            ))
-                        }
-                    </div>
+                    <Outlet />
                 </div>
             </div>
         </div>
     );
 };
 
-export default MyProfile;
+export default MyProfileLayoutPage;

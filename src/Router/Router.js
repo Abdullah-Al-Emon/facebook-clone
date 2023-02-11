@@ -1,10 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import Friends from "../Pages/Firends/Friends";
-import HomePageLayout from "../Layout/HomePageLayout/Home";
-import Home from "../Layout/HomePageLayout/Home";
+import Friends from "../Pages/Friends/Friends";
 import MainColumn from "../Pages/Home/MainColumn/MainColumn";
 import LogIn from "../Pages/LogIn/LogIn";
-import MyProfile from "../Pages/MyProfile/MyProfile";
+import HomePageLayout from "../Layout/HomePageLayout/HomePageLayout";
+import Groups from "../Pages/Groups/Groups";
+import MyProfilePost from "../Pages/MyProfilePost/MyProfilePost";
+import About from "../Pages/About/About";
+import MyProfileLayoutPage from "../Layout/MyProfileLayoutPage/MyProfileLayoutPage";
 
 export const router = createBrowserRouter([
     {
@@ -22,11 +24,29 @@ export const router = createBrowserRouter([
             {
                 path: '/home/friends',
                 element: <Friends/>
+            },
+            {
+                path: '/home/groups',
+                element: <Groups/>
             }
         ]
     },
     {
         path: '/myProfile',
-        element: <MyProfile />
+        element: <MyProfileLayoutPage/>,
+        children: [
+            {
+                path: '/myProfile',
+                element: <MyProfilePost/>
+            },
+            {
+                path: '/myProfile/friends',
+                element: <Friends/>
+            },
+            {
+                path: '/myProfile/about',
+                element: <About/>
+            }
+        ]
     }
 ])

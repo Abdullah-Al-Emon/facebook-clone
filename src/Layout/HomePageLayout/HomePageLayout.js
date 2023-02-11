@@ -3,7 +3,7 @@ import Navbar from '../../Components/Navbar/Navbar';
 import useTitle from '../../Hooks/useTitle';
 import FastColumn from '../../Pages/Home/FastColumn/FastColumn';
 import LastColumn from '../../Pages/Home/LastColumn/LastColumn';
-import './HomePage.css'
+import './HomePageLayout.css'
 import { Outlet } from 'react-router-dom';
 
 const HomePageLayout = () =>

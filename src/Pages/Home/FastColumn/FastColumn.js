@@ -29,7 +29,7 @@ const FastColumn = () =>
                     <p>Friends</p>
                 </div>
             </Link>
-            <Link className='class' to='/home/friends'>
+            <Link className='class' to='/home/groups'>
                 <div className='fast-list'>
                     <div>
                         <img className='nav-img img' src='https://i.ibb.co/25pNpBX/group.png' alt="" />
