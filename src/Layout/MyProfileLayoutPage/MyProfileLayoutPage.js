@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiFillPlusCircle } from 'react-icons/ai'
 import { FaPen } from 'react-icons/fa'
 import { BsCaretDownFill } from 'react-icons/bs';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import './MyProfileLayoutPage.css'
+import EditModal from '../../Components/EditModal/EditModal';
 
 const MyProfileLayoutPage = () =>
 {
+    const [editModal, setEditModal] = useState(false);
+    const [open, setOpen] = useState(false);
     const navigate = useNavigate()
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
@@ -18,12 +21,33 @@ const MyProfileLayoutPage = () =>
         }
     }, [])
 
+    const toggleEditModal = () =>
+    {
+        setEditModal(!editModal);
+    };
+
+    if (editModal) {
+        document.body.classList.add('active-modal')
+    } else {
+        document.body.classList.remove('active-modal')
+    }
+
+    const handleOpen = () =>
+    {
+        setOpen(!open);
+    };
+
 
     return (
         <div>
             <div className='profile-top'>
                 <div className='cover-div'>
-                    <img className='cover-img' src='https://thumbs.dreamstime.com/b/dream-forest-5241204.jpg' alt="" />
+                    {
+                        users?.cover_Img ?
+                            <img className='cover-img' src={users?.cover_Img} alt="" />
+                            :
+                            <img className='cover-img' src='https://thumbs.dreamstime.com/b/dream-forest-5241204.jpg' alt="" />
+                    }
                 </div>
                 <div className='profile-div'>
                     <div className='profile-full-div center'>
@@ -37,7 +61,8 @@ const MyProfileLayoutPage = () =>
                     </div>
                     <div className='profile-end'>
                         <button className='button-blue'><AiFillPlusCircle className='icon-img' /> Add to story</button>
-                        <button className='button-ash'><FaPen className='icon-pen' /> Edit Profile</button>
+                        <button onClick={toggleEditModal} className='button-ash'><FaPen className='icon-pen' /> Edit Profile</button>
+                        {editModal && <EditModal setEditModal={setEditModal} editModal={editModal} toggleEditModal={toggleEditModal} />}
                     </div>
                 </div>
                 <div className='profile-lower'>
@@ -55,7 +80,11 @@ const MyProfileLayoutPage = () =>
                             <div className='profile-div-last'>More <BsCaretDownFill className='icons' /></div>
                         </div>
                         <div>
-                            <div className='profile-menus'><span className="menus"></span></div>
+                            <div onClick={handleOpen} className='profile-menus'><span className="menus"></span>
+                                {open && <div className='edit-menu'>
+                                    <Link to='/home' className='btn-my'>Home</Link>
+                                </div>}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -73,20 +102,38 @@ const MyProfileLayoutPage = () =>
                         <div className='bio-div'>Edit bio</div>
                         <div className='profile-full-div bios'>
                             <div><img className='bio-icon-img' src="https://static.xx.fbcdn.net/rsrc.php/v3/yS/r/jV4o8nAgIEh.png?_nc_eui2=AeHNgSz2afVFfGCxl5Js5iR_C7xezJFSLOkLvF7MkVIs6cnqTa8YQ60gdEIuMd5QYcEe3nVqVhcgoonbFwfE2ChE" alt="" /></div>
-                            <div className='new'>Student at <span>Future Commerce College</span></div>
+                            <div className='new'>Student at {
+                                users?.student ?
+                                    <span>{users?.student}</span>
+                                    :
+                                    <span>Click Edit Profile set your School/College</span>
+                            }
+                            </div>
                         </div>
                         <div className='profile-full-div bios'>
                             <div><img className='bio-icon-img' src="https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/VMZOiSIJIwn.png?_nc_eui2=AeEvbLVoMQO732L0PLty8AJeysO07LK9kRPKw7Tssr2RE8GNXP-wLNMWfXrzbTQ4peLIJqOd4WhJi9VxvHo012C2" alt="" /></div>
-                            <div className='new'>Lives in <span>Dhaka, Bangladesh</span></div>
+                            <div className='new'>Lives in {
+                                users?.lives_In ?
+                                    <span>{users?.lives_In}</span>
+                                    :
+                                    <span>Click Edit Profile set your Lives In</span>
+                            }
+                            </div>
                         </div>
                         <div className='profile-full-div bios'>
                             <div><img className='bio-icon-img' src="https://static.xx.fbcdn.net/rsrc.php/v3/yc/r/-e1Al38ZrZL.png?_nc_eui2=AeGIUKkwvEFTOQLfgO-0V9zuyuB9xaeJwC_K4H3Fp4nAL8zmy1f9NoBiTh62cdKBryGx8XDzD0oIbV9t_VnzUdMo" alt="" /></div>
-                            <div className='new'>From <span>Khilgaon</span></div>
+                            <div className='new'>From {
+                                users?.from ?
+                                    <span>{users?.from}</span>
+                                    :
+                                    <span>Click Edit Profile set your From Adress</span>
+                            }
+                            </div>
                         </div>
-                        <div className='profile-full-div bios'>
+                        {/* <div className='profile-full-div bios'>
                             <div><img className='bio-icon-img' src="https://static.xx.fbcdn.net/rsrc.php/v3/yJ/r/OyWm6cSjuMt.png?_nc_eui2=AeFLEA1mQBfR6ZgvAKuCtwcNocTnxQvULLKhxOfFC9QssqBaVjrCpC8vKXGE3yp7kEWh-wtfoxXOkimq2UO-a8mc" alt="" /></div>
                             <div className='new'>Followed by <span>230 people</span></div>
-                        </div>
+                        </div> */}
                         <div className='bio-div'>Edit details</div>
                     </div>
                 </div>

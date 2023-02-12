@@ -9,6 +9,20 @@
     margin: auto auto
 }
 
+.edit-menu {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    box-shadow: 6px 7px 13px grey;
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px 10px;
+    width: 180px
+}
+
 .profile-top {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
     background-color: #fff
@@ -74,6 +88,7 @@
 }
 
 .profile-menus {
+    position: relative;
     padding: 8px 10px;
     cursor: pointer;
     border-radius: 10px

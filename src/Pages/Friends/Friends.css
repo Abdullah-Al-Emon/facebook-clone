@@ -1,3 +1,71 @@
-.friend{
-    flex-basis: 50%;
+.friend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+.friend-div {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 340px;
+    flex-basis: 30%;
+    margin: 10px 10px;
+    border-radius: 10px;
+    box-shadow: -1px 1px 3px gray
+}
+
+.friend-div img {
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    height: 180px
+}
+
+.friends-desc h3 {
+    padding-bottom: 7px
+}
+
+.friends-desc {
+    padding: 10px 10px
+}
+
+.confirm-btn {
+    cursor: pointer;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    border: none;
+    background-color: #1b74e4;
+    color: #fff
+}
+
+.confirm-btn:hover {
+    background-color: #216cc7
+}
+
+.delete-btn {
+    cursor: pointer;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    border: none
+}
+
+.delete-btn:hover {
+    background-color: #dfdfdf
+}
+
+.friend-title{
+    padding: 10px 10px;
+}
+
+@media screen and (max-width:595px) {
+    .friend-div {
+        flex-basis: 42%
+    }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Posting.css'
 import { GiEarthAsiaOceania } from 'react-icons/gi'
 import { RxCross2 } from 'react-icons/rx'
@@ -14,6 +14,15 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
     const [lik, setLik] = useState(true)
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
+    console.log()
+    useEffect(() =>
+    {
+        like?.includes(users?._id) ?
+            setLik(false)
+            :
+            setLik(true)
+    }, [])
+
 
     const handleLike = (_id) =>
     {
@@ -26,11 +35,11 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
         )
             .then(res => 
             {
-                setState(prev => !prev)
                 console.log(res.data)
                 setLik(false)
+                setState(prev => !prev)
             })
-            .catch(err => console.log(err))
+            .catch(err => console.error(err))
     }
     const handleUnLike = (_id) =>
     {

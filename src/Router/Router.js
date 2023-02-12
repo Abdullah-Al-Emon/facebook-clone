@@ -7,6 +7,7 @@ import Groups from "../Pages/Groups/Groups";
 import MyProfilePost from "../Pages/MyProfilePost/MyProfilePost";
 import About from "../Pages/About/About";
 import MyProfileLayoutPage from "../Layout/MyProfileLayoutPage/MyProfileLayoutPage";
+import MyProfileFriends from "../Pages/MyProfileFriends/MyProfileFriends";
 
 export const router = createBrowserRouter([
     {
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/myProfile/friends',
-                element: <Friends/>
+                element: <MyProfileFriends/>
             },
             {
                 path: '/myProfile/about',

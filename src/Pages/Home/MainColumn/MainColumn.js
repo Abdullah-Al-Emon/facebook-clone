@@ -68,9 +68,10 @@ const MainColumn = () =>
                         :
                         <div>
                             {
-                                post.posts?.map((p, i) => (
+                                post.posts?.slice(0, visible).map((p, i) => (
                                     <Posting
                                         key={i}
+                                        setState={setState}
                                         profile_pic={p?.profile_pic}
                                         first_name={p?.name.first_name}
                                         surname={p?.name?.surname}

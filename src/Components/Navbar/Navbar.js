@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Navbar.css'
 import { AiFillHome, AiOutlineMenu, AiOutlinePlus } from 'react-icons/ai'
 import { FaUserFriends } from 'react-icons/fa'
@@ -11,12 +11,15 @@ import { IoMdNotifications } from 'react-icons/io'
 import { RxCross2 } from 'react-icons/rx';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import { set } from 'date-fns/esm';
 
 
 
 const Navbar = ({ leftShow, setLeftShow, rightShow, setRightShow }) =>
 {
     const navigate = useNavigate()
+    const [open, setOpen] = useState(false);
+    const [state, setState] = useState(false)
 
     let user = sessionStorage.getItem('user')
     let users = JSON.parse(user)
@@ -25,7 +28,7 @@ const Navbar = ({ leftShow, setLeftShow, rightShow, setRightShow }) =>
         if (user === '' || user === null) {
             navigate('/')
         }
-    }, [])
+    }, [state])
 
     const handleLogOut = () =>
     {
@@ -41,12 +44,10 @@ const Navbar = ({ leftShow, setLeftShow, rightShow, setRightShow }) =>
                 secondary: '#FFFAEE',
             },
         });
-        window.location.reload(true)
+        setState(prev => !prev)
     }
 
-    // console.log(users)
 
-    const [open, setOpen] = React.useState(false);
 
     const handleOpen = () =>
     {
