@@ -198,7 +198,7 @@ export default function Modal({ toggleModal, setModal, modal })
                             }}>Upload photo</button>
                             {formik.errors.file && formik.touched.file && formik.errors.file && <span className='errors'>{formik.errors.file}</span>}
                         </div>
-                        <div>
+                        <div className="modal-a">
                             <p>People who use our service may have uploaded your contact information to Facebook. <a href="https://www.facebook.com/help/637205020878504">Learn more.</a></p>
                             <p>
                                 By clicking Sign Up, you agree to our
