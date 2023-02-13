@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
 import Modal from '../../Components/Modal/Modal';
-import { logInAPI } from '../../Helpers/ConfigAPI';
+import { API, logInAPI } from '../../Helpers/ConfigAPI';
 import useTitle from '../../Hooks/useTitle';
 import './LogIn.css'
 import './LogInForm.css'
@@ -56,7 +56,7 @@ const LogIn = () =>
                 password: values.password
             }
 
-            axios.post(logInAPI,
+            axios.post(API + '/login',
                 logIn
             )
                 .then(result =>

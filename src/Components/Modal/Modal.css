@@ -29,7 +29,7 @@
 }
 
 .modal-a a{
-    color: #2a61b8;
+    color: #194a9a;
 }
 
 /* .input-long:focus,
@@ -82,7 +82,7 @@
     margin: 15px 0
 }
 
-.modal-button button {
+.modal-button .s-modal-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,7 +110,7 @@
     justify-content: center;
 }
 
-.modal-button button:hover {
+.modal-button .s-modal-btn:hover {
     background: linear-gradient(#79bc64, #578843)
 }
 

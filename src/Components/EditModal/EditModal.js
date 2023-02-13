@@ -99,24 +99,6 @@ export default function EditModal({ toggleEditModal, setEditModal, editModal })
                 errors.surname = 'Type your Surname';
             }
 
-            if (!/^[a-zA-z.,]+([\s][a-zA-Z.,]+)*$/i.test(values.student)) {
-                errors.student = 'Type your Student';
-            }
-            if (!/^[a-zA-z.,]+([\s][a-zA-Z.,]+)*$/i.test(values.lives_In)) {
-                errors.lives_In = 'Type your Lives In';
-            }
-            if (!/^[a-zA-z.,]+([\s][a-zA-Z.,]+)*$/i.test(values.from)) {
-                errors.from = 'Type your From address';
-            }
-
-
-            if (!values.img) {
-                errors.img = 'Upload your Profile photo';
-            }
-
-            if (!values.cover_img) {
-                errors.cover_img = 'Upload your Cover photo';
-            }
             return errors;
         }
     });
@@ -160,7 +142,6 @@ export default function EditModal({ toggleEditModal, setEditModal, editModal })
                                 {formik.errors.surname && formik.touched.surname && formik.errors.surname && <span className='errors'>{formik.errors.surname}</span>}
                             </div>
                         </div>
-
                         <div>
                             <input
                                 className='input-long'
@@ -172,9 +153,7 @@ export default function EditModal({ toggleEditModal, setEditModal, editModal })
                                 onBlur={formik.handleBlur}
                                 value={formik.values.student}
                             />
-                            {formik.errors.student && formik.touched.student && formik.errors.student && <span className='errors'>{formik.errors.student}</span>}
                         </div>
-
                         <div>
                             <input
                                 className='input-long'
@@ -186,9 +165,8 @@ export default function EditModal({ toggleEditModal, setEditModal, editModal })
                                 onBlur={formik.handleBlur}
                                 value={formik.values.lives_In}
                             />
-                            {formik.errors.lives_In && formik.touched.lives_In && formik.errors.lives_In && <span className='errors'>{formik.errors.lives_In}</span>}
-                        </div>
 
+                        </div>
                         <div>
                             <input
                                 className='input-long'
@@ -200,9 +178,8 @@ export default function EditModal({ toggleEditModal, setEditModal, editModal })
                                 onBlur={formik.handleBlur}
                                 value={formik.values.from}
                             />
-                            {formik.errors.from && formik.touched.from && formik.errors.from && <span className='errors'>{formik.errors.from}</span>}
-                        </div>
 
+                        </div>
                         <div >
                             {/* <label htmlFor="img" className="label">Profile Photo</label> */}
                             <input id="img" ref={fileRef} name="img" type="file" onChange={(event) =>
@@ -213,11 +190,9 @@ export default function EditModal({ toggleEditModal, setEditModal, editModal })
                             {
                                 fileRef.current.click()
                             }}>Update Profile photo</button>
-                            {formik.errors.img && formik.touched.img && formik.errors.img && <span className='errors'>{formik.errors.img}</span>}
-                        </div>
 
+                        </div>
                         <div >
-                            {/* <label htmlFor="cover_img" className="label">Cover Photo</label> */}
                             <input id="cover_img" ref={coverImgRef} name="cover_img" type="file" onChange={(event) =>
                             {
                                 formik.setFieldValue("cover_img", event.currentTarget.files[0]);
@@ -226,7 +201,6 @@ export default function EditModal({ toggleEditModal, setEditModal, editModal })
                             {
                                 coverImgRef.current.click()
                             }}>Upload Cover photo</button>
-                            {formik.errors.cover_img && formik.touched.cover_img && formik.errors.cover_img && <span className='errors'>{formik.errors.cover_img}</span>}
                         </div>
                         <div className="modal-button">
                             <button disabled={isLoading} type="submit">{isLoading && <div className="load"></div>}Save</button>

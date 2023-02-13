@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import "./Modal.css";
 import { RxCross2 } from 'react-icons/rx'
 import { useRef, useState } from "react";
-import { signUpAPI } from "../../Helpers/ConfigAPI";
+import { API, signUpAPI } from "../../Helpers/ConfigAPI";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
@@ -44,7 +44,7 @@ export default function Modal({ toggleModal, setModal, modal })
                         birth_date: values.birth_date,
                         img: imgData.data.secure_url
                     }
-                    axios.post(signUpAPI,
+                    axios.post(API + '/register',
                         signUp
                     )
                     .catch(err => console.log(err))
@@ -208,7 +208,7 @@ export default function Modal({ toggleModal, setModal, modal })
                             </p>
                         </div>
                         <div className="modal-button">
-                            <button disabled={isLoading} type="submit">{isLoading && <div className="load"></div>}Sign Up</button>
+                            <button className="s-modal-btn" disabled={isLoading} type="submit">{isLoading && <div className="load"></div>}Sign Up</button>
                         </div>
                     </form>
                 </div>

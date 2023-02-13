@@ -82,14 +82,6 @@
     margin-left: 7px;
 }
 
-.post-link-div a{
-    text-decoration: none;
-}
-
-.post-link-div a:hover{
-    text-decoration: underline;
-}
-
 .post-top-flex .btns:hover{
     background-color: #4787ef;
 }
@@ -116,14 +108,35 @@
     width: 100%
 }
 
-.posting-flex h3 a {
+.posting-flex h3{
+    cursor: pointer;
     font-size: 16px;
     color: #050505
 }
 
-.posting-flex p a {
+.comment-flex h3{
+    cursor: pointer;
+    font-size: 16px;
+    color: #050505
+}
+
+.comment-flex h3:hover{
+    text-decoration: underline;
+}
+
+.posting-flex h3:hover{
+    text-decoration: underline;
+}
+
+.posting-flex p {
     color: #65676b;
-    font-size: 15px
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.posting-flex p:hover{
+    text-decoration: underline;
 }
 
 .react {
@@ -157,13 +170,22 @@
     display: flex
 }
 
-.react-flex a {
+.react-flex span {
+    cursor: pointer;
     color: #65676b
+}
+
+.react-flex span:hover{
+    text-decoration: underline;
 }
 
 .full-posting {
     margin-bottom: 15px;
     background: #fff
+}
+
+.unlike{
+    background: #ededed;
 }
 
 .likes {

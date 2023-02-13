@@ -5,7 +5,7 @@ import { RxCross2 } from 'react-icons/rx'
 import { BsThreeDots } from 'react-icons/bs'
 import { FaLock, FaRegThumbsDown } from 'react-icons/fa';
 import { useFormik } from 'formik';
-import { commentAPI, likeAPI, UnlikeAPI } from '../../../../Helpers/ConfigAPI';
+import { API } from '../../../../Helpers/ConfigAPI';
 import axios from 'axios';
 
 const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like, comment, share, _id, options, setState }) =>
@@ -30,7 +30,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
             postId: _id,
             userId: users?._id
         }
-        axios.put(likeAPI,
+        axios.put(API + '/like',
             likes
         )
             .then(res => 
@@ -48,7 +48,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
             userId: users?._id
         }
 
-        axios.put(UnlikeAPI,
+        axios.put(API + '/unlike',
             likes
         )
             .then(res => 
@@ -74,7 +74,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                 postId: _id
             }
 
-            axios.put(commentAPI,
+            axios.put(API + '/comment',
                 comments
             )
                 .then(res =>
@@ -110,8 +110,8 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                             <img className='nav-img' src={profile_pic} alt="" />
                         </div>
                         <div className='post-link-div'>
-                            <h3><a href="">{first_name} {surname}</a></h3>
-                            <p><a href="">{time}</a> . {options === 'Public' ? <GiEarthAsiaOceania /> : <FaLock />} </p>
+                            <h3>{first_name} {surname}</h3>
+                            <p>{time} . {options === 'Public' ? <GiEarthAsiaOceania /> : <FaLock />} </p>
                         </div>
                     </div>
                     <div className='posting-flex'>
@@ -133,10 +133,10 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                     <div className='react'>
                         <img className='like' src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Facebook_Like_button.svg/2048px-Facebook_Like_button.svg.png" alt="" />
                         {/* <img className='like' src="https://www.freeiconspng.com/thumbs/facebook-love-png/blank-heart-love-hd-png-28.png" alt="" /> */}
-                        <a href=""><span>{like.length}</span></a>
+                       <span>{like.length}</span>
                     </div>
                     <div>
-                        <a href=""><span>{comment.length} Comments</span></a> <a href=""><span>{share} Shares</span></a>
+                        <span>{comment.length} Comments</span> <span>{share} Shares</span>
                     </div>
                 </div>
                 <div className="line"></div>
@@ -148,7 +148,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                                 Like
                             </button>
                             :
-                            <button className='post-flex post-button' onClick={() => handleUnLike(_id)} type='button'>
+                            <button className='post-flex post-button unlike' onClick={() => handleUnLike(_id)} type='button'>
                                 <FaRegThumbsDown className='thumb-down' />
                                 UnLike
                             </button>
@@ -168,7 +168,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                         <div key={i} className='comment-flex'>
                             <div><img src={cm.profile_img} className="comment-img" alt="" /></div>
                             <div className='comment-desc post-link-div'>
-                                <h3><a href="">{cm.name.first_name} {cm.name.surname}</a></h3>
+                                <h3>{cm.name.first_name} {cm.name.surname}</h3>
                                 <p>{cm.text}</p>
                             </div>
                         </div>

@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { AiFillPlusCircle } from 'react-icons/ai'
 import { FaPen } from 'react-icons/fa'
 import { BsCaretDownFill } from 'react-icons/bs';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import './MyProfileLayoutPage.css'
 import EditModal from '../../Components/EditModal/EditModal';
+import PostingSection from '../../Components/PostingSection/PostingSection';
 
 const MyProfileLayoutPage = () =>
 {
@@ -68,17 +69,17 @@ const MyProfileLayoutPage = () =>
                 <div className='profile-lower'>
                     <div className="line"></div>
                     <div className='extras-div'>
-                        <div className='profile-full-div s'>
-                            <Link to='/myProfile'><div className='profile-fast'>Post</div></Link>
-                            <Link to='/myProfile/about'><div>About</div></Link>
-                            <Link to='/myProfile/friends' ><div>Friends</div></Link>
+                        <nav className='profile-full-div s'>
+                            <NavLink to={'/myProfile'}><div>Post</div></NavLink>
+                            <NavLink to={'/myProfile/about'}><div>About</div></NavLink>
+                            <NavLink to={'/myProfile/friends'} ><div>Friends</div></NavLink>
                             <span className='others'>
-                                <div>Photos</div>
-                                <div>Videos</div>
-                                <div className='check'>Check-ins</div>
+                                <Link  to='/myProfile/friends' ><div>Photos</div></Link>
+                                <Link to='/myProfile/friends' ><div>Videos</div></Link>
+                                <Link to='/myProfile/friends' ><div className='check'>Check-ins</div></Link>
                             </span>
-                            <div className='profile-div-last'>More <BsCaretDownFill className='icons' /></div>
-                        </div>
+                            <Link to='/myProfile/friends' ><div className='profile-div-last'>More <BsCaretDownFill className='icons' /></div></Link>
+                        </nav>
                         <div>
                             <div onClick={handleOpen} className='profile-menus'><span className="menus"></span>
                                 {open && <div className='edit-menu'>
@@ -138,27 +139,7 @@ const MyProfileLayoutPage = () =>
                     </div>
                 </div>
                 <div className='profile-last-div'>
-                    <div className="post-section">
-                        <div className='post-top-flex'>
-                            <img className='nav-img img' src={users?.img} alt="" />
-                            <input className='post-section-input' placeholder={`What's on your mind, ${users?.first_name} ${users?.surname}?`} type="text" />
-                        </div>
-                        <div className="line"></div>
-                        <div className='post-top-flex'>
-                            <div className='post-flex'>
-                                <span className='video'></span>
-                                <p>Live Video</p>
-                            </div>
-                            <div className='post-flex'>
-                                <span className='photo'></span>
-                                <p>Photo/video</p>
-                            </div>
-                            <div className='post-flex'>
-                                <span className='flag'></span>
-                                <p>Life event</p>
-                            </div>
-                        </div>
-                    </div>
+                    <PostingSection />
                     <div className='grid'>
                         <div className='profile-post'>
                             <p>Posts</p>

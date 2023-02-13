@@ -1,5 +1,3 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
 import { GrFormDown } from 'react-icons/gr'
 import { Link } from 'react-router-dom';
 import './FastColumn.css'
@@ -80,7 +78,7 @@ const FastColumn = () =>
             <div className='shortcut-flex'>
                 <p className='shortcuts'>Your shortcuts</p>
                 <div>
-                    <a href="e">Edit</a>
+                    <a href=''>Edit</a>
                 </div>
             </div>
             <div className='fast-list'>
@@ -122,7 +120,7 @@ const FastColumn = () =>
             <div>
                 <div className='fast-column-last post-link-div'>
                     <a href="https://www.facebook.com/privacy/policy/?entry_point=comet_dropdown">privacy</a> . <a href="https://www.facebook.com/policies_center/">Terms</a> . <a href="https://www.facebook.com/business">Advertising</a> . <a href="https://www.facebook.com/help/568137493302217">Ad Choices</a><br />
-                    <a href="https://www.facebook.com/privacy/policies/cookies/?entry_point=cookie_policy_redirect&entry=0">Cookies</a> . <a href="m">More</a> . <span>Meta © 2023</span>
+                    <a href="https://www.facebook.com/privacy/policies/cookies/?entry_point=cookie_policy_redirect&entry=0">Cookies</a> . <a href="/">More</a> . <span>Meta © 2023</span>
                 </div>
             </div>
         </div>

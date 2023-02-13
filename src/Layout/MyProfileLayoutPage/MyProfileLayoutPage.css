@@ -70,12 +70,7 @@
     padding: 12px 15px;
     border-radius: 10px;
     cursor: pointer;
-    color: #65676b;
     font-weight: 500
-}
-
-.s .profile-fast {
-    color: #1776f1
 }
 
 .s div:hover {
@@ -154,7 +149,13 @@
 
 .s a{
     text-decoration: none;
+    color: #65676b;
 }
+
+.s .active{
+    color: #1776f1;
+}
+
 
 .profile-title {
     margin-left: 10px

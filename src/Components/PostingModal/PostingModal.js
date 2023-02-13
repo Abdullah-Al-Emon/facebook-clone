@@ -5,7 +5,7 @@ import { GiEarthAsiaOceania } from "react-icons/gi";
 import { useRef, useState } from "react";
 import PreviewImage from "../PreviewImage/PreviewImage";
 import { format } from "date-fns";
-import { postAPI } from "../../Helpers/ConfigAPI";
+import { API, postAPI } from "../../Helpers/ConfigAPI";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
@@ -64,7 +64,7 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                         user_id: users?._id,
                                         share: "0",
                                     }
-                                    axios.post(postAPI,
+                                    axios.post(API + '/post',
                                         post
                                     )
                                         .then(res =>
