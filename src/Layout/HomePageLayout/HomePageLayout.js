@@ -8,7 +8,7 @@ import { Outlet } from 'react-router-dom';
 
 const HomePageLayout = () =>
 {
-    useTitle('')
+    useTitle('', '')
     const [leftShow, setLeftShow] = useState(true)
     const [rightShow, setRightShow] = useState(true)
 

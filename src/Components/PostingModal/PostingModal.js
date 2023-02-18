@@ -2,12 +2,13 @@ import { Formik } from "formik";
 import "./PostingModal.css";
 import { RxCross2 } from 'react-icons/rx'
 import { GiEarthAsiaOceania } from "react-icons/gi";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import PreviewImage from "../PreviewImage/PreviewImage";
 import { format } from "date-fns";
-import { API, postAPI } from "../../Helpers/ConfigAPI";
+import { API } from "../../Helpers/ConfigAPI";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { Context } from "../../Context/StateManage";
 
 
 export default function PostingModal({ togglePostingModal, setPostingModal, postingModal, setState })
@@ -15,7 +16,7 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
     const [isLoading, setIsLoading] = useState(false)
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
-
+    // const {setStates} = useContext(Context)
     const fileRef = useRef(null)
     const profile_pic = users?.img;
     const first_name = users?.first_name;
@@ -24,6 +25,15 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
     const todayDate = new Date()
     const date = format(todayDate, 'PPpp')
 
+    // const [preview, setPreview] = useState(null)
+
+
+    // const reader = new FileReader();
+    // reader.readAsBinaryString('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N');
+    // reader. = () => {
+    //     setPreview(reader.result);
+    // }
+    // console.log(preview)
 
 
     return (
@@ -41,7 +51,7 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                         initialValues={{ post: '', file: null, option: '' }}
                         onSubmit={(values) =>
                         {
-                            // console.log(values)
+                            console.log(values)
                             setIsLoading(true)
                             const image = values.file;
                             const fromData = new FormData();
@@ -61,6 +71,7 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                         time: date,
                                         desc: values.post,
                                         post_img: imgData.data.secure_url,
+                                        visibility: "Visible",
                                         user_id: users?._id,
                                         share: "0",
                                     }
@@ -104,7 +115,7 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                                 <img className='nav-img' src={users?.img} alt="" />
                                             </div>
                                             <div className="">
-                                                <h3><a href="">{users?.first_name} {users?.surname}</a></h3>
+                                                <h3>{users?.first_name} {users?.surname}</h3>
                                                 <div className="posting-flex">
                                                     <select
                                                         className="select"

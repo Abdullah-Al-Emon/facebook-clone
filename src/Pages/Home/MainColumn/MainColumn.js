@@ -1,13 +1,16 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PostingSection from '../../../Components/PostingSection/PostingSection';
-import { postAPI } from '../../../Helpers/ConfigAPI';
+import { Context } from '../../../Context/StateManage';
+import { API, postAPI } from '../../../Helpers/ConfigAPI';
 import './MainColumn.css'
 import Posting from './posting/Posting';
+import Undo from './Undo/Undo';
 
 const MainColumn = () =>
 {
-    const [state, setState] = useState(false)
+    // const [state, setState] = useState(false)
+    const { state, setStates } = useContext(Context)
     const [isLoading, setIsLoading] = useState(true)
     const [storyData, setStoryData] = useState([])
     const [post, setPost] = useState([])
@@ -23,7 +26,7 @@ const MainColumn = () =>
 
     useEffect(() =>
     {
-        axios.get(postAPI)
+        axios.get(API + '/post')
             .then(res =>
             {
                 setIsLoading(false)
@@ -60,7 +63,7 @@ const MainColumn = () =>
                     ))
                 }
             </div>
-            <PostingSection setState={setState} />
+            <PostingSection setState={setStates} />
             <div>
                 {
                     isLoading ?
@@ -69,21 +72,30 @@ const MainColumn = () =>
                         <div>
                             {
                                 post.posts?.slice(0, visible).map((p, i) => (
-                                    <Posting
-                                        key={i}
-                                        setState={setState}
-                                        profile_pic={p?.profile_pic}
-                                        first_name={p?.name.first_name}
-                                        surname={p?.name?.surname}
-                                        time={p.time}
-                                        desc={p.desc}
-                                        post_img={p.post_img}
-                                        like={p.like}
-                                        comment={p.comment}
-                                        share={p.share}
-                                        options={p.options}
-                                        _id={p._id}
-                                    />
+                                    p?.inVisibleUserId?.includes(users?._id) ?
+                                        <Undo 
+                                        _id={p?._id}
+                                        user_Id={users?._id}
+                                        setState={setStates}
+                                        key={i} 
+                                        />
+                                        :
+                                        <Posting
+                                            key={i}
+                                            setState={setStates}
+                                            profile_pic={p?.profile_pic}
+                                            first_name={p?.name.first_name}
+                                            surname={p?.name?.surname}
+                                            time={p.time}
+                                            desc={p.desc}
+                                            post_img={p.post_img}
+                                            like={p.like}
+                                            comment={p.comment}
+                                            share={p.share}
+                                            options={p.options}
+                                            _id={p._id}
+                                            user_Id={p.user_id}
+                                        />
                                 ))
                             }
 

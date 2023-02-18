@@ -47,7 +47,19 @@ export const router = createBrowserRouter([
             {
                 path: '/myProfile/about',
                 element: <About/>
-            }
+            },
+            {
+                path: '/myProfile/photo',
+                element: <About/>
+            },
+            {
+                path: '/myProfile/video',
+                element: <About/>
+            },
+            {
+                path: '/myProfile/check',
+                element: <About/>
+            },
         ]
     }
 ])

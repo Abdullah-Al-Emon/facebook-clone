@@ -67,6 +67,34 @@
     margin-right: 2px;
 }
 
+.post-link-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.time-public-div{
+    display: flex;
+    align-items: center;
+}
+
+.post-time{
+    display: flex;
+    align-items: center;
+}
+
+.public-privacy-icon{
+    margin-left: 3px;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 50%;
+    border: none;
+    background-color: #fff;
+}
+
+.public-privacy-icon:hover{
+    background-color: #ededed;
+}
+
 .post-top-flex .btns {
     display: flex;
     align-items: center;

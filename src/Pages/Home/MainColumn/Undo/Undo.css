@@ -1,0 +1,40 @@
+.undo-top-div{
+    background-color: #fff;
+    margin: 14px 0px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 15px;
+    align-items: center;
+}
+
+.undo-div{
+    display: flex;
+    align-items: center;
+}
+
+.undo-div .undo-title{
+    font-weight: 500;
+}
+
+.undo-div .undo-desc{
+    font-size: 14px;
+}
+
+.undo-top-div button{
+    cursor: pointer;
+    border: none;
+    background-color: #E4E6EB;
+    padding: 10px 15px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.undo-top-div button:hover{
+    background-color: #d7d7d7;
+}
+
+.undo-div img{
+    margin-right: 10px;
+    margin-bottom: 4px;
+}

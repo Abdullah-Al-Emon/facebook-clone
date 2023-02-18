@@ -1,0 +1,284 @@
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+.errors {
+    font-size: 15px;
+    display: block;
+    text-align: left;
+    color: #f34343;
+    margin-left: 8px
+}
+
+.posting-input{
+    width: 100%;
+    border: none;
+    height: 110px;
+    margin: 10px 0px;
+    overflow-y: hidden;
+    box-sizing: border-box;
+    font-size: 20px;
+    padding: 7px 20px 7px 7px;
+    font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+}
+
+.posting-input:focus{
+    outline: 0;
+}
+
+.posting-button{
+    cursor: pointer;
+    color: #fff;
+    background-color: #1877f2;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 40px;
+    padding: 0 12px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-post-div{
+    margin-top: 30px;
+}
+
+
+.select{
+    cursor: pointer;
+    border-radius: 7px;
+    padding: 1px 4px;
+    background: #e1e1e1;
+    border: none;
+    width: 100px;
+    font-weight: 600;
+    margin-right: 2px;
+    color: rgb(0, 0, 0);
+    font-size: 13px;
+}
+
+.select:focus{
+    outline: 0;
+}
+
+.loaders {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #3498db;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+.form {
+    margin-top: 5px
+}
+
+.icons-flex{
+    display: flex;
+    align-items: center;
+}
+
+.pht{
+    height: 24px;
+    width: 24px;
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
+    background-position: 0px -183px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.frnd{
+    height: 24px;
+    width: 24px;
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
+    background-position: 0px -158px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.emoji{
+    height: 24px;
+    width: 24px;
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
+    background-position: 0px -133px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.location{
+    height: 24px;
+    width: 24px;
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yG/r/tv0kfZ3HPPE.png?_nc_eui2=AeHfz04vt7jtMMrR-YEvyafKFBvWZ2jsvTwUG9ZnaOy9PP1r2YkobJOHoC8xmUiQInZaM91hZNMN5DU2L7oPLlSx);
+    background-position: 0px -50px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.flag{
+    height: 24px;
+    width: 24px;
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yV/r/WoWrUm2DZFo.png?_nc_eui2=AeFo0_OetzFcRT5rTgBbC-dpgChOgfBJRd6AKE6B8ElF3lpnnWytimZSCte-S4kzHNu63MR7tigIC2l385rMvRUU);
+    background-position: 0px 0px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.menus{
+    height: 24px;
+    width: 24px;
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/_tAeFyh7CkC.png?_nc_eui2=AeHgInaoPCDcWDHS3XK27uLExJEH_vnQqtzEkQf--dCq3C3iqnXahwGtindOOy2h77bLHRvmGZWXe0k93rEPUGfR);
+    background-position: 0px -108px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.add-post{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0px;
+    padding: 10px 15px;
+    border-radius: 9px;
+    border: 1px solid #888;
+
+}
+
+.-div{
+    padding: 5px 6px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.-div:hover{
+    background-color: #dddfe2;
+}
+
+.add-post .a{
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.form-group{
+    cursor: pointer;
+    width: 150px;
+    padding: 8px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin: 8px 0px;
+    font-size: 15px;
+    border: 1px solid #dddfe2;
+    background-color: #fff;
+}
+
+.form-group:hover{
+    background-color: rgb(217, 217, 217);
+}
+
+.form-control{
+    display: none;
+}
+
+.posting-modal-content h2 {
+    color: #1c1e21;
+    font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 40px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.posting-modal,
+.posting-overlay {
+    overflow: auto;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 5000
+}
+
+.posting-overlay {
+    background: rgba(251, 251, 251, 0.8)
+}
+
+.posting-modal-content {
+    position: absolute;
+    z-index: 5000;
+    overflow: auto;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #fff;
+    padding: 10px 16px;
+    border-radius: 5px;
+    height: 428px;
+    width: 500px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
+
+.icons{
+    font-size: 24px;
+}
+
+.posting-close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+@media screen and (max-width:480px) {
+    .posting-modal-content {
+        width: 350px
+    }
+}

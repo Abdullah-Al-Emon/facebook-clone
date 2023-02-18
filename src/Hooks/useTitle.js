@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 
-const useTitle = (title) => {
+const useTitle = (fastTitle, lastTitle) => {
     useEffect(() => {
-        document.title = `Facebook  ${title}`
-    }, [title])
+        document.title = `${fastTitle} Facebook  ${lastTitle}`
+    }, [fastTitle, lastTitle])
 };
 
 export default useTitle;

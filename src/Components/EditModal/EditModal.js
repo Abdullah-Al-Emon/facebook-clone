@@ -1,30 +1,36 @@
 import { useFormik } from "formik";
 import { RxCross2 } from 'react-icons/rx'
 import { useRef, useState } from "react";
-import { signUpAPI } from "../../Helpers/ConfigAPI";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import "./EditModal.css";
+import { API } from "../../Helpers/ConfigAPI";
+import ImageInput from "../PhotoCrops/file/ImageInput";
+import Default_User_Pic from "../PhotoCrops/defaultUserPic.svg";
 
 
 export default function EditModal({ toggleEditModal, setEditModal, editModal })
 {
     const [isLoading, setIsLoading] = useState(false)
+    const [img, setImg] = useState("");
+    const [coverImg, setCoverImg] = useState("");
+
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
+    console.log(coverImg)
 
     const fileRef = useRef(null)
     const coverImgRef = useRef(null)
 
     const formik = useFormik({
         initialValues: {
-            first_name: '',
-            surname: '',
-            student: '',
-            lives_In: '',
-            from: '',
-            img: null,
-            cover_img: null,
+            first_name: `${users?.first_name}`,
+            surname: `${users?.surname}`,
+            student: `${users?.student === undefined ? '' : users?.student}`,
+            lives_In: `${users?.lives_In === undefined ? "" : users?.lives_In}`,
+            from: `${users?.from === undefined ? '' : users?.from}`,
+            img: `${users?.img}`,
+            cover_img: `${users?.cover_Img === undefined ? 'https://res.cloudinary.com/drh68zyt1/image/upload/v1676712857/imagexlm/r3otvyz9y6bxcd99bzyo.png' : users?.cover_Img}`,
 
         },
         onSubmit: values =>
@@ -66,7 +72,7 @@ export default function EditModal({ toggleEditModal, setEditModal, editModal })
                                 lives_In: values.lives_In,
                                 from: values.from
                             }
-                            axios.put(`https://facebook-clone-m-server-side.vercel.app/register/${users?._id}`,
+                            axios.put(API + `/register/${users?._id}`,
                                 UpdateProfile
                             )
                                 .catch(err => console.log(err))
@@ -105,7 +111,7 @@ export default function EditModal({ toggleEditModal, setEditModal, editModal })
 
     return (
 
-        <div className="modal">
+        <div className="modal-e">
             <div onClick={toggleEditModal} className="overlay"></div>
             <div className="modal-content">
                 <div>
@@ -181,26 +187,52 @@ export default function EditModal({ toggleEditModal, setEditModal, editModal })
 
                         </div>
                         <div >
+                            <ImageInput
+                                formik={formik}
+                                imageData={img.img?.src}
+                                defaultPic={Default_User_Pic}
+                                type="admin"
+                                id='img'
+                                name="img"
+                                label="Add Photo"
+                                Button='Profile Photo Upload'
+                                aspect={3/2}
+                                showPreview
+                                onChange={(files) => setImg(files, "admin")}
+                            />
                             {/* <label htmlFor="img" className="label">Profile Photo</label> */}
-                            <input id="img" ref={fileRef} name="img" type="file" onChange={(event) =>
+                            {/* <input id="img" ref={fileRef} name="img" type="file" onChange={(event) =>
                             {
                                 formik.setFieldValue("img", event.currentTarget.files[0]);
                             }} className="form-control" />
                             <button onBlur={formik.handleBlur} name='img' type="button" className="input-long cursor" onClick={() =>
                             {
                                 fileRef.current.click()
-                            }}>Update Profile photo</button>
+                            }}>Update Profile photo</button> */}
 
                         </div>
                         <div >
-                            <input id="cover_img" ref={coverImgRef} name="cover_img" type="file" onChange={(event) =>
+                        <ImageInput
+                                formik={formik}
+                                imageData={coverImg.cover_img?.src}
+                                defaultPic={Default_User_Pic}
+                                type="admin"
+                                id='cover_img'
+                                name="cover_img"
+                                label="Add Photo"
+                                Button='Cover Photo Upload'
+                                aspect={3/1}
+                                showPreview
+                                onChange={(files) => setCoverImg(files, "admin")}
+                            />
+                            {/* <input id="cover_img" ref={coverImgRef} name="cover_img" type="file" onChange={(event) =>
                             {
                                 formik.setFieldValue("cover_img", event.currentTarget.files[0]);
                             }} className="form-control" />
                             <button onBlur={formik.handleBlur} name='cover_img' type="button" className="input-long cursor" onClick={() =>
                             {
                                 coverImgRef.current.click()
-                            }}>Upload Cover photo</button>
+                            }}>Upload Cover photo</button> */}
                         </div>
                         <div className="modal-button">
                             <button disabled={isLoading} type="submit">{isLoading && <div className="load"></div>}Save</button>

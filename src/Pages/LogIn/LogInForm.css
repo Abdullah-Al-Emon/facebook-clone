@@ -64,18 +64,15 @@
     margin-top: 6px
 }
 
-.forget a {
+.forget p {
     color: #1877f2;
-    font-size: 14px
-}
-
-.forget a {
-    color: #385898;
+    font-size: 14px;
     cursor: pointer;
     text-decoration: none
 }
 
-.forget a:hover {
+
+.forget p:hover {
     text-decoration: underline
 }
 

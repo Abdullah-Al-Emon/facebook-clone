@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AiFillPlusCircle } from 'react-icons/ai'
 import { FaPen } from 'react-icons/fa'
 import { BsCaretDownFill } from 'react-icons/bs';
@@ -6,21 +6,25 @@ import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import './MyProfileLayoutPage.css'
 import EditModal from '../../Components/EditModal/EditModal';
 import PostingSection from '../../Components/PostingSection/PostingSection';
+import { Context } from '../../Context/StateManage';
+import useTitle from '../../Hooks/useTitle';
 
 const MyProfileLayoutPage = () =>
 {
     const [editModal, setEditModal] = useState(false);
+    const {state, setStates} = useContext(Context)
     const [open, setOpen] = useState(false);
     const navigate = useNavigate()
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
+    useTitle(`${users?.first_name} ${users?.surname} |`, '')   
 
     useEffect(() =>
     {
         if (user === '' || user === null) {
             navigate('/')
         }
-    }, [])
+    }, [state])
 
     const toggleEditModal = () =>
     {
@@ -47,7 +51,7 @@ const MyProfileLayoutPage = () =>
                         users?.cover_Img ?
                             <img className='cover-img' src={users?.cover_Img} alt="" />
                             :
-                            <img className='cover-img' src='https://thumbs.dreamstime.com/b/dream-forest-5241204.jpg' alt="" />
+                            <img className='cover-img' src='https://res.cloudinary.com/drh68zyt1/image/upload/v1676712857/imagexlm/r3otvyz9y6bxcd99bzyo.png' alt="" />
                     }
                 </div>
                 <div className='profile-div'>
@@ -74,11 +78,11 @@ const MyProfileLayoutPage = () =>
                             <NavLink to={'/myProfile/about'}><div>About</div></NavLink>
                             <NavLink to={'/myProfile/friends'} ><div>Friends</div></NavLink>
                             <span className='others'>
-                                <Link  to='/myProfile/friends' ><div>Photos</div></Link>
-                                <Link to='/myProfile/friends' ><div>Videos</div></Link>
-                                <Link to='/myProfile/friends' ><div className='check'>Check-ins</div></Link>
+                                <NavLink  to='/myProfile/photo' ><div>Photos</div></NavLink>
+                                <NavLink to='/myProfile/video' ><div>Videos</div></NavLink>
+                                <NavLink to='/myProfile/check' ><div className='check'>Check-ins</div></NavLink>
                             </span>
-                            <Link to='/myProfile/friends' ><div className='profile-div-last'>More <BsCaretDownFill className='icons' /></div></Link>
+                            <div className='profile-div-last'>More <BsCaretDownFill className='icons' /></div>
                         </nav>
                         <div>
                             <div onClick={handleOpen} className='profile-menus'><span className="menus"></span>
@@ -139,7 +143,7 @@ const MyProfileLayoutPage = () =>
                     </div>
                 </div>
                 <div className='profile-last-div'>
-                    <PostingSection />
+                    <PostingSection setState={setStates} />
                     <div className='grid'>
                         <div className='profile-post'>
                             <p>Posts</p>

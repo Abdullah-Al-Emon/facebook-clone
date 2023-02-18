@@ -5,14 +5,14 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../Components/Footer/Footer';
 import Modal from '../../Components/Modal/Modal';
-import { API, logInAPI } from '../../Helpers/ConfigAPI';
+import { API } from '../../Helpers/ConfigAPI';
 import useTitle from '../../Hooks/useTitle';
 import './LogIn.css'
 import './LogInForm.css'
 
 const LogIn = () =>
 {
-    useTitle("- log in or sign in")
+    useTitle('', '- log in or sign up')
 
 
     const [modal, setModal] = useState(false);
@@ -143,8 +143,9 @@ const LogIn = () =>
                                         <button className='login-btn' disabled={isLoading} type="submit"> {isLoading && <div className="loaders-login"></div>} Log in</button>
                                     </div>
                                     <div className='forget'>
-                                        <a href="">Forgotten Password?</a>
+                                        <p>Forgotten Password?</p>
                                     </div>
+                                    {/* <Demo /> */}
                                     <div className='lines'></div>
                                     <button type='button' onClick={toggleModal} className='create'>Create New Account</button>
                                 </form>
@@ -158,6 +159,7 @@ const LogIn = () =>
                 </div>
             </div>
             <Footer />
+            
         </div>
     );
 };

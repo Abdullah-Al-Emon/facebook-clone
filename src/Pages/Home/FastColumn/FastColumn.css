@@ -79,6 +79,11 @@
 .fast-column-last a{
     color: #65676B;
     font-size: 12px;
+    text-decoration: none;
+}
+
+.fast-column-last a:hover{
+    text-decoration: underline;
 }
 
 .fast-column-last span{

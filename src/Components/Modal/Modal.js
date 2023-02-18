@@ -1,17 +1,19 @@
 import { useFormik } from "formik";
 import "./Modal.css";
 import { RxCross2 } from 'react-icons/rx'
-import { useRef, useState } from "react";
-import { API, signUpAPI } from "../../Helpers/ConfigAPI";
+import { useState } from "react";
+import { API } from "../../Helpers/ConfigAPI";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import ImageInput from "../PhotoCrops/file/ImageInput";
+import Default_User_Pic from "../PhotoCrops/defaultUserPic.svg";
 
 
 export default function Modal({ toggleModal, setModal, modal })
 {
     const [isLoading, setIsLoading] = useState(false)
+    const [image, setImage] = useState("");
 
-    const fileRef = useRef(null)
     const formik = useFormik({
         initialValues: {
             first_name: '',
@@ -19,13 +21,13 @@ export default function Modal({ toggleModal, setModal, modal })
             email: '',
             password: '',
             birth_date: '',
-            file: null
+            photo: null
         },
         onSubmit: values =>
         {
             setIsLoading(true)
-
-            const image = values.file;
+            console.log(values.photo)
+            const image = values.photo;
             const fromData = new FormData();
             fromData.append('file', image)
             fromData.append('upload_preset', 'imagexlm')
@@ -35,7 +37,7 @@ export default function Modal({ toggleModal, setModal, modal })
                 fromData
             )
                 .then(imgData =>
-                {  
+                {
                     const signUp = {
                         first_name: values.first_name,
                         surname: values.surname,
@@ -47,7 +49,7 @@ export default function Modal({ toggleModal, setModal, modal })
                     axios.post(API + '/register',
                         signUp
                     )
-                    .catch(err => console.log(err))
+                        .catch(err => console.log(err))
                         .then(result =>
                         {
                             setIsLoading(false)
@@ -99,16 +101,17 @@ export default function Modal({ toggleModal, setModal, modal })
             if (!values.birth_date) {
                 errors.birth_date = 'Type your Date of Birth'
             }
-            if (!values.file) {
-                errors.file = 'Upload your photo';
+            if (!values.photo) {
+                errors.photo = 'Upload your photo';
             }
+            console.log(errors)
             return errors;
         }
     });
 
     return (
 
-        <div className="modal">
+        <div className="modals">
             <div onClick={toggleModal} className="overlay"></div>
             <div className="modal-content">
                 <div>
@@ -187,7 +190,20 @@ export default function Modal({ toggleModal, setModal, modal })
                             {formik.errors.birth_date && formik.touched.birth_date && formik.errors.birth_date && <span className='errors'>{formik.errors.birth_date}</span>}
                         </div>
                         <div >
-                            <label htmlFor="file" className="label">Photo</label>
+                            <ImageInput
+                                formik={formik}
+                                imageData={image.photo?.src}
+                                defaultPic={Default_User_Pic}
+                                type="admin"
+                                id='photo'
+                                name="photo"
+                                label="Add Photo"
+                                Button='Profile Photo Upload'
+                                aspect={4/3}
+                                showPreview
+                                onChange={(files) => setImage(files, "admin")}
+                            />
+                            {/* <label htmlFor="file" className="label">Photo</label>
                             <input id="file" ref={fileRef} name="file" type="file" onChange={(event) =>
                             {
                                 formik.setFieldValue("file", event.currentTarget.files[0]);
@@ -195,8 +211,8 @@ export default function Modal({ toggleModal, setModal, modal })
                             <button onBlur={formik.handleBlur} name='file' type="button" className="input-long cursor" onClick={() =>
                             {
                                 fileRef.current.click()
-                            }}>Upload photo</button>
-                            {formik.errors.file && formik.touched.file && formik.errors.file && <span className='errors'>{formik.errors.file}</span>}
+                            }}>Upload photo</button> */}
+                            {formik.errors.photo && formik.touched.photo && formik.errors.photo && <span className='errors'>{formik.errors.photo}</span>}
                         </div>
                         <div className="modal-a">
                             <p>People who use our service may have uploaded your contact information to Facebook. <a href="https://www.facebook.com/help/637205020878504">Learn more.</a></p>

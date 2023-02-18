@@ -1,0 +1,31 @@
+.upload-image {
+  background: #f5f6f7;
+  width: 383px;
+  font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+  border: 1px solid #ccd0d5;
+  font-size: 17px;
+  line-height: 16px;
+  padding: 11px;
+  border-radius: 5px;
+  margin: 5px 6px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.default-upload-image {
+  margin-top: 100%;
+  margin-left: 15%;
+  /* width: 100px; */
+  cursor: pointer;
+}
+
+.company-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+}
+
+.img-center{
+  text-align: center;
+}
+

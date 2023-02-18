@@ -122,7 +122,7 @@
     margin-bottom: 0
 }
 
-.modal,
+.modals,
 .overlay {
     overflow: auto;
     width: 100vw;
@@ -132,7 +132,7 @@
     right: 0;
     bottom: 0;
     position: fixed;
-    z-index: 5000
+    z-index: 0;
 }
 
 .overlay {
@@ -141,7 +141,7 @@
 
 .modal-content {
     position: absolute;
-    z-index: 5000;
+    z-index: 0;
     overflow: auto;
     top: 48%;
     left: 50%;

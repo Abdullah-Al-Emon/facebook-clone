@@ -118,7 +118,7 @@ const FastColumn = () =>
                 <p>See more</p>
             </div>
             <div>
-                <div className='fast-column-last post-link-div'>
+                <div className='fast-column-last'>
                     <a href="https://www.facebook.com/privacy/policy/?entry_point=comet_dropdown">privacy</a> . <a href="https://www.facebook.com/policies_center/">Terms</a> . <a href="https://www.facebook.com/business">Advertising</a> . <a href="https://www.facebook.com/help/568137493302217">Ad Choices</a><br />
                     <a href="https://www.facebook.com/privacy/policies/cookies/?entry_point=cookie_policy_redirect&entry=0">Cookies</a> . <a href="/">More</a> . <span>Meta © 2023</span>
                 </div>

@@ -7,14 +7,16 @@ import { FaLock, FaRegThumbsDown } from 'react-icons/fa';
 import { useFormik } from 'formik';
 import { API } from '../../../../Helpers/ConfigAPI';
 import axios from 'axios';
+import PublicPrivacyModal from '../../../../Components/PublicPrivacyModal/PublicPrivacyModal';
+import EditPostModal from '../../../../Components/EditPostModal/EditPostModal';
 
-const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like, comment, share, _id, options, setState }) =>
+const Posting = ({ profile_pic, first_name, user_Id, surname, time, desc, post_img, like, comment, share, _id, options, setState }) =>
 {
+
     const [isLoading, setIsLoading] = useState(false)
     const [lik, setLik] = useState(true)
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
-    console.log()
     useEffect(() =>
     {
         like?.includes(users?._id) ?
@@ -53,6 +55,7 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
         )
             .then(res => 
             {
+
                 setState(prev => !prev)
                 console.log(res.data)
                 setLik(true)
@@ -99,7 +102,48 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
         }
     })
 
+    const [publicPrivacyModal, setPublicPrivacyModal] = useState(false);
+    const togglePublicPrivacyModal = () =>
+    {
+        setPublicPrivacyModal(!publicPrivacyModal);
+    };
 
+    if (publicPrivacyModal) {
+        document.body.classList.add('active-modal')
+    } else {
+        document.body.classList.remove('active-modal')
+    }
+
+    const [editPostModal, setEditPostModal] = useState(false);
+    const toggleEditPostModal = () =>
+    {
+        setEditPostModal(!editPostModal);
+    };
+
+    if (editPostModal) {
+        document.body.classList.add('active-modal')
+    } else {
+        document.body.classList.remove('active-modal')
+    }
+
+    const handleInVisible = () =>
+    {
+        const inVisible = {
+            visibility: "inVisible",
+            postId: _id,
+            userId: users?._id
+        }
+        axios.put(API + '/cross',
+            inVisible
+        )
+            .then(res => 
+            {
+                setState(prev => !prev)
+                console.log(res.data)
+            })
+            .catch(err => console.log(err))
+
+    }
 
     return (
         <div className='full-posting'>
@@ -111,14 +155,47 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                         </div>
                         <div className='post-link-div'>
                             <h3>{first_name} {surname}</h3>
-                            <p>{time} . {options === 'Public' ? <GiEarthAsiaOceania /> : <FaLock />} </p>
+                            <div className='post-time'>
+                                {
+                                    users?._id === user_Id ?
+                                        <div className='time-public-div'>
+                                            <p>{time} </p> <button onClick={togglePublicPrivacyModal} className='public-privacy-icon'>
+                                                {options === 'Public' ? <GiEarthAsiaOceania /> : <FaLock />}
+                                            </button>
+                                        </div>
+                                        :
+                                        <div className='time-public-div'>
+                                            <p>{time} </p> <button className='public-privacy-icon'>
+                                                {options === 'Public' ? <GiEarthAsiaOceania /> : <FaLock />}
+                                            </button>
+                                        </div>
+                                }
+                                {publicPrivacyModal && <PublicPrivacyModal setState={setState} _id={_id} setPublicPrivacyModal={setPublicPrivacyModal} publicPrivacyModal={publicPrivacyModal} togglePublicPrivacyModal={togglePublicPrivacyModal} />}
+                            </div>
                         </div>
                     </div>
                     <div className='posting-flex'>
-                        <div className='page-icon-div'>
-                            <BsThreeDots className='page-icon' />
-                        </div>
-                        <div className='page-icon-div'>
+                        {
+                            users?._id === user_Id ?
+                                <div onClick={toggleEditPostModal} className='page-icon-div'>
+                                    <BsThreeDots className='page-icon' />
+                                </div>
+                                :
+                                <div className='page-icon-div'>
+                                    <BsThreeDots className='page-icon' />
+                                </div>
+                        }
+                        {editPostModal && 
+                        <EditPostModal 
+                        _id={_id}
+                        desc={desc}
+                        options={options}
+                        post_img={post_img}
+                        setState={setState} 
+                        setEditPostModal={setEditPostModal} 
+                        editPostModal={editPostModal} 
+                        toggleEditPostModal={toggleEditPostModal} />}
+                        <div onClick={handleInVisible} className='page-icon-div'>
                             <RxCross2 className='page-icon' />
                         </div>
                     </div>
@@ -129,11 +206,11 @@ const Posting = ({ profile_pic, first_name, surname, time, desc, post_img, like,
                 <img className='posting-img' src={post_img} alt="" />
             </div>
             <div className='react-div'>
-                <div className='react-flex post-link-div between'>
+                <div className='react-flex between'>
                     <div className='react'>
                         <img className='like' src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Facebook_Like_button.svg/2048px-Facebook_Like_button.svg.png" alt="" />
                         {/* <img className='like' src="https://www.freeiconspng.com/thumbs/facebook-love-png/blank-heart-love-hd-png-28.png" alt="" /> */}
-                       <span>{like.length}</span>
+                        <span>{like.length}</span>
                     </div>
                     <div>
                         <span>{comment.length} Comments</span> <span>{share} Shares</span>

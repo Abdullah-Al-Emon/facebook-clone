@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Toaster } from 'react-hot-toast';
+import StateManage from './Context/StateManage';
 
 const queryClient = new QueryClient()
 
@@ -12,8 +13,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
+      <StateManage>
         <App />
-        <Toaster/>
+        <Toaster />
+      </StateManage>
     </QueryClientProvider>
   </React.StrictMode>
 );

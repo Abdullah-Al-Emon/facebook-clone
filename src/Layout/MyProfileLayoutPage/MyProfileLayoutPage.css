@@ -4,7 +4,7 @@
 
 .cover-img {
     width: 100%;
-    height: 50vh;
+    /* height: 50vh; */
     border-radius: 0 0 15px 15px;
     margin: auto auto
 }
@@ -57,7 +57,8 @@
 
 .profile-div-last {
     display: flex;
-    align-items: center
+    align-items: center;
+    color:#65676b ;
 }
 
 .profile-div-last .icons {
@@ -70,7 +71,7 @@
     padding: 12px 15px;
     border-radius: 10px;
     cursor: pointer;
-    font-weight: 500
+    font-weight: 500;
 }
 
 .s div:hover {
@@ -86,7 +87,10 @@
     position: relative;
     padding: 8px 10px;
     cursor: pointer;
-    border-radius: 10px
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    background-color: #e3e3e3;
 }
 
 .profile-menus:hover {
@@ -428,9 +432,9 @@
         height: 170px;
         width: 170px;
     }
-    .cover-img {
+    /* .cover-img {
         height: 35vh;
-    }
+    } */
     .profile-post div button {
         padding: 8px 12px;
         font-size: 15px;
