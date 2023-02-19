@@ -89,6 +89,7 @@ export default function EditModal({ toggleEditModal, setEditModal, editModal })
                                 .catch(err => console.log(err))
                         })
                 })
+                .catch(err => console.log(err))
 
         },
         validate: values =>

@@ -49,8 +49,8 @@ const ImageCropper = ({
         onZoomChange={setZoom}
         style={{
           containerStyle: {
-            width: 385,
-            height: 360,
+            width: 355,
+            height: 325,
             position: "relative",
           },
         }}

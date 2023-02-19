@@ -196,6 +196,10 @@
 
 
 @media screen and (max-width:480px) {
+    .input-long{
+        width: 325px;
+        font-size: 16px;
+    }
     .modal-content {
         width: 347px;
         padding: 10px 7px;
@@ -207,10 +211,6 @@
         font-size: 16px;
     }
 
-    .input-long{
-        width: 325px;
-        font-size: 16px;
-    }
     .errors{
         font-size: 13px;
     }

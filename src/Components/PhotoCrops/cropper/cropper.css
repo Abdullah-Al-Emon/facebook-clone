@@ -1,55 +1,78 @@
 .btn {
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    height: 43px;
-    border-color: #828282;
-    border-radius: 10px;
-  }
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  height: 43px;
+  border-color: #828282;
+  border-radius: 10px
+}
 
-  .cropper{
-    z-index: 500;
-  }
+.cropper {
+  z-index: 500
+}
 
-  .crop-modal{
-    width: 500px;
-  }
+.ReactModal__Overlay{
+  position: fixed;
+    inset: 0px;
+    background-color: rgba(255, 255, 255, 0.75);
+    z-index: 1;
+}
 
-  .crop-modal-div{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 10px;
-  }
+.content {
+  inset: 50% auto auto 50%;
+  z-index: 1000 !important;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  border-radius: 4px;
+  outline: 0;
+  padding: 20px
+}
 
-  .btn-save,
-.btn-save:hover,
+.crop-modal {
+  z-index: 10;
+  width: 500px
+}
+
+.crop-modal-div {
+  z-index: 500;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px
+}
+
+.btn-save,
 .btn-save:active,
-.btn-save:visited,
-.btn-save:focus {
-  background: darkblue !important;
-  border-color: darkblue !important;
-  color: white;
+.btn-save:focus,
+.btn-save:hover,
+.btn-save:visited {
+  background: #00008b !important;
+  border-color: #00008b !important;
+  color: #fff;
   width: 106px;
   cursor: pointer;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 700;
   height: 43px;
-  border-radius: 10px;
+  border-radius: 10px
 }
 
 .btn-cancel,
-.btn-cancel:hover,
 .btn-cancel:active,
-.btn-cancel:visited,
-.btn-cancel:focus {
-  background: white !important;
-  border-color: darkblue !important;
-  color: darkblue;
+.btn-cancel:focus,
+.btn-cancel:hover,
+.btn-cancel:visited {
+  background: #fff !important;
+  border-color: #00008b !important;
+  color: #00008b;
   width: 106px;
   cursor: pointer;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 700;
   height: 43px;
-  border-radius: 10px;
+  border-radius: 10px
 }

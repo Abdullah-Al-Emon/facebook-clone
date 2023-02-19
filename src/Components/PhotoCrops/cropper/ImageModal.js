@@ -22,7 +22,8 @@ const ImageModal = ({ modalIsOpen, closeModal, image, onCropImage, ratio, aspect
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        style={customStyles}
+        // style={customStyles}
+        className='content'
         contentLabel="Example Modal"
       >
         {image && (
