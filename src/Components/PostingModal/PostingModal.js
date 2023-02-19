@@ -2,13 +2,12 @@ import { Formik } from "formik";
 import "./PostingModal.css";
 import { RxCross2 } from 'react-icons/rx'
 import { GiEarthAsiaOceania } from "react-icons/gi";
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import PreviewImage from "../PreviewImage/PreviewImage";
 import { format } from "date-fns";
 import { API } from "../../Helpers/ConfigAPI";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import { Context } from "../../Context/StateManage";
 
 
 export default function PostingModal({ togglePostingModal, setPostingModal, postingModal, setState })

@@ -170,7 +170,7 @@ const Posting = ({ profile_pic, first_name, user_Id, surname, time, desc, post_i
                                             </button>
                                         </div>
                                 }
-                                {publicPrivacyModal && <PublicPrivacyModal setState={setState} _id={_id} setPublicPrivacyModal={setPublicPrivacyModal} publicPrivacyModal={publicPrivacyModal} togglePublicPrivacyModal={togglePublicPrivacyModal} />}
+                                {publicPrivacyModal && <PublicPrivacyModal options={options} setState={setState} _id={_id} setPublicPrivacyModal={setPublicPrivacyModal} publicPrivacyModal={publicPrivacyModal} togglePublicPrivacyModal={togglePublicPrivacyModal} />}
                             </div>
                         </div>
                     </div>

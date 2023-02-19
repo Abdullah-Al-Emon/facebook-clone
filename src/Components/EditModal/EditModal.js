@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { RxCross2 } from 'react-icons/rx'
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import "./EditModal.css";
@@ -19,8 +19,6 @@ export default function EditModal({ toggleEditModal, setEditModal, editModal })
     let users = JSON.parse(user);
     console.log(coverImg)
 
-    const fileRef = useRef(null)
-    const coverImgRef = useRef(null)
 
     const formik = useFormik({
         initialValues: {

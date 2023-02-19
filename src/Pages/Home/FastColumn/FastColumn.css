@@ -53,14 +53,15 @@
     padding-bottom: 5px;
 }
 
-.shortcut-flex a{
+.shortcut-flex .a{
+    cursor: pointer;
     padding: 5px 10px;
     text-decoration: none;
     border-radius: 10px;
     color: #216fdb;
 }
 
-.shortcut-flex a:hover{
+.shortcut-flex .a:hover{
     background-color: #dbdde0;
 }
 

@@ -77,8 +77,8 @@ const FastColumn = () =>
             <div className="line"></div>
             <div className='shortcut-flex'>
                 <p className='shortcuts'>Your shortcuts</p>
-                <div>
-                    <a href=''>Edit</a>
+                <div className='a'>
+                    Edit
                 </div>
             </div>
             <div className='fast-list'>

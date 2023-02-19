@@ -8,7 +8,7 @@ import "./PublicPrivacyModal.css";
 
 
 
-export default function PublicPrivacyModal({ _id, togglePublicPrivacyModal, setPublicPrivacyModal, publicPrivacyModal, setState })
+export default function PublicPrivacyModal({ _id, togglePublicPrivacyModal, setPublicPrivacyModal, publicPrivacyModal, setState, options })
 {
 
     return (
@@ -22,7 +22,7 @@ export default function PublicPrivacyModal({ _id, togglePublicPrivacyModal, setP
                 <div className="line-modal"></div>
                 <Formik
                     initialValues={{
-                        picked: '',
+                        picked: `${options}`,
                     }}
                     onSubmit={(values) =>
                     {
