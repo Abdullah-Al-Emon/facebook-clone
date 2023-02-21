@@ -69,3 +69,9 @@
         flex-basis: 42%
     }
 }
+
+@media screen and (max-width:410px) {
+    .friend-div {
+        flex-basis: 60%
+    }
+}

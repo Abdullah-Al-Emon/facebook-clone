@@ -38,12 +38,12 @@ const ImageCropper = ({
     to prevent cropper taking up whole page */
     <div className="cropper">
       <Cropper
-        minZoom={0.4}
+        // minZoom={1}
         image={inputImg}
         crop={crop}
         zoom={zoom}
         aspect={aspect}
-        restrictPosition={false}
+        // restrictPosition={false}
         onCropChange={setCrop}
         onCropComplete={onCropComplete}
         onZoomChange={setZoom}
@@ -64,8 +64,8 @@ const ImageCropper = ({
           type="range"
           defaultValue={zoom}
           value={zoom}
-          max={3.2}
-          min={ratio ? 0.4 : 0.6}
+          max={3}
+          min={ratio}
           step={0.1}
           onChange={e => setZoom(e.target.value)}
         />

@@ -67,7 +67,7 @@ const ImageInput = ({
         }}
         image={image}
         onCropImage={croppedImg => onChangeHandler([croppedImg])}
-        ratio={height / width <= 0.5 ? true : false}
+        ratio={1}
       />
       {showPreview && (
         <div className="img-center">
