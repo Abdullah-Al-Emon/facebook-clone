@@ -28,7 +28,9 @@ export default function EditPostModal({ _id, post_img, options, desc, toggleEdit
 
     const formik = useFormik({
         initialValues: {
-            post: `${desc}`, file: `${post_img}`, option: `${options}`
+            post: `${desc}`, 
+            file: `${post_img}`, 
+            option: `${options}`
         },
         onSubmit: values =>
         {
@@ -128,7 +130,7 @@ export default function EditPostModal({ _id, post_img, options, desc, toggleEdit
                             className="posting-input" ></textarea>
                         {formik.errors.post && formik.touched.post && formik.errors.post && <span className='errors'>{formik.errors.post}</span>}
                         <div >
-                            {/* {formik.values.file && <PreviewImage file={formik.values.file} />} */}
+                            {formik.values.file && <PreviewImage post_img={post_img} file={formik.values.file} />}
                             <input id="file" ref={fileRef} name="file" type="file" onChange={(event) =>
                             {
                                 formik.setFieldValue("file", event.currentTarget.files[0]);

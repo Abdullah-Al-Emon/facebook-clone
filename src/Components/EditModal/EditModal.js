@@ -195,7 +195,7 @@ export default function EditModal({ toggleEditModal, setEditModal, editModal })
                                 name="img"
                                 label="Add Photo"
                                 Button='Profile Photo Upload'
-                                aspect={3/2}
+                                aspect={4/4}
                                 showPreview
                                 onChange={(files) => setImg(files, "admin")}
                             />
