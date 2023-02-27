@@ -12,12 +12,12 @@ import useTitle from '../../Hooks/useTitle';
 const MyProfileLayoutPage = () =>
 {
     const [editModal, setEditModal] = useState(false);
-    const {state, setStates} = useContext(Context)
+    const { state, setStates } = useContext(Context)
     const [open, setOpen] = useState(false);
     const navigate = useNavigate()
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
-    useTitle(`${users?.first_name} ${users?.surname} |`, '')   
+    useTitle(`${users?.first_name} ${users?.surname} |`, '')
 
     useEffect(() =>
     {
@@ -75,10 +75,10 @@ const MyProfileLayoutPage = () =>
                     <div className='extras-div'>
                         <nav className='profile-full-div s'>
                             <NavLink to={'/myProfile'}><div>Post</div></NavLink>
-                            <NavLink to={'/myProfile/about'}><div>About</div></NavLink>
+                            <NavLink to='/myProfile/photo' ><div>Photos</div></NavLink>
                             <NavLink to={'/myProfile/friends'} ><div>Friends</div></NavLink>
                             <span className='others'>
-                                <NavLink  to='/myProfile/photo' ><div>Photos</div></NavLink>
+                                <NavLink to={'/myProfile/about'}><div>About</div></NavLink>
                                 <NavLink to='/myProfile/video' ><div>Videos</div></NavLink>
                                 <NavLink to='/myProfile/check' ><div className='check'>Check-ins</div></NavLink>
                             </span>

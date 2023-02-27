@@ -27,7 +27,7 @@ const CancelRequest = () =>
           profileImg: currentUser?.profileImg,
           receiverId,
         };
-        axios.put( API `/cancelSentRequest/${receiverId}`,
+        axios.put( API + `/cancelSentRequest/${receiverId}`,
             sender
         )
             .then(res =>

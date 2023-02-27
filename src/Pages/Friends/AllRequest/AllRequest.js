@@ -12,7 +12,7 @@ const AllRequest = () =>
 
     useEffect(() =>
     {
-        axios.get( API `/user/${user?.email}`)
+        axios.get( API + `/user/${user?.email}`)
             .then(res =>
             {
                 setCurrentUser(res.data)
