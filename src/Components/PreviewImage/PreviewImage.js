@@ -4,7 +4,7 @@ import './PreviewImage.css'
 
 const PreviewImage = ({ file, post_img }) =>
 {
-    console.log(file)
+    // console.log(file)
     const [preview, setPreview] = useState(null);
 
     if (file !== post_img) {

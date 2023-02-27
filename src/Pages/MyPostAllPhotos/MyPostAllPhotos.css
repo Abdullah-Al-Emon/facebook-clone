@@ -1,0 +1,13 @@
+.photos-flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.photos-img{
+    width: 215px;
+    border-radius: 15px;
+    height: 165px;
+}

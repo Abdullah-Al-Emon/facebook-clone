@@ -71,7 +71,7 @@ const MainColumn = () =>
                         :
                         <div>
                             {
-                                post.posts?.slice(0, visible).map((p, i) => (
+                                post.posts?.slice(0, visible).reverse().map((p, i) => (
                                     p?.inVisibleUserId?.includes(users?._id) ?
                                         <Undo 
                                         _id={p?._id}

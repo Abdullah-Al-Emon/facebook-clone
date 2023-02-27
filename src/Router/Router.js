@@ -8,6 +8,8 @@ import MyProfilePost from "../Pages/MyProfilePost/MyProfilePost";
 import About from "../Pages/About/About";
 import MyProfileLayoutPage from "../Layout/MyProfileLayoutPage/MyProfileLayoutPage";
 import MyProfileFriends from "../Pages/MyProfileFriends/MyProfileFriends";
+import CancelRequest from "../Pages/CacelRequest/CancelRequest";
+import MyPostAllPhotos from "../Pages/MyPostAllPhotos/MyPostAllPhotos";
 
 export const router = createBrowserRouter([
     {
@@ -50,7 +52,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/myProfile/photo',
-                element: <About/>
+                element: <MyPostAllPhotos/>
             },
             {
                 path: '/myProfile/video',
@@ -60,6 +62,10 @@ export const router = createBrowserRouter([
                 path: '/myProfile/check',
                 element: <About/>
             },
+            {
+                path: '/myProfile/cancelSentRequest',
+                element: <CancelRequest/>
+            }
         ]
     }
 ])

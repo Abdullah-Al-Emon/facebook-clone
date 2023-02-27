@@ -18,6 +18,25 @@
     background: #555; 
   }
 
+  .post-dlt-btn{
+    margin: 10px 0px;
+  }
+
+  .post-dlt-btn button{
+    cursor: pointer;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #f1f1f1;
+    border: none;
+  }
+
+  .post-dlt-btn button:hover{
+    background-color: #e5e5e5;
+  }
+
 .errors {
     font-size: 15px;
     display: block;

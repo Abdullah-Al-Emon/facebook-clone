@@ -21,6 +21,10 @@
     height: 180px
 }
 
+.friend-div .s-img{
+    height: 220px;
+}
+
 .friends-desc h3 {
     padding-bottom: 7px
 }
@@ -62,6 +66,10 @@
 
 .friend-title{
     padding: 10px 10px;
+}
+
+.visible{
+    visibility: hidden;
 }
 
 @media screen and (max-width:595px) {

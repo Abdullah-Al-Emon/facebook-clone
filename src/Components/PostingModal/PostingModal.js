@@ -50,45 +50,72 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                         initialValues={{ post: '', file: null, option: '' }}
                         onSubmit={(values) =>
                         {
-                            console.log(values)
+                            // console.log(values.file)
                             setIsLoading(true)
-                            const image = values.file;
-                            const fromData = new FormData();
-                            fromData.append('file', image)
-                            fromData.append('upload_preset', 'imagexlm')
-                            fromData.append('folder', 'First')
-                            const url = `https://api.cloudinary.com/v1_1/drh68zyt1/image/upload`
-                            axios.post(url,
-                                fromData
-                            )
-                                .then(imgData =>
-                                {
-                                    const post = {
-                                        options: values.option,
-                                        profile_pic: profile_pic,
-                                        name: { first_name: first_name, surname: surname },
-                                        time: date,
-                                        desc: values.post,
-                                        post_img: imgData.data.secure_url,
-                                        visibility: "Visible",
-                                        user_id: users?._id,
-                                        share: "0",
-                                    }
-                                    axios.post(API + '/post',
-                                        post
-                                    )
-                                        .then(res =>
-                                        {
-                                            if (res.data.message) {
-                                                toast.success(res.data.message)
-                                            }
-                                            setState(prev => !prev)
-                                            setIsLoading(false)
-                                            setPostingModal(!postingModal)
-                                        })
-                                        .catch(err => console.log(err))
-                                })
-                                .catch(err => console.log(err))
+                            if (values.file === null) {
+                                const post = {
+                                    options: values.option,
+                                    profile_pic: profile_pic,
+                                    name: { first_name: first_name, surname: surname },
+                                    time: date,
+                                    desc: values.post,
+                                    post_img: '',
+                                    visibility: "Visible",
+                                    user_id: users?._id,
+                                    share: "0",
+                                }
+                                axios.post(API + '/post',
+                                    post
+                                )
+                                    .then(res =>
+                                    {
+                                        if (res.data.message) {
+                                            toast.success(res.data.message)
+                                        }
+                                        setState(prev => !prev)
+                                        setIsLoading(false)
+                                        setPostingModal(!postingModal)
+                                    })
+                                    .catch(err => console.log(err))
+                            } else {
+                                const image = values?.file;
+                                const fromData = new FormData();
+                                fromData?.append('file', image)
+                                fromData?.append('upload_preset', 'imagexlm')
+                                fromData?.append('folder', 'First')
+                                const url = `https://api.cloudinary.com/v1_1/drh68zyt1/image/upload`
+                                axios.post(url,
+                                    fromData
+                                )
+                                    .then(imgData =>
+                                    {
+                                        const post = {
+                                            options: values.option,
+                                            profile_pic: profile_pic,
+                                            name: { first_name: first_name, surname: surname },
+                                            time: date,
+                                            desc: values.post,
+                                            post_img: imgData.data.secure_url,
+                                            visibility: "Visible",
+                                            user_id: users?._id,
+                                            share: "0",
+                                        }
+                                        axios.post(API + '/post',
+                                            post
+                                        )
+                                            .then(res =>
+                                            {
+                                                if (res.data.message) {
+                                                    toast.success(res.data.message)
+                                                }
+                                                setState(prev => !prev)
+                                                setIsLoading(false)
+                                                setPostingModal(!postingModal)
+                                            })
+                                            .catch(err => console.log(err))
+                                    })
+                                    .catch(err => console.log(err))
+                            }
                         }}
                         validate={(values) =>
                         {
@@ -138,7 +165,7 @@ export default function PostingModal({ togglePostingModal, setPostingModal, post
                                         className="posting-input" ></textarea>
                                     {errors.post && touched.post && errors.post && <span className='errors'>{errors.post}</span>}
                                     <div >
-                                        {values.file && <PreviewImage file={values.file} />}
+                                        {values?.file && <PreviewImage file={values?.file} />}
                                         <input id="file" ref={fileRef} name="file" type="file" onChange={(event) =>
                                         {
                                             setFieldValue("file", event.currentTarget.files[0]);

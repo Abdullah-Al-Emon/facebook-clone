@@ -33,7 +33,7 @@ const MyProfilePost = () =>
                     :
                     <div>
                         {
-                            profilePost.posts?.map((p, i) => (
+                            profilePost.posts?.slice(0).reverse().map((p, i) => (
                                 p?.inVisibleUserId?.includes(users?._id) ?
                                     <Undo 
                                     key={i} 

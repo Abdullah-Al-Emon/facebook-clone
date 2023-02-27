@@ -84,6 +84,14 @@ export default function EditPostModal({ _id, post_img, options, desc, toggleEdit
         }
     })
 
+    const handlePostDelete = (_id) => {
+        axios.delete( `/postDelete/${_id}`)
+        .then(res => {
+            setState(prev => !prev)
+            setEditPostModal(!editPostModal)
+        })
+    }
+
 
 
     return (
@@ -95,7 +103,9 @@ export default function EditPostModal({ _id, post_img, options, desc, toggleEdit
                     <h2>Edit Post</h2>
                 </div>
                 <div className="line"></div>
-
+                <div className="post-dlt-btn">
+                    <button onClick={() => handlePostDelete(_id)} type="button">Delete Post</button>
+                </div>
                 <div>
                     <form onSubmit={formik.handleSubmit}>
                         <div className='posting-flex between '>

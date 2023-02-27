@@ -26,7 +26,7 @@ export default function Modal({ toggleModal, setModal, modal })
         onSubmit: values =>
         {
             setIsLoading(true)
-            console.log(values.photo)
+            // console.log(values.photo)
             const image = values.photo;
             const fromData = new FormData();
             fromData.append('file', image)
@@ -104,7 +104,7 @@ export default function Modal({ toggleModal, setModal, modal })
             if (!values.photo) {
                 errors.photo = 'Upload your photo';
             }
-            console.log(errors)
+            // console.log(errors)
             return errors;
         }
     });

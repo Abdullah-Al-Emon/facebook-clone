@@ -88,6 +88,7 @@ const MyProfileLayoutPage = () =>
                             <div onClick={handleOpen} className='profile-menus'><span className="menus"></span>
                                 {open && <div className='edit-menu'>
                                     <Link to='/home' className='btn-my'>Home</Link>
+                                    <Link to='/myProfile/cancelSentRequest' className='btn-my'>Cancel Friend Request</Link>
                                 </div>}
                             </div>
                         </div>

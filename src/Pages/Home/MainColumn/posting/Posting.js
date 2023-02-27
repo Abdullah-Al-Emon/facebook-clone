@@ -45,13 +45,13 @@ const Posting = ({ profile_pic, first_name, user_Id, surname, time, desc, post_i
     }
     const handleUnLike = (_id) =>
     {
-        const likes = {
+        const unlike = {
             postId: _id,
             userId: users?._id
         }
 
         axios.put(API + '/unlike',
-            likes
+            unlike
         )
             .then(res => 
             {
