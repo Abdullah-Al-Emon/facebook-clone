@@ -12,12 +12,14 @@ const AllFriends = () =>
 
     const [users, setUsers] = useState([]);
     const [currentUser, setCurrentUser] = useState([]);
+    const [isLoading, setIsLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     const { state, setStates } = useContext(Context)
 
     useEffect(() =>
     {
-        axios.get( API + '/allUser')
+        axios.get(API + '/allUser')
             .then(res =>
             {
                 setUsers(res.data.friend)
@@ -28,10 +30,11 @@ const AllFriends = () =>
 
     useEffect(() =>
     {
-        axios.get( API + `/user/${user?.email}`)
+        axios.get(API + `/user/${user?.email}`)
             .then(res =>
             {
                 setCurrentUser(res.data)
+                setIsLoading(false)
                 // setStates(prev=> !prev)
             })
     }, [state])
@@ -55,6 +58,7 @@ const AllFriends = () =>
                 ({ _id: id1 }) => !friends?.some(({ _id: id2 }) => id2 === id1)
             );
             setRestPeople(restPeopleByFriends);
+            // setIsLoading(false)
             console.log(restPeopleByFriends)
         } else if (following?.length && friends?.length) {
             const restPeopleByFollowing = otherPeople?.filter(
@@ -64,6 +68,7 @@ const AllFriends = () =>
                 ({ _id: id1 }) => !friends?.some(({ _id: id2 }) => id2 === id1)
             );
             setRestPeople(restPeopleByFriends);
+            // setIsLoading(false)
             console.log(restPeopleByFriends)
         } else if (followers?.length && friends?.length) {
             const restPeopleByFollowers = otherPeople?.filter(
@@ -73,29 +78,34 @@ const AllFriends = () =>
                 ({ _id: id1 }) => !friends?.some(({ _id: id2 }) => id2 === id1)
             );
             setRestPeople(restPeopleByFriends);
+            // setIsLoading(false)
             console.log(restPeopleByFriends)
         } else if (followers?.length) {
             const restPeopleByFollowers = otherPeople?.filter(
                 ({ _id: id1 }) => !followers?.some(({ id: id2 }) => id2 === id1)
             );
             setRestPeople(restPeopleByFollowers);
+            // setIsLoading(false)
             console.log(restPeopleByFollowers)
-        } 
+        }
         else if (friends?.length) {
             const restPeopleByFriends = otherPeople?.filter(
                 ({ _id: id1 }) => !friends?.some(({ _id: id2 }) => id2 === id1)
             );
             setRestPeople(restPeopleByFriends);
+            // setIsLoading(false)
             console.log(restPeopleByFriends)
-        } 
+        }
         else if (following?.length) {
             const restPeopleByFollowing = otherPeople?.filter(
                 ({ _id: id1 }) => !following?.some(({ id: id2 }) => id2 === id1)
             );
             setRestPeople(restPeopleByFollowing);
+            // setIsLoading(false)
             console.log(restPeopleByFollowing)
         } else {
             setRestPeople(otherPeople);
+            // setIsLoading(false)
             console.log(otherPeople)
         }
     }, [following, followers, friends, state]);
@@ -111,6 +121,8 @@ const AllFriends = () =>
 
     const handleAddFriend = (receiverId) =>
     {
+        setLoading(true)
+
         const sender = {
             first_name: currentUser?.first_name,
             surname: currentUser?.surname,
@@ -121,13 +133,17 @@ const AllFriends = () =>
             currentDate,
             currentTime,
         };
-        axios.put( API + `/addFriend/${receiverId}`,
+        axios.put(API + `/addFriend/${receiverId}`,
             sender
         )
             .then(res =>
             {
                 console.log(res.data)
                 setStates(prev => !prev)
+            })
+            .catch(err => console.log(err))
+            .finally((res) => {
+                setLoading(false)
             })
     };
 
@@ -138,30 +154,30 @@ const AllFriends = () =>
                     <h2 className='friend-title'>People You May Know</h2>
                 </div>
                 <div className='friend'>
-                    {restPeople?.length ? (
-                        <>
-                            {restPeople
-                                ?.slice(0)
-                                ?.reverse()
-                                ?.map((friend, i) => (
-                                    <div key={i} className='friend-div'>
-                                        <div>
-                                            <img className='s-img' src={friend?.img} alt="" />
-                                        </div>
-                                        <div className='friends-desc'>
-                                            <h3>{friend?.first_name} {friend?.surname}</h3>
-                                            < div >
-                                                <button onClick={() => handleAddFriend(friend?._id)} className='confirm-btn'>Add Friend</button>
-                                            </div >
-                                        </div>
-                                    </div>
-
-                                ))}
-                        </>
-                    ) : (
-                        <p className="">No peoples available</p>
-                    )}
-                </div>
+                        {
+                            isLoading ?
+                                <div className="profile-loaders"></div>
+                                :
+                                <>
+                                    {restPeople
+                                        ?.slice(0)
+                                        ?.reverse()
+                                        ?.map((friend, i) => (
+                                            <div key={i} className='friend-div'>
+                                                <div>
+                                                    <img className='s-img' src={friend?.img} alt="" />
+                                                </div>
+                                                <div className='friends-desc'>
+                                                    <h3>{friend?.first_name} {friend?.surname}</h3>
+                                                    < div >
+                                                        <button disabled={loading} onClick={() => handleAddFriend(friend?._id)} className='confirm-btn'> {loading && <div className="loaders"></div>} Add Friend</button>
+                                                    </div >
+                                                </div>
+                                            </div>
+                                        ))}
+                                </>
+                        }
+                    </div>
             </div>
         </div >
     );

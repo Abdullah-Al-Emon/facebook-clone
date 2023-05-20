@@ -37,6 +37,7 @@
 .dlt-friend {
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
     background-color: #3277e6;
     color: #f0f8ff;
@@ -47,6 +48,10 @@
     margin: 8px 0;
     border: none;
     margin-left: 7px
+}
+
+.dlt-friend:disabled{
+    cursor: not-allowed;
 }
 
 .dlt-friend:hover {

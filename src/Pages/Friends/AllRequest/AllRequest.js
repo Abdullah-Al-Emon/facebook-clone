@@ -8,14 +8,16 @@ const AllRequest = () =>
     let u = sessionStorage.getItem('user');
     let user = JSON.parse(u);
     const [currentUser, setCurrentUser] = useState([]);
+    const [isLoading, setIsLoading] = useState(false)
     const { state, setStates } = useContext(Context)
 
     useEffect(() =>
     {
-        axios.get( API + `/user/${user?.email}`)
+        axios.get(API + `/user/${user?.email}`)
             .then(res =>
             {
                 setCurrentUser(res.data)
+                setIsLoading(false)
             })
     }, [state])
 
@@ -31,7 +33,7 @@ const AllRequest = () =>
             profileImg: currentUser?.img,
             receiverId,
         };
-        axios.put( API + `/accept/${receiverId}`,
+        axios.put(API + `/accept/${receiverId}`,
             sender
         )
             .then(res =>
@@ -51,7 +53,7 @@ const AllRequest = () =>
             profileImg: currentUser?.img,
             receiverId,
         };
-        axios.put( API + `/delete/${receiverId}`,
+        axios.put(API + `/delete/${receiverId}`,
             sender
         )
             .then(res =>
@@ -69,31 +71,36 @@ const AllRequest = () =>
                         <h2 className='friend-title'>Friend Request</h2>
                     </div>
                     <div className='friend'>
-                        <>
-                            {currentUser?.followers
-                                ?.slice(0)
-                                ?.reverse()
-                                ?.map((friend, i) => (
-                                    <div key={i} className='friend-div'>
-                                        <div>
-                                            <img src={friend?.profileImg} alt="" />
-                                        </div>
-                                        <div className='friends-desc'>
-                                            <h3>{friend?.first_name} {friend?.surname}</h3>
-                                            < div >
-                                                <button onClick={() => handleAcceptRequest(friend?.id)} className='confirm-btn'>Accept Request</button>
-                                            </div >
-                                            <div>
-                                                <button onClick={() =>
-                                                {
-                                                    handleDeleteRequest(friend?.id)
-                                                }} className='delete-btn'>Delete Request</button>
+                        {
+                            !isLoading ?
+                                <div className="profile-loaders"></div>
+                                :
+                                <>
+                                    {currentUser?.followers
+                                        ?.slice(0)
+                                        ?.reverse()
+                                        ?.map((friend, i) => (
+                                            <div key={i} className='friend-div f-req'>
+                                                <div>
+                                                    <img src={friend?.profileImg} alt="" />
+                                                </div>
+                                                <div className='friends-desc'>
+                                                    <h3>{friend?.first_name} {friend?.surname}</h3>
+                                                    < div >
+                                                        <button onClick={() => handleAcceptRequest(friend?.id)} className='confirm-btn'>Accept Request</button>
+                                                    </div >
+                                                    <div>
+                                                        <button onClick={() =>
+                                                        {
+                                                            handleDeleteRequest(friend?.id)
+                                                        }} className='delete-btn'>Delete Request</button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                ))}
-                        </>
+                                        ))}
+                                </>
+                        }
                     </div>
                 </div>
             ) : (

@@ -83,31 +83,31 @@ const FastColumn = () =>
             </div>
             <div className='fast-list'>
                 <div>
-                    <img className='nav-img imgs' src='https://i.ibb.co/99q2RSP/js-bd.jpg' alt="" />
+                    <img className='imgs' src='https://i.ibb.co/99q2RSP/js-bd.jpg' alt="" />
                 </div>
                 <p>JS Bangladesh - Coding Talks</p>
             </div>
             <div className='fast-list'>
                 <div>
-                    <img className='nav-img imgs' src='https://i.ibb.co/sH1sccL/r-native.jpg' alt="" />
+                    <img className='imgs' src='https://i.ibb.co/sH1sccL/r-native.jpg' alt="" />
                 </div>
                 <p>React Native Bangladesh Community</p>
             </div>
             <div className='fast-list'>
                 <div>
-                    <img className='nav-img imgs' src='https://i.ibb.co/j311L1F/talk.jpg' alt="" />
+                    <img className='imgs' src='https://i.ibb.co/j311L1F/talk.jpg' alt="" />
                 </div>
                 <p>Talk.js</p>
             </div>
             <div className='fast-list'>
                 <div>
-                    <img className='nav-img imgs' src='https://i.ibb.co/QY3Ky35/learn.jpg' alt="" />
+                    <img className='imgs' src='https://i.ibb.co/QY3Ky35/learn.jpg' alt="" />
                 </div>
                 <p>Learn with Sumit - LWS - Community</p>
             </div>
             <div className='fast-list'>
                 <div>
-                    <img className='nav-img imgs' src='https://i.ibb.co/48ZL10j/programmers.jpg' alt="" />
+                    <img className='imgs' src='https://i.ibb.co/48ZL10j/programmers.jpg' alt="" />
                 </div>
                 <p>BD Programmers</p>
             </div>

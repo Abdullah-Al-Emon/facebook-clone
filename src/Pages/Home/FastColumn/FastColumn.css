@@ -120,4 +120,8 @@
 
 .imgs{
     border-radius: 30%;
+    cursor: pointer;
+    width: 40px;
+    height: 38px;
+    margin-right: 10px;
 }

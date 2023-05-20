@@ -8,11 +8,22 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    height: 340px;
+    height: 310px;
     flex-basis: 30%;
     margin: 10px 10px;
     border-radius: 10px;
     box-shadow: -1px 1px 3px gray
+}
+
+.f-req{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 330px;
+    flex-basis: 30%;
+    margin: 10px 10px;
+    border-radius: 10px;
+    box-shadow: -1px 1px 3px gray;
 }
 
 .friend-div img {
@@ -22,11 +33,15 @@
 }
 
 .friend-div .s-img{
-    height: 220px;
+    height: 205px;
 }
 
 .friends-desc h3 {
-    padding-bottom: 7px
+    padding-bottom: 5px
+}
+
+.friends-desc .c-req{
+    padding-bottom: 10px;
 }
 
 .friends-desc {
@@ -34,6 +49,9 @@
 }
 
 .confirm-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     width: 100%;
     margin: 10px 0;
@@ -46,11 +64,18 @@
     color: #fff
 }
 
+.confirm-btn:disabled{
+    cursor: not-allowed;
+}
+
 .confirm-btn:hover {
     background-color: #216cc7
 }
 
 .delete-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     width: 100%;
     padding: 10px 10px;
@@ -58,6 +83,10 @@
     font-weight: 600;
     font-size: 15px;
     border: none
+}
+
+.delete-btn:disabled{
+    cursor: not-allowed;
 }
 
 .delete-btn:hover {

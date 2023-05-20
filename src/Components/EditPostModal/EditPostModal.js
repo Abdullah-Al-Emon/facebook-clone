@@ -85,9 +85,10 @@ export default function EditPostModal({ _id, post_img, options, desc, toggleEdit
     })
 
     const handlePostDelete = (_id) => {
-        axios.delete( `/postDelete/${_id}`)
+        axios.delete(API + `/postDlt/${_id}`)
         .then(res => {
             setState(prev => !prev)
+            console.log(res.data)
             setEditPostModal(!editPostModal)
         })
     }

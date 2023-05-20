@@ -8,71 +8,79 @@ const CancelRequest = () =>
     let u = sessionStorage.getItem('user');
     let user = JSON.parse(u);
     const [currentUser, setCurrentUser] = useState([]);
+    const [isLoading, setIsLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const { state, setStates } = useContext(Context)
 
     useEffect(() =>
     {
-        axios.get( API + `/user/${user?.email}`)
+        axios.get(API + `/user/${user?.email}`)
             .then(res =>
             {
                 setCurrentUser(res.data)
+                setIsLoading(false)
             })
     }, [state])
 
-    const handleCancleRequest = (receiverId) => {
+    const handleCancleRequest = (receiverId) =>
+    {
+        setLoading(true)
         const sender = {
-          name: currentUser?.name,
-          email: currentUser?.email,
-          id: currentUser?._id,
-          profileImg: currentUser?.profileImg,
-          receiverId,
+            name: currentUser?.name,
+            email: currentUser?.email,
+            id: currentUser?._id,
+            profileImg: currentUser?.profileImg,
+            receiverId,
         };
-        axios.put( API + `/cancelSentRequest/${receiverId}`,
+        axios.put(API + `/cancelSentRequest/${receiverId}`,
             sender
         )
             .then(res =>
             {
                 console.log(res.data)
                 setStates(prev => !prev)
+                setLoading(false)
             })
-      };
+    };
 
 
     return (
         <div className=''>
-            {currentUser?.following?.length ? (
+            <div>
                 <div>
-                    <div>
-                        <h2 className='friend-title'>Sent Friend Request</h2>
-                    </div>
-                    <div className='friend'>
-                        <>
-                            {currentUser?.following
-                                ?.slice(0)
-                                ?.reverse()
-                                ?.map((friend, i) => (
-                                    <div key={i} className='friend-div'>
-                                        <div>
-                                            <img className='s-img' src={friend?.profileImg} alt="" />
-                                        </div>
-                                        <div className='friends-desc'>
-                                            <h3>{friend?.first_name} {friend?.surname}</h3>
+                    <h2 className='friend-title'>Sent Friend Request</h2>
+                </div>
+                <div className='friend'>
+                    {
+                        isLoading ?
+                            <div className="profile-loaders"></div>
+                            :
+                            <>
+                                {currentUser?.following
+                                    ?.slice(0)
+                                    ?.reverse()
+                                    ?.map((friend, i) => (
+                                        <div key={i} className='friend-div'>
                                             <div>
-                                                <button onClick={() =>
-                                                {
-                                                    handleCancleRequest(friend?.id)
-                                                }} className='delete-btn'>Cancel Sent Request</button>
+                                                <img className='s-img' src={friend?.profileImg} alt="" />
+                                            </div>
+                                            <div className='friends-desc'>
+                                                <h3 className='c-req'>{friend?.first_name} {friend?.surname}</h3>
+                                                <div>
+                                                    <button 
+                                                    disabled={loading}
+                                                    onClick={() =>
+                                                    {
+                                                        handleCancleRequest(friend?.id)
+                                                    }} className='delete-btn'> {loading && <div className="loaders"></div>} Cancel Sent Request</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                ))}
-                        </>
-                    </div>
+                                    ))}
+                            </>
+                    }
                 </div>
-            ) : (
-                <p className="">No peoples available</p>
-            )}
+            </div>
         </div >
     );
 };

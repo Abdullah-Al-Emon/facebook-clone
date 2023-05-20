@@ -8,6 +8,8 @@ import EditModal from '../../Components/EditModal/EditModal';
 import PostingSection from '../../Components/PostingSection/PostingSection';
 import { Context } from '../../Context/StateManage';
 import useTitle from '../../Hooks/useTitle';
+import axios from 'axios';
+import { API } from '../../Helpers/ConfigAPI';
 
 const MyProfileLayoutPage = () =>
 {
@@ -18,6 +20,17 @@ const MyProfileLayoutPage = () =>
     let user = sessionStorage.getItem('user');
     let users = JSON.parse(user);
     useTitle(`${users?.first_name} ${users?.surname} |`, '')
+
+    const [currentUser, setCurrentUser] = useState([]);
+
+    useEffect(() =>
+    {
+        axios.get( API + `/user/${users?.email}`)
+            .then(res =>
+            {
+                setCurrentUser(res.data)
+            })
+    }, [state])
 
     useEffect(() =>
     {
@@ -61,7 +74,7 @@ const MyProfileLayoutPage = () =>
                         </div>
                         <div className='profile-title'>
                             <h2>{users?.first_name} {users?.surname}</h2>
-                            <p>122 Firends</p>
+                            <p>{currentUser?.friends?.length} Friends</p>
                         </div>
                     </div>
                     <div className='profile-end'>

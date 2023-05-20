@@ -199,7 +199,7 @@ export default function Modal({ toggleModal, setModal, modal })
                                 name="photo"
                                 label="Add Photo"
                                 Button='Profile Photo Upload'
-                                aspect={4/3}
+                                aspect={3/3}
                                 showPreview
                                 onChange={(files) => setImage(files, "admin")}
                             />
